@@ -34,7 +34,7 @@ const SelectedProjectSection = () => {
         {/* Section Header */}
         <motion.header variants={fadeInUp} className="max-w-3xl">
           <span className="overline-label text-white/50 mb-4 block">Wybrane realizacje</span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">
             Aureline District
           </h2>
           <p className="text-lg md:text-xl text-[#E5E7EB] opacity-80 font-light leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>

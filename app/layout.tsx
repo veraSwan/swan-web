@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import ScrollToTop from "@/components/ScrollToTop";
 import { Toaster } from "@/components/ui/toaster";
+import Providers from "@/components/Providers";
 
 export const metadata: Metadata = {
   title: {
@@ -22,14 +23,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pl">
+    <html lang="pl" className="dark">
       <body>
-        <ScrollToTop />
-        <div className="min-h-screen bg-background text-foreground selection:bg-accent/30 selection:text-foreground transition-colors duration-500">
-          <Header />
-          {children}
-          <Toaster />
-        </div>
+        <Providers>
+          <ScrollToTop />
+          <div className="min-h-screen bg-[#08090C] text-foreground selection:bg-accent/30 selection:text-foreground">
+            <Header />
+            {children}
+            <Toaster />
+          </div>
+        </Providers>
       </body>
     </html>
   );

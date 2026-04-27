@@ -2,10 +2,14 @@
 import React from 'react';
 import Link from "next/link";
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { useTranslation } from '@/hooks/useTranslation';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const { ref, isVisible } = useScrollAnimation();
+  const tr = useTranslation();
+  const f = tr.footer;
+  const nav = tr.nav;
 
   return (
     <footer ref={ref} className={`bg-[#0E0F12] border-t border-[#5A4B81]/20 pt-16 pb-8 relative z-10 overflow-hidden scroll-animate ${isVisible ? 'is-visible' : ''}`}>
@@ -26,36 +30,36 @@ const Footer = () => {
               </span>
             </Link>
             <p className="text-[#E5E7EB]/80 text-sm leading-relaxed max-w-sm transition-opacity hover:opacity-100" style={{ fontFamily: 'Inter, sans-serif' }}>
-              Tworzymy nowoczesne, szybkie i eleganckie strony internetowe. Naszym celem jest dostarczenie produktów premium, które wyróżnią Twój biznes w sieci.
+              {f.description}
             </p>
           </div>
 
           <div className="flex flex-col gap-4">
             <span className="text-white font-semibold text-sm uppercase tracking-wider mb-2" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-              Nawigacja
+              {f.navLabel}
             </span>
-            <Link href="/" className="text-[#E5E7EB]/70 hover:text-[#C05775] hover:translate-x-1 text-sm transition-all w-fit">Start</Link>
-            <Link href="/about" className="text-[#E5E7EB]/70 hover:text-[#C05775] hover:translate-x-1 text-sm transition-all w-fit">O nas</Link>
-            <Link href="/services" className="text-[#E5E7EB]/70 hover:text-[#C05775] hover:translate-x-1 text-sm transition-all w-fit">Usługi</Link>
-            <Link href="/portfolio" className="text-[#E5E7EB]/70 hover:text-[#C05775] hover:translate-x-1 text-sm transition-all w-fit">Portfolio</Link>
+            <Link href="/" className="text-[#E5E7EB]/70 hover:text-[#C05775] hover:translate-x-1 text-sm transition-all w-fit">{nav.home}</Link>
+            <Link href="/about" className="text-[#E5E7EB]/70 hover:text-[#C05775] hover:translate-x-1 text-sm transition-all w-fit">{nav.about}</Link>
+            <Link href="/services" className="text-[#E5E7EB]/70 hover:text-[#C05775] hover:translate-x-1 text-sm transition-all w-fit">{nav.services}</Link>
+            <Link href="/portfolio" className="text-[#E5E7EB]/70 hover:text-[#C05775] hover:translate-x-1 text-sm transition-all w-fit">{nav.portfolio}</Link>
           </div>
 
           <div className="flex flex-col gap-4">
             <span className="text-white font-semibold text-sm uppercase tracking-wider mb-2" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-              Kontakt
+              {f.contactLabel}
             </span>
             <a href="mailto:hello@swanwebstudio.com" className="text-[#E5E7EB]/70 hover:text-[#C05775] hover:translate-x-1 text-sm transition-all w-fit">
               hello@swanwebstudio.com
             </a>
             <Link href="/contact" className="text-[#E5E7EB]/70 hover:text-[#C05775] hover:translate-x-1 text-sm transition-all w-fit">
-              Napisz do nas
+              {f.writeToUs}
             </Link>
           </div>
         </div>
 
         <div className="pt-8 border-t border-[#5A4B81]/20 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-[#E5E7EB]/50 text-xs" style={{ fontFamily: 'Inter, sans-serif' }}>
-            &copy; {currentYear} Swan Web Studio. Wszelkie prawa zastrzeżone.
+            &copy; {currentYear} Swan Web Studio. {f.rights}
           </p>
           <div className="flex gap-6">
             <Link href="#" className="text-[#E5E7EB]/50 hover:text-white text-xs transition-colors">Polityka Prywatności</Link>

@@ -1,240 +1,249 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { useToast } from '@/components/ui/use-toast';
-import { Mail, MessageCircle, Send } from 'lucide-react';
+import { ArrowRight, Mail, Clock, ShieldCheck, MessageCircle } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
+import { useTranslation } from '@/hooks/useTranslation';
 
-const Contact = () => {
-  const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
+const trustIcons = [Clock, ShieldCheck, MessageCircle];
 
-  const handleSubmit = (e) => {
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.85, ease: [0.22, 1, 0.36, 1] } },
+};
+
+const stagger = (s = 0.18, d = 0.05) => ({
+  hidden: {},
+  visible: { transition: { staggerChildren: s, delayChildren: d } },
+});
+
+const Contact: React.FC = () => {
+  const tr = useTranslation();
+  const c = tr.contact;
+
+  const [formData, setFormData] = useState({ name: '', email: '', service: '', message: '' });
+  const [submitted, setSubmitted] = useState(false);
+  const [errors, setErrors] = useState({ name: false, email: false, message: false });
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const service = params.get('service');
+    if (service) setFormData((prev) => ({ ...prev, service }));
+  }, []);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errors[name as keyof typeof errors]) setErrors((prev) => ({ ...prev, [name]: false }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!formData.name || !formData.email || !formData.message) {
-      toast({
-        title: "Proszę wypełnić wszystkie pola",
-        variant: "destructive",
-        duration: 3000
-      });
-      return;
-    }
+    const newErrors = {
+      name: !formData.name.trim(),
+      email: !formData.email.trim(),
+      message: !formData.message.trim(),
+    };
+    setErrors(newErrors);
+    if (Object.values(newErrors).some(Boolean)) return;
 
-    toast({
-      title: "🚧 Formularz w trakcie konfiguracji",
-      description: "Dziękujemy za chęć kontaktu! Możesz poprosić o pełną integrację w kolejnym kroku.",
-      duration: 4000
-    });
-  };
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
-    }
-  };
-
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2
-      }
-    }
+    const serviceLabel = c.serviceOptions.find((o) => o.value === formData.service)?.label ?? 'Nowy projekt';
+    const subject = encodeURIComponent(`Zapytanie: ${serviceLabel}`);
+    const body = encodeURIComponent(`Od: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`);
+    window.location.href = `mailto:hello@swanwebstudio.com?subject=${subject}&body=${body}`;
+    setSubmitted(true);
   };
 
   return (
-    <>      <main className="bg-[#0E0F12] overflow-x-hidden">
-        {/* Hero Section */}
-        <section className="layout-container section-spacing relative overflow-hidden bg-gradient-to-b from-[#0E0F12] via-[#131418] to-[#0E0F12]">
-          <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-[#5A4B81] opacity-[0.08] blur-[180px] rounded-full pointer-events-none" />
-           <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#C05775] opacity-[0.05] blur-[180px] rounded-full pointer-events-none" />
-          
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-            className="text-center mb-24 relative z-10 flex flex-col items-center"
-          >
-            <motion.h1 variants={fadeInUp} className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 drop-shadow-xl leading-tight tracking-[-0.02em]" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-              Porozmawiajmy o Twoim projekcie
-            </motion.h1>
-            <div className="text-block mx-auto">
-              <motion.p variants={fadeInUp} className="text-xl md:text-2xl text-[#E5E7EB] opacity-90 font-light leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
-                Masz dodatkowe pytania? Chcesz spokojnie wycenić stronę?
-              </motion.p>
-              <motion.p variants={fadeInUp} className="text-xl md:text-2xl text-[#E5E7EB] opacity-90 font-light leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
-                Jesteśmy w pełni do Twojej dyspozycji na każdym etapie.
-              </motion.p>
-            </div>
-          </motion.div>
+    <main className="overflow-x-hidden">
+      <section className="relative overflow-hidden pt-32 md:pt-40 pb-24 md:pb-32">
+        <div className="absolute inset-0 z-0 pointer-events-none bg-[#08090C]" />
+        <div
+          className="absolute inset-0 z-0 pointer-events-none"
+          style={{ background: 'radial-gradient(ellipse 70% 55% at 50% 0%, rgba(58, 35, 96, 0.09) 0%, transparent 60%)' }}
+        />
+        <div
+          aria-hidden="true"
+          className="absolute top-[15%] left-[60%] w-[700px] h-[500px] bg-[#C05775]/[0.05] blur-[200px] rounded-full pointer-events-none z-0"
+        />
 
-          <div className="relative z-10 w-full flex flex-col items-center">
-            <div className="grid md:grid-cols-2 grid-spacing mb-16 w-full">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-                className="bg-[#131418] rounded-[2rem] p-10 shadow-xl border border-white/5 flex items-center gap-6 group hover:border-[#C05775]/40 transition-colors backdrop-blur-sm w-full"
-              >
-                <div className="bg-[#1A1C20] rounded-2xl p-4 border border-[#ffffff]/5 group-hover:scale-110 transition-transform shadow-inner">
-                  <Mail className="w-7 h-7 text-[#C05775] stroke-[1.5]" />
-                </div>
-                <div className="text-block">
-                  <h3 className="font-bold text-white mb-2 text-lg" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-                    Napisz do nas
-                  </h3>
-                  <p className="text-[#E5E7EB] opacity-70 font-light" style={{ fontFamily: 'Inter, sans-serif' }}>
-                    hello@swanwebstudio.com
-                  </p>
-                </div>
-              </motion.div>
+        <div className="layout-container-wide relative z-10">
+          <div className="grid lg:grid-cols-[1fr_1.15fr] gap-16 lg:gap-20 xl:gap-28 items-start">
 
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-                className="bg-[#131418] rounded-[2rem] p-10 shadow-xl border border-white/5 flex items-center gap-6 group hover:border-[#C05775]/40 transition-colors backdrop-blur-sm w-full"
-              >
-                <div className="bg-[#1A1C20] rounded-2xl p-4 border border-[#ffffff]/5 group-hover:scale-110 transition-transform shadow-inner">
-                  <MessageCircle className="w-7 h-7 text-[#C05775] stroke-[1.5]" />
-                </div>
-                <div className="text-block">
-                  <h3 className="font-bold text-white mb-2 text-lg" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-                    Szybki kontakt
-                  </h3>
-                  <p className="text-[#E5E7EB] opacity-70 font-light" style={{ fontFamily: 'Inter, sans-serif' }}>
-                    Odpowiadamy w 24h
-                  </p>
-                </div>
-              </motion.div>
-            </div>
-
+            {/* LEFT */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="bg-[#131418] rounded-[2.5rem] p-10 md:p-16 shadow-2xl border border-white/5 relative overflow-hidden backdrop-blur-sm w-full"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-60px' }}
+              variants={stagger(0.18)}
+              className="lg:sticky lg:top-32"
             >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#C05775]/5 to-transparent pointer-events-none" />
-              <div className="absolute inset-0 bg-gradient-to-b from-[#C05775]/[0.02] to-transparent pointer-events-none" />
-              
-              <form onSubmit={handleSubmit} className="space-y-12 relative z-10">
-                <div className="group">
-                  <label htmlFor="name" className="block text-sm font-medium text-[#E5E7EB] mb-4 ml-1 transition-colors group-focus-within:text-[#C05775] uppercase tracking-wide opacity-80" style={{ fontFamily: 'Inter, sans-serif' }}>
-                    Twoje imię
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full px-6 py-5 rounded-2xl bg-[#1A1C20] border border-[#2A2C32] text-white focus:outline-none focus:border-[#C05775] focus:ring-4 focus:ring-[#C05775]/10 focus:shadow-[0_0_20px_rgba(192,87,117,0.15)] transition-all duration-300 placeholder-[#4B5563] font-light shadow-inner text-lg"
-                    placeholder="Wpisz swoje imię"
-                    style={{ fontFamily: 'Inter, sans-serif' }}
-                    aria-label="Twoje imię"
-                  />
-                </div>
+              <motion.span variants={fadeInUp} className="text-[#C05775] text-[0.7rem] font-medium tracking-[0.4em] uppercase mb-6 block">
+                {c.label}
+              </motion.span>
 
-                <div className="group">
-                  <label htmlFor="email" className="block text-sm font-medium text-[#E5E7EB] mb-4 ml-1 transition-colors group-focus-within:text-[#C05775] uppercase tracking-wide opacity-80" style={{ fontFamily: 'Inter, sans-serif' }}>
-                    Adres email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-6 py-5 rounded-2xl bg-[#1A1C20] border border-[#2A2C32] text-white focus:outline-none focus:border-[#C05775] focus:ring-4 focus:ring-[#C05775]/10 focus:shadow-[0_0_20px_rgba(192,87,117,0.15)] transition-all duration-300 placeholder-[#4B5563] font-light shadow-inner text-lg"
-                    placeholder="twoj@email.com"
-                    style={{ fontFamily: 'Inter, sans-serif' }}
-                    aria-label="Adres email"
-                  />
-                </div>
+              <motion.h1
+                variants={fadeInUp}
+                className="text-4xl md:text-5xl lg:text-[4rem] font-medium text-white leading-[1.05] tracking-[-0.03em] mb-8"
+              >
+                {c.heading1}<br />
+                {c.heading2}<br />
+                <span className="text-[#C05775]">{c.heading3}</span>
+              </motion.h1>
 
-                <div className="group">
-                  <label htmlFor="message" className="block text-sm font-medium text-[#E5E7EB] mb-4 ml-1 transition-colors group-focus-within:text-[#C05775] uppercase tracking-wide opacity-80" style={{ fontFamily: 'Inter, sans-serif' }}>
-                    Wiadomość
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows="6"
-                    className="w-full px-6 py-5 rounded-2xl bg-[#1A1C20] border border-[#2A2C32] text-white focus:outline-none focus:border-[#C05775] focus:ring-4 focus:ring-[#C05775]/10 focus:shadow-[0_0_20px_rgba(192,87,117,0.15)] transition-all duration-300 resize-none placeholder-[#4B5563] font-light shadow-inner text-lg"
-                    placeholder="Opisz krótko swój projekt lub pytanie..."
-                    style={{ fontFamily: 'Inter, sans-serif' }}
-                    aria-label="Treść wiadomości"
-                  />
-                </div>
+              <motion.p
+                variants={fadeInUp}
+                className="text-base md:text-lg text-white/55 font-light leading-[1.75] mb-12 max-w-[22rem]"
+                style={{ fontFamily: 'Inter, sans-serif' }}
+              >
+                {c.paragraph}
+              </motion.p>
 
-                <Button
-                  type="submit"
-                  variant="primary-cta"
-                  className="w-full flex items-center justify-center gap-2 text-lg py-7 shadow-lg hover:shadow-[#C05775]/30 transition-shadow"
-                  size="xl"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
-                >
-                  Wyślij wiadomość
-                  <Send className="w-5 h-5" />
-                </Button>
-              </form>
-              <p className="text-center text-[#E5E7EB] opacity-50 text-sm mt-8 font-light" style={{ fontFamily: 'Inter, sans-serif' }}>
-                Skontaktujemy się z Tobą najszybciej jak to możliwe.
-              </p>
+              <motion.div variants={stagger(0.1, 0.05)} className="space-y-4 mb-14">
+                {c.trustSignals.map((text, i) => {
+                  const Icon = trustIcons[i];
+                  return (
+                    <motion.div key={i} variants={fadeInUp} className="flex items-center gap-3.5">
+                      <div className="w-9 h-9 rounded-full bg-[#C05775]/[0.07] border border-[#C05775]/[0.22] flex items-center justify-center shrink-0">
+                        <Icon className="w-4 h-4 text-[#C05775] stroke-[1.5]" />
+                      </div>
+                      <span className="text-[0.9rem] text-white/65 font-light" style={{ fontFamily: 'Inter, sans-serif' }}>
+                        {text}
+                      </span>
+                    </motion.div>
+                  );
+                })}
+              </motion.div>
+
+              <motion.a
+                variants={fadeInUp}
+                href="mailto:hello@swanwebstudio.com"
+                className="group inline-flex items-center gap-3 text-white/65 hover:text-white transition-colors duration-300"
+              >
+                <div className="w-9 h-9 rounded-full bg-white/[0.04] border border-white/[0.09] group-hover:border-[#C05775]/45 group-hover:bg-[#C05775]/[0.07] flex items-center justify-center transition-all duration-300 shrink-0">
+                  <Mail className="w-4 h-4 stroke-[1.5]" />
+                </div>
+                <span className="text-[0.88rem] font-light tracking-wide" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  hello@swanwebstudio.com
+                </span>
+              </motion.a>
+            </motion.div>
+
+            {/* RIGHT */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1], delay: 0.12 }}
+            >
+              {submitted ? (
+                <div className="rounded-[2rem] bg-white/[0.025] backdrop-blur-2xl border border-[#C05775]/25 p-12 md:p-16 text-center">
+                  <div className="w-16 h-16 rounded-full bg-[#C05775]/[0.10] border border-[#C05775]/35 flex items-center justify-center mx-auto mb-8">
+                    <svg className="w-7 h-7 text-[#C05775]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-medium text-white mb-5 tracking-tight">
+                    {c.successHeading}
+                  </h2>
+                  <p className="text-white/55 font-light leading-[1.75] max-w-sm mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
+                    {c.successText}{' '}
+                    <a href="mailto:hello@swanwebstudio.com" className="text-[#C05775] hover:underline">
+                      hello@swanwebstudio.com
+                    </a>
+                  </p>
+                </div>
+              ) : (
+                <div className="relative overflow-hidden rounded-[2rem] p-8 md:p-12 bg-white/[0.025] backdrop-blur-2xl border border-white/[0.07] shadow-[0_40px_100px_-40px_rgba(0,0,0,0.6),0_0_0_1px_rgba(192,87,117,0.04)_inset]">
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 rounded-[2rem]"
+                    style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.035) 0%, rgba(255,255,255,0) 50%)' }}
+                  />
+
+                  <form onSubmit={handleSubmit} noValidate className="relative z-10 space-y-6">
+                    {/* Name */}
+                    <div className="space-y-2">
+                      <label htmlFor="name" className="block text-[0.68rem] font-semibold text-white/50 uppercase tracking-[0.2em]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                        {c.nameLbl}
+                      </label>
+                      <input
+                        id="name" type="text" name="name" value={formData.name} onChange={handleChange}
+                        placeholder={c.namePlaceholder}
+                        className={`w-full px-5 py-4 rounded-xl bg-white/[0.04] border text-white placeholder-white/20 font-light text-[0.95rem] focus:outline-none focus:bg-white/[0.06] transition-all duration-300 ${errors.name ? 'border-red-500/60 focus:border-red-500/80' : 'border-white/[0.09] focus:border-[#C05775]/65 focus:shadow-[0_0_22px_-6px_rgba(192,87,117,0.4)]'}`}
+                        style={{ fontFamily: 'Inter, sans-serif' }}
+                      />
+                      {errors.name && <p className="text-[0.72rem] text-red-400/80 font-light" style={{ fontFamily: 'Inter, sans-serif' }}>{c.required}</p>}
+                    </div>
+
+                    {/* Email */}
+                    <div className="space-y-2">
+                      <label htmlFor="email" className="block text-[0.68rem] font-semibold text-white/50 uppercase tracking-[0.2em]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                        {c.emailLbl}
+                      </label>
+                      <input
+                        id="email" type="email" name="email" value={formData.email} onChange={handleChange}
+                        placeholder={c.emailPlaceholder}
+                        className={`w-full px-5 py-4 rounded-xl bg-white/[0.04] border text-white placeholder-white/20 font-light text-[0.95rem] focus:outline-none focus:bg-white/[0.06] transition-all duration-300 ${errors.email ? 'border-red-500/60 focus:border-red-500/80' : 'border-white/[0.09] focus:border-[#C05775]/65 focus:shadow-[0_0_22px_-6px_rgba(192,87,117,0.4)]'}`}
+                        style={{ fontFamily: 'Inter, sans-serif' }}
+                      />
+                      {errors.email && <p className="text-[0.72rem] text-red-400/80 font-light" style={{ fontFamily: 'Inter, sans-serif' }}>{c.required}</p>}
+                    </div>
+
+                    {/* Service */}
+                    <div className="space-y-2">
+                      <label htmlFor="service" className="block text-[0.68rem] font-semibold text-white/50 uppercase tracking-[0.2em]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                        {c.serviceLbl}
+                      </label>
+                      <div className="relative">
+                        <select
+                          id="service" name="service" value={formData.service} onChange={handleChange}
+                          className="w-full px-5 py-4 pr-11 rounded-xl bg-white/[0.04] border border-white/[0.09] text-white font-light text-[0.95rem] focus:outline-none focus:border-[#C05775]/65 focus:bg-white/[0.06] focus:shadow-[0_0_22px_-6px_rgba(192,87,117,0.4)] transition-all duration-300 appearance-none cursor-pointer"
+                          style={{ fontFamily: 'Inter, sans-serif' }}
+                        >
+                          {c.serviceOptions.map((opt) => (
+                            <option key={opt.value} value={opt.value} className="bg-[#0E1016] text-white">
+                              {opt.label}
+                            </option>
+                          ))}
+                        </select>
+                        <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/35 pointer-events-none stroke-[1.5]" />
+                      </div>
+                    </div>
+
+                    {/* Message */}
+                    <div className="space-y-2">
+                      <label htmlFor="message" className="block text-[0.68rem] font-semibold text-white/50 uppercase tracking-[0.2em]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                        {c.messageLbl}
+                      </label>
+                      <textarea
+                        id="message" name="message" value={formData.message} onChange={handleChange}
+                        rows={5} placeholder={c.messagePlaceholder}
+                        className={`w-full px-5 py-4 rounded-xl bg-white/[0.04] border text-white placeholder-white/20 font-light text-[0.95rem] focus:outline-none focus:bg-white/[0.06] transition-all duration-300 resize-none ${errors.message ? 'border-red-500/60 focus:border-red-500/80' : 'border-white/[0.09] focus:border-[#C05775]/65 focus:shadow-[0_0_22px_-6px_rgba(192,87,117,0.4)]'}`}
+                        style={{ fontFamily: 'Inter, sans-serif' }}
+                      />
+                      {errors.message && <p className="text-[0.72rem] text-red-400/80 font-light" style={{ fontFamily: 'Inter, sans-serif' }}>{c.required}</p>}
+                    </div>
+
+                    <button
+                      type="submit"
+                      className="group w-full flex items-center justify-center gap-2.5 bg-[#C05775] text-white hover:bg-[#CB6280] h-[58px] text-[0.7rem] tracking-[0.22em] uppercase font-semibold rounded-full transition-all duration-500 ease-[0.22,1,0.36,1] hover:shadow-[0_0_55px_-8px_rgba(192,87,117,0.7)] hover:-translate-y-0.5 hover:scale-[1.01] mt-2"
+                    >
+                      {c.submit}
+                      <ArrowRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" />
+                    </button>
+
+                    <p className="text-center text-[0.72rem] text-white/30 font-light pt-1" style={{ fontFamily: 'Inter, sans-serif' }}>
+                      {c.helper}
+                    </p>
+                  </form>
+                </div>
+              )}
             </motion.div>
           </div>
-        </section>
-
-         {/* Footer */}
-         <footer className="bg-[#0E0F12] pt-24 pb-12 relative overflow-hidden">
-             <div className="absolute inset-0 bg-gradient-to-b from-[#0E0F12] to-[#0E0F12] opacity-100 -z-10" />
-             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[1px] bg-gradient-to-r from-transparent via-[#C05775]/50 to-transparent opacity-50" />
-             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[100px] bg-[#C05775]/10 blur-[60px] rounded-full pointer-events-none" />
-
-            <div className="layout-container text-center relative z-10">
-              <h3 className="text-2xl font-bold text-white mb-10" style={{ fontFamily: 'DM Sans, sans-serif' }}>Swan Web Studio</h3>
-              
-              <div className="flex flex-wrap justify-center gap-6 md:gap-10 mb-14">
-                 {['Start', 'O nas', 'Usługi', 'Portfolio', 'Kontakt'].map((item, idx) => {
-                   const paths = ['/', '/about', '/services', '/portfolio', '/contact'];
-                   return (
-                     <a key={item} href={paths[idx]} className="text-[#E5E7EB] hover:text-[#C05775] transition-colors text-sm font-medium tracking-wide px-2 py-1">
-                       {item}
-                     </a>
-                   );
-                 })}
-              </div>
-
-              <div className="text-[#E5E7EB] opacity-50 text-sm font-light border-t border-white/5 pt-8 max-w-2xl mx-auto">
-                © {new Date().getFullYear()} Swan Web Studio. Wszelkie prawa zastrzeżone.
-              </div>
-            </div>
-         </footer>
-      </main>
-    </>
+        </div>
+      </section>
+    </main>
   );
 };
 

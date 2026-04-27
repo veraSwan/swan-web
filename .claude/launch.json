@@ -2,14 +2,7 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "swan-web",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
-      "port": 3000
-    },
-    {
       "name": "swan-web-next",
-      "cwd": "../swan-web-next",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
       "port": 3000

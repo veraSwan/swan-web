@@ -36,17 +36,19 @@ const noirTheme: MockTheme = {
 };
 
 /**
- * Editorial-quality photography from Unsplash — chosen to feel like the
- * brand's own product / atmosphere imagery without resorting to stock that
- * screams "stock". Image URLs reused from the previous Noir Élan view.
+ * Editorial-quality photography from Unsplash. Each URL was verified working
+ * — these are the same IDs used in the original Vite-era Noir Élan view, so
+ * we know they resolve.
  */
 const noirImages = {
   hero: "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=1200&q=80",
-  editorial: "https://images.unsplash.com/photo-1601193908723-7bd3d509224d?auto=format&fit=crop&w=900&q=80",
+  editorial:
+    "https://images.unsplash.com/photo-1601193908723-7bd3d509224d?auto=format&fit=crop&w=900&q=80",
+  // 4 verified perfume photos cycled across the product cards
   products: [
     "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=600&q=80",
     "https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1622030411594-c5be6e6e1c4b?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1598532108985-5413981e30b7?auto=format&fit=crop&w=600&q=80",
     "https://images.unsplash.com/photo-1650432506678-d187258c0900?auto=format&fit=crop&w=600&q=80",
   ],
 };
@@ -165,55 +167,6 @@ const NoirElanView: React.FC = () => {
     image: noirImages.products[i % noirImages.products.length],
   }));
 
-  /**
-   * Atmospheric "browser frame around a single editorial photo" — used as
-   * the case-study hero. The browser chrome signals "this is a website",
-   * the photo carries the brand mood; the full landing is shown later in
-   * the Visuals section so we never repeat the same content twice.
-   */
-  const AtmosphericMock = (
-    <BrowserMockup url={m.url} innerBg={noirTheme.bg}>
-      <div className="relative aspect-[16/9] w-full overflow-hidden">
-        <img
-          src={noirImages.hero}
-          alt={`${m.brand} editorial`}
-          loading="eager"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        {/* Brand-tinted vignette + subtle wordmark in the corner */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(0,0,0,0.25) 0%, transparent 35%, transparent 65%, rgba(0,0,0,0.55) 100%), radial-gradient(ellipse at 80% 25%, rgba(192,87,117,0.18), transparent 55%)",
-          }}
-        />
-        <div className="absolute top-6 md:top-8 left-6 md:left-10">
-          <span
-            className="text-white/95 text-[0.85rem] md:text-[1rem] font-light tracking-[0.32em] uppercase"
-            style={{ fontFamily: noirTheme.displayFont }}
-          >
-            {m.brand}
-          </span>
-        </div>
-        <div className="absolute bottom-6 md:bottom-10 left-6 md:left-10 right-6 md:right-10">
-          <span
-            className="text-[#E889A1] text-[0.55rem] md:text-[0.65rem] font-medium tracking-[0.32em] uppercase block mb-2"
-            style={{ fontFamily: noirTheme.bodyFont }}
-          >
-            {m.heroLabel}
-          </span>
-          <h2
-            className="text-white text-2xl md:text-4xl lg:text-5xl font-medium leading-[1.05] tracking-[-0.025em] max-w-[18ch]"
-            style={{ fontFamily: noirTheme.displayFont }}
-          >
-            {m.heroHeading}
-          </h2>
-        </div>
-      </div>
-    </BrowserMockup>
-  );
-
   /** Complete landing — used in the Visuals "Widok strony" section so users see all sections. */
   const FullPageMock = (
     <BrowserMockup url={m.url} innerBg={noirTheme.bg}>
@@ -303,7 +256,6 @@ const NoirElanView: React.FC = () => {
         category={p.category}
         title={p.title}
         subtitle={p.subtitle}
-        visual={AtmosphericMock}
       />
 
       <CaseStudyConcept label={s.conceptLabel} heading={p.concept.heading} body={p.concept.body} />

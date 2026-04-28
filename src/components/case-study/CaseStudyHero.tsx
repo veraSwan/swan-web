@@ -8,8 +8,10 @@ type CaseStudyHeroProps = {
   category: string;
   title: string;
   subtitle: string;
-  /** Big visual rendered below the title — typically a BrowserMockup with the homepage. */
-  visual: React.ReactNode;
+  /** Optional big visual rendered below the title. When omitted, the hero stays
+   *  minimal-typography only — useful when the full landing is shown later in
+   *  the Visuals section and you want to avoid repeating it. */
+  visual?: React.ReactNode;
 };
 
 const CaseStudyHero: React.FC<CaseStudyHeroProps> = ({ category, title, subtitle, visual }) => {
@@ -44,14 +46,16 @@ const CaseStudyHero: React.FC<CaseStudyHeroProps> = ({ category, title, subtitle
           </motion.p>
         </motion.header>
 
-        <motion.div
-          initial={{ opacity: 0, y: 40, scale: 0.97 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-        >
-          {visual}
-        </motion.div>
+        {visual && (
+          <motion.div
+            initial={{ opacity: 0, y: 40, scale: 0.97 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {visual}
+          </motion.div>
+        )}
       </div>
     </section>
   );

@@ -22,8 +22,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pl" className="dark" suppressHydrationWarning>
-      <body suppressHydrationWarning>
+    <html lang="pl" className="dark">
+      <body>
         <Providers>
           <ScrollToTop />
           <div className="min-h-screen bg-[#08090C] text-foreground selection:bg-accent/30 selection:text-foreground">

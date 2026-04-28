@@ -7,6 +7,8 @@ type ProductItem = {
   price: string;
   /** Optional bg gradient/color for the product tile placeholder. */
   tileBg?: string;
+  /** Optional product image URL — when set, replaces the synthetic silhouette. */
+  image?: string;
 };
 
 type MockProductsProps = {
@@ -49,33 +51,56 @@ const MockProducts: React.FC<MockProductsProps> = ({ theme, label, heading, item
             <div
               className={`relative aspect-[3/4] rounded-[0.6rem] overflow-hidden border ${theme.border}`}
               style={
-                item.tileBg
-                  ? { background: item.tileBg }
-                  : {
-                      background:
-                        "radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.10), transparent 55%), linear-gradient(160deg, rgba(255,255,255,0.04) 0%, rgba(0,0,0,0.35) 100%)",
-                    }
+                item.image
+                  ? undefined
+                  : item.tileBg
+                    ? { background: item.tileBg }
+                    : {
+                        background:
+                          "radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.10), transparent 55%), linear-gradient(160deg, rgba(255,255,255,0.04) 0%, rgba(0,0,0,0.35) 100%)",
+                      }
               }
             >
-              {/* Soft top highlight */}
-              <div
-                className="absolute inset-x-0 top-0 h-[35%] pointer-events-none opacity-60"
-                style={{
-                  background: "linear-gradient(180deg, rgba(255,255,255,0.04) 0%, transparent 100%)",
-                }}
-              />
-              {/* Centered object silhouette */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div
-                  className="w-[35%] h-[60%] rounded-[0.3rem] opacity-55"
-                  style={{
-                    background:
-                      "linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 30%, rgba(0,0,0,0.5) 100%)",
-                    boxShadow:
-                      "0 8px 18px -6px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08)",
-                  }}
-                />
-              </div>
+              {item.image ? (
+                <>
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  {/* Subtle dark gradient bottom for legibility — keeps brand mood */}
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      background:
+                        "linear-gradient(180deg, transparent 0%, transparent 60%, rgba(0,0,0,0.45) 100%)",
+                    }}
+                  />
+                </>
+              ) : (
+                <>
+                  {/* Soft top highlight */}
+                  <div
+                    className="absolute inset-x-0 top-0 h-[35%] pointer-events-none opacity-60"
+                    style={{
+                      background: "linear-gradient(180deg, rgba(255,255,255,0.04) 0%, transparent 100%)",
+                    }}
+                  />
+                  {/* Centered object silhouette */}
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div
+                      className="w-[35%] h-[60%] rounded-[0.3rem] opacity-55"
+                      style={{
+                        background:
+                          "linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 30%, rgba(0,0,0,0.5) 100%)",
+                        boxShadow:
+                          "0 8px 18px -6px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08)",
+                      }}
+                    />
+                  </div>
+                </>
+              )}
             </div>
             <div className="flex items-baseline justify-between gap-2 px-1">
               <span

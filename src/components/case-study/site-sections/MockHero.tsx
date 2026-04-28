@@ -68,7 +68,17 @@ const MockHero: React.FC<MockHeroProps> = ({
           <div className="relative">
             <div className={`relative aspect-[4/5] rounded-[1rem] overflow-hidden ${theme.surface} border ${theme.border}`}>
               {image ? (
-                <img src={image} alt="" className="w-full h-full object-cover" loading="lazy" />
+                <>
+                  <img src={image} alt="" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+                  {/* Soft brand-tinted vignette to keep mood consistent across photos */}
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      background:
+                        "linear-gradient(180deg, transparent 0%, transparent 55%, rgba(0,0,0,0.35) 100%), radial-gradient(ellipse at 80% 20%, rgba(192,87,117,0.12), transparent 60%)",
+                    }}
+                  />
+                </>
               ) : (
                 <div className="w-full h-full relative">
                   {/* Layered atmospheric gradient — feels like a magazine spread */}

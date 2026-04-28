@@ -8,6 +8,8 @@ type MockEditorialProps = {
   heading: string;
   body: string;
   signature?: string;
+  /** Optional accent image rendered as a side column on desktop. */
+  image?: string;
   compact?: boolean;
 };
 
@@ -21,6 +23,7 @@ const MockEditorial: React.FC<MockEditorialProps> = ({
   heading,
   body,
   signature,
+  image,
   compact = false,
 }) => {
   const padX = compact ? "px-4" : "px-8 md:px-12 lg:px-20";
@@ -30,10 +33,22 @@ const MockEditorial: React.FC<MockEditorialProps> = ({
   const labelSize = compact ? "text-[0.45rem]" : "text-[0.55rem] md:text-[0.65rem]";
   const sigSize = compact ? "text-[0.45rem]" : "text-[0.55rem] md:text-[0.65rem]";
 
+  // 3-col layout when image is present (label | text | image), else 2-col
+  const labelColClass = compact
+    ? ""
+    : image
+      ? "col-span-12 md:col-span-3"
+      : "col-span-12 md:col-span-4";
+  const bodyColClass = compact
+    ? ""
+    : image
+      ? "col-span-12 md:col-span-5"
+      : "col-span-12 md:col-span-7 md:col-start-6";
+
   return (
     <div className={`${padX} ${padY}`}>
-      <div className={`grid ${compact ? "grid-cols-1 gap-3" : "grid-cols-12 gap-6 md:gap-12 lg:gap-16"}`}>
-        <div className={compact ? "" : "col-span-12 md:col-span-4"}>
+      <div className={`grid ${compact ? "grid-cols-1 gap-3" : "grid-cols-12 gap-6 md:gap-10 lg:gap-14"} items-start`}>
+        <div className={labelColClass}>
           <span
             className={`${labelSize} ${theme.accentText} tracking-[0.32em] uppercase mb-2 md:mb-3 block font-medium`}
             style={{ fontFamily: theme.bodyFont }}
@@ -47,7 +62,7 @@ const MockEditorial: React.FC<MockEditorialProps> = ({
             {heading}
           </h2>
         </div>
-        <div className={compact ? "" : "col-span-12 md:col-span-7 md:col-start-6"}>
+        <div className={bodyColClass}>
           <p
             className={`${bodySize} ${theme.text} font-light leading-[1.85]`}
             style={{ fontFamily: theme.bodyFont }}
@@ -63,6 +78,27 @@ const MockEditorial: React.FC<MockEditorialProps> = ({
             </span>
           )}
         </div>
+        {image && !compact && (
+          <div className="col-span-12 md:col-span-4">
+            <div
+              className={`relative aspect-[3/4] rounded-[0.75rem] overflow-hidden border ${theme.border}`}
+            >
+              <img
+                src={image}
+                alt=""
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background:
+                    "linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.4) 100%)",
+                }}
+              />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

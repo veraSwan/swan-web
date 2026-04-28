@@ -16,11 +16,11 @@ type CaseStudyVisualsProps = {
   /** Top-level eyebrow + heading for the whole visuals block. */
   label: string;
   heading: string;
-  /** Big "Widok strony" — full BrowserMockup with the homepage. */
-  desktopView: SubSection;
+  /** Optional "Widok strony" — full BrowserMockup with the homepage. Skip when the same mockup is already shown at the top of the page (in CaseStudyHero). */
+  desktopView?: SubSection;
   /** "Mobile experience" — PhoneMockup. */
   mobileView: SubSection;
-  /** Optional "Najważniejsze sekcje" — 3 cropped section mocks. Often redundant when desktopView already shows the whole landing. */
+  /** Optional "Najważniejsze sekcje" — 3 cropped section mocks. */
   keySections?: SubSection;
   /** "Detale interfejsu" — close-ups of components (button, form field, card). */
   interfaceDetails: SubSection;
@@ -83,17 +83,19 @@ const CaseStudyVisuals: React.FC<CaseStudyVisualsProps> = ({
           </motion.h2>
         </motion.div>
 
-        {/* Desktop view */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-14 md:mb-20"
-        >
-          <SubSectionHeader {...desktopView} />
-          {desktopView.visual}
-        </motion.div>
+        {/* Desktop view (optional — often shown at the top in CaseStudyHero) */}
+        {desktopView && (
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            className="mb-14 md:mb-20"
+          >
+            <SubSectionHeader {...desktopView} />
+            {desktopView.visual}
+          </motion.div>
+        )}
 
         {/* Mobile view + Interface Details side-by-side */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 mb-14 md:mb-20 items-start">

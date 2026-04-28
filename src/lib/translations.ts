@@ -330,6 +330,184 @@ const translations = {
           footerCopyright: '© 2026 Noir Élan — wszystkie prawa zastrzeżone.',
         },
       },
+      maisonAtelier: {
+        category: 'E-commerce / Fashion',
+        title: 'Maison Atelier',
+        subtitle: 'Editorial e-commerce dla domu mody, którego rytm wyznacza kolekcja — nie cykl promocji.',
+        concept: {
+          heading: 'Krój jako podpis.',
+          body: 'Sklep musiał oddać tempo Atelier: bez countdownów, bez agresywnych badge\'y, bez pop-upów. Tylko obraz, krój, opis. Editorialowa narracja prowadzi klienta przez kolekcję jak przez magazyn.',
+        },
+        deliverables: {
+          heading: 'Komplet doświadczenia — od campaign po fulfillment.',
+          items: [
+            'Editorial UX dla limitowanej kolekcji',
+            'Lookbook jako narracja, nie galeria zdjęć',
+            'Karty produktu z fotografią studio + ulicznej',
+            'Sizing guide i atelier pickup',
+            'Mobile-first checkout w trzech krokach',
+            'CMS dla sezonowych campaign\'ów',
+          ],
+        },
+        goal: {
+          heading: 'Sklep, który oddaje tempo Atelier.',
+          pillarBodies: [
+            'Wyróżnić Maison Atelier wśród marek wpisanych w cykl szybkiej mody — jako wybór wieloletni, nie sezonowy.',
+            'Generic templates Shopify, brak narracji wokół kolekcji, słaba prezentacja editorialowej fotografii.',
+            'Klient kupuje krój, którego ton rozumie zanim odbierze paczkę.',
+          ],
+        },
+        process: {
+          heading: 'Od fotografii po wdrożenie — w jednym rytmie.',
+          stepDescriptions: [
+            'Brief sezonowy, archetyp marki, decyzje o tonie i tempie kolekcji.',
+            'Mapa sklepu — od campaign hero, przez lookbook, po atelier visit.',
+            'System wizualny: typografia szeryfowa, paleta cream + black + gold, fotografia natural + studio.',
+            'Wdrożenie z atelier-grade dbałością — szybkość, dostępność, integracja Shopify Plus.',
+          ],
+        },
+        result:
+          'Sklep, który czyta się jak magazyn. Kolekcja zostaje w pamięci długo po zamknięciu zakładki.',
+        visuals: {
+          heading: 'Pokaż bliżej, jak to wygląda.',
+          mobileHeading: 'Wersja mobile',
+          mobileCaption:
+            'Lookbook na telefonie zachowuje proporcje fotografii editorialowej. Bez kompromisów typograficznych.',
+          interfaceDetailsHeading: 'Detale interfejsu',
+          interfaceDetailsCaption:
+            'Przycisk, pole formularza, karta lookbook — drobne komponenty, w których siedzi cała jakość.',
+        },
+        mock: {
+          brand: 'Maison Atelier',
+          url: 'maisonatelier.com',
+          navLinks: ['Kolekcja', 'Lookbook', 'Atelier', 'Kontakt'],
+          navCta: 'Zapisz się',
+          heroLabel: 'Kolekcja Hiver 2026',
+          heroHeading: 'Krój, który zostaje.',
+          heroSubline:
+            'Limitowana kolekcja jesień–zima destylowana z kontemplacji nad detalem i materiałem.',
+          heroCta: 'Zobacz kolekcję',
+          editorialLabel: 'Notatka redakcyjna',
+          editorialHeading: 'Czas, który ubranie ma w sobie.',
+          editorialBody:
+            'Każdy krój przechodzi przez ręce krawca, który zna materiał wcześniej niż klient. To nie szybka moda — to wybór wieloletni w stylach, które zamiast krzyczeć, szepczą.',
+          editorialSignature: 'Atelier Maison',
+          lookbookLabel: 'Lookbook',
+          lookbookHeading: 'Stylizacje sezonu',
+          lookbookItems: [
+            { name: 'Look 01', caption: 'Soirée' },
+            { name: 'Look 02', caption: 'Atelier' },
+            { name: 'Look 03', caption: 'Editorial' },
+            { name: 'Look 04', caption: 'Salon' },
+          ],
+          newsletterLabel: 'Lista oczekujących',
+          newsletterHeading: 'Dołącz do prywatnych premier.',
+          newsletterSubline:
+            'Lookbook\'i, prywatne pokazy, atelier visits — pierwsze zaproszenia idą do listy oczekujących.',
+          newsletterPlaceholder: 'twoj@email.com',
+          newsletterCta: 'Zapisz się',
+          ctaHeading: 'Atelier zaprasza.',
+          ctaSubline:
+            'Spotkanie indywidualne w Warszawie. Pełna prezentacja kolekcji i konsultacja z krawcem.',
+          ctaButton: 'Umów wizytę',
+          footerTagline:
+            'Editorial fashion projektowany w sezonowych edycjach. Atelier w Warszawie.',
+          footerColumns: [
+            { title: 'Marka', links: ['O nas', 'Atelier', 'Editorial', 'Press'] },
+            { title: 'Sklep', links: ['Kolekcja', 'Lookbook', 'Lista oczekujących'] },
+            { title: 'Pomoc', links: ['Kontakt', 'Wysyłka', 'Sizing'] },
+          ],
+          footerCopyright: '© 2026 Maison Atelier — wszystkie prawa zastrzeżone.',
+        },
+      },
+      auraClinic: {
+        category: 'Medycyna estetyczna',
+        title: 'AURA Clinic',
+        subtitle: 'Strona kliniki, której spokój zaczyna się przed pierwszym zabiegiem.',
+        concept: {
+          heading: 'Spokojny ton — od pierwszego kliknięcia.',
+          body: 'Kliniki medycyny estetycznej często komunikują presją "ostatnie miejsca", "promocja kończy się dziś". AURA mówi inaczej. Strona prowadzi spokojnie, jak dobrze zaprojektowana poczekalnia: czysta, jasna, z subtelnym akcentem ciepła.',
+        },
+        deliverables: {
+          heading: 'Strona, na której rezerwacja czuje się jak konsultacja.',
+          items: [
+            'Spokojna komunikacja zabiegów — bez clickbaitu',
+            'System rezerwacji wizyt z wyborem specjalisty',
+            'Profile lekarzy z certyfikatami',
+            'Sekcja before/after z dyskretną prezentacją',
+            'Mobile-first dla wizyt umawianych w drodze',
+            'CMS dla harmonogramu i nowych zabiegów',
+          ],
+        },
+        goal: {
+          heading: 'Klinika, którą rezerwuje się świadomie.',
+          pillarBodies: [
+            'Pozycjonować AURA Clinic jako miejsce wybierane z uwagą — nie z impulsu czy pod presją.',
+            'Generic szablony klinik, agresywne badge\'y, brak transparentności w cenach i procedurach.',
+            'Pacjent przychodzi przygotowany — wie czego się spodziewać i komu zaufa.',
+          ],
+        },
+        process: {
+          heading: 'Od briefu medycznego po wdrożenie — spokojnie.',
+          stepDescriptions: [
+            'Rozmowa z lekarzami, mapowanie ścieżki pacjenta, definicja tonu komunikacji.',
+            'Architektura informacji: zabieg → specjalista → rezerwacja, bez ślepych uliczek.',
+            'System wizualny: pastele róż + sage, fotografia natural light, typografia spokojna.',
+            'Wdrożenie z uwagą do RODO, dostępności i prędkości na 4G.',
+          ],
+        },
+        result:
+          'Strona, na której pacjent oddycha głębiej zanim umówi wizytę. Zaufanie buduje się od pierwszego ekranu.',
+        visuals: {
+          heading: 'Pokaż bliżej, jak to wygląda.',
+          mobileHeading: 'Wersja mobile',
+          mobileCaption:
+            'Rezerwacja w trzech krokach na telefonie. Kalendarz spokojny, bez wibracji ofert ostatniej szansy.',
+          interfaceDetailsHeading: 'Detale interfejsu',
+          interfaceDetailsCaption:
+            'Przycisk, pole formularza, karta zabiegu — drobne komponenty, w których siedzi cała jakość.',
+        },
+        mock: {
+          brand: 'AURA Clinic',
+          url: 'auraclinic.pl',
+          navLinks: ['Zabiegi', 'Specjaliści', 'O klinice', 'Kontakt'],
+          navCta: 'Rezerwacja',
+          heroLabel: 'Klinika medycyny estetycznej',
+          heroHeading: 'Spokój przed lustrem.',
+          heroSubline:
+            'Konsultacje i zabiegi prowadzone z uwagą. Każda wizyta zaczyna się od rozmowy.',
+          heroCta: 'Umów konsultację',
+          editorialLabel: 'Filozofia kliniki',
+          editorialHeading: 'Estetyka, której nie widać od razu.',
+          editorialBody:
+            'Pracujemy w mikro-zmianach. Naturalność jest wartością — nie efektem ubocznym ostrożności. Każdy zabieg poprzedza rozmowa, w której słuchamy więcej niż mówimy.',
+          editorialSignature: 'Zespół AURA',
+          bookingLabel: 'Rezerwacja wizyty',
+          bookingHeading: 'Spokojnie wybierz termin.',
+          bookingSubline:
+            'Bez kolejek, bez gorączki. Konsultacja zawsze przed pierwszym zabiegiem.',
+          bookingDateLabel: 'Data wizyty',
+          bookingDateValue: '16 listopada',
+          bookingTimeSlots: ['10:00', '11:30', '14:00', '15:30', '17:00'],
+          bookingTreatments: [
+            { name: 'Konsultacja', duration: '45 min', price: 'bezpłatna' },
+            { name: 'Mezoterapia igłowa', duration: '60 min', price: 'od 480 zł' },
+            { name: 'Lifting twarzy', duration: '90 min', price: 'od 1 200 zł' },
+          ],
+          bookingCta: 'Potwierdź rezerwację',
+          ctaHeading: 'Pierwszy krok zaczyna się od rozmowy.',
+          ctaSubline:
+            'Konsultacja jest bezpłatna i niezobowiązująca. Spotykamy się, aby zrozumieć — nie żeby sprzedać.',
+          ctaButton: 'Umów konsultację',
+          footerTagline: 'Klinika medycyny estetycznej w Warszawie.',
+          footerColumns: [
+            { title: 'Klinika', links: ['O nas', 'Specjaliści', 'Certyfikaty'] },
+            { title: 'Zabiegi', links: ['Twarz', 'Ciało', 'Konsultacje'] },
+            { title: 'Pomoc', links: ['Kontakt', 'Cennik', 'RODO'] },
+          ],
+          footerCopyright: '© 2026 AURA Clinic — wszystkie prawa zastrzeżone.',
+        },
+      },
     },
   },
 
@@ -665,6 +843,184 @@ const translations = {
           footerCopyright: '© 2026 Noir Élan — all rights reserved.',
         },
       },
+      maisonAtelier: {
+        category: 'E-commerce / Fashion',
+        title: 'Maison Atelier',
+        subtitle: 'Editorial e-commerce for a fashion house whose pace is set by the collection — not the promotion cycle.',
+        concept: {
+          heading: 'Cut as a signature.',
+          body: "The shop had to match the Atelier's pace: no countdowns, no aggressive badges, no pop-ups. Just image, cut, description. An editorial narrative leads the customer through the collection like a magazine.",
+        },
+        deliverables: {
+          heading: 'A full experience — from campaign to fulfillment.',
+          items: [
+            'Editorial UX for the limited collection',
+            'Lookbook as narrative, not photo gallery',
+            'Product cards with studio + street photography',
+            'Sizing guide and atelier pickup',
+            'Mobile-first checkout in three steps',
+            'CMS for seasonal campaigns',
+          ],
+        },
+        goal: {
+          heading: "An e-shop that matches the Atelier's pace.",
+          pillarBodies: [
+            'Position Maison Atelier above the fast-fashion cycle — as a multi-year choice, not a seasonal one.',
+            'Generic Shopify templates, no narrative around the collection, weak presentation of editorial photography.',
+            "The customer buys a cut whose tone they understand before they receive the package.",
+          ],
+        },
+        process: {
+          heading: 'From photography to launch — at the same rhythm.',
+          stepDescriptions: [
+            'Seasonal brief, brand archetype, decisions on tone and pace.',
+            'Map of the shop — from campaign hero, through lookbook, to atelier visit.',
+            'Visual system: serif typography, cream + black + gold palette, natural + studio photography.',
+            'Implementation with atelier-grade care — speed, accessibility, Shopify Plus integration.',
+          ],
+        },
+        result:
+          'A shop that reads like a magazine. The collection stays in mind long after the tab is closed.',
+        visuals: {
+          heading: 'A closer look.',
+          mobileHeading: 'Mobile experience',
+          mobileCaption:
+            'The lookbook on a phone keeps editorial photography proportions. No typographic compromises.',
+          interfaceDetailsHeading: 'Interface details',
+          interfaceDetailsCaption:
+            'A button, a form field, a lookbook card — small components where all the quality lives.',
+        },
+        mock: {
+          brand: 'Maison Atelier',
+          url: 'maisonatelier.com',
+          navLinks: ['Collection', 'Lookbook', 'Atelier', 'Contact'],
+          navCta: 'Subscribe',
+          heroLabel: 'Hiver 2026 Collection',
+          heroHeading: 'A cut that stays.',
+          heroSubline:
+            'A limited fall–winter collection distilled from contemplation of detail and material.',
+          heroCta: 'See the collection',
+          editorialLabel: "Editor's note",
+          editorialHeading: 'The time a garment carries within.',
+          editorialBody:
+            'Every cut passes through the hands of a tailor who knows the material before the customer does. This is not fast fashion — it is a multi-year choice, in styles that whisper rather than shout.',
+          editorialSignature: 'Atelier Maison',
+          lookbookLabel: 'Lookbook',
+          lookbookHeading: 'Looks of the season',
+          lookbookItems: [
+            { name: 'Look 01', caption: 'Soirée' },
+            { name: 'Look 02', caption: 'Atelier' },
+            { name: 'Look 03', caption: 'Editorial' },
+            { name: 'Look 04', caption: 'Salon' },
+          ],
+          newsletterLabel: 'Waiting list',
+          newsletterHeading: 'Join private premieres.',
+          newsletterSubline:
+            'Lookbooks, private shows, atelier visits — first invitations go to the waiting list.',
+          newsletterPlaceholder: 'you@email.com',
+          newsletterCta: 'Subscribe',
+          ctaHeading: 'The Atelier invites.',
+          ctaSubline:
+            'A private session in Warsaw — full presentation of the collection and consultation with the tailor.',
+          ctaButton: 'Book a visit',
+          footerTagline:
+            'Editorial fashion designed in seasonal editions. Atelier in Warsaw.',
+          footerColumns: [
+            { title: 'Brand', links: ['About', 'Atelier', 'Editorial', 'Press'] },
+            { title: 'Shop', links: ['Collection', 'Lookbook', 'Waiting list'] },
+            { title: 'Help', links: ['Contact', 'Shipping', 'Sizing'] },
+          ],
+          footerCopyright: '© 2026 Maison Atelier — all rights reserved.',
+        },
+      },
+      auraClinic: {
+        category: 'Aesthetic medicine',
+        title: 'AURA Clinic',
+        subtitle: 'A clinic website where calm begins before the first treatment.',
+        concept: {
+          heading: 'A calm tone — from the first click.',
+          body: "Aesthetic medicine sites often communicate by pressure: 'last spots', 'promo ends today'. AURA speaks differently. The site leads calmly, like a well-designed waiting room: clean, light, with a subtle touch of warmth.",
+        },
+        deliverables: {
+          heading: 'A site where booking feels like consultation.',
+          items: [
+            'Calm communication of treatments — no clickbait',
+            'Visit booking system with specialist selection',
+            'Doctor profiles with certifications',
+            'Discreet before/after section',
+            'Mobile-first for visits booked on the go',
+            'CMS for schedule and new treatments',
+          ],
+        },
+        goal: {
+          heading: 'A clinic booked with intention.',
+          pillarBodies: [
+            'Position AURA Clinic as a place chosen with care — not on impulse or under pressure.',
+            'Generic clinic templates, aggressive badges, no transparency around prices and procedures.',
+            'The patient arrives prepared — knowing what to expect and whom to trust.',
+          ],
+        },
+        process: {
+          heading: 'From medical brief to launch — calmly.',
+          stepDescriptions: [
+            'Conversation with doctors, mapping the patient journey, defining the tone of communication.',
+            'Information architecture: treatment → specialist → booking, no dead ends.',
+            'Visual system: rose + sage pastels, natural-light photography, calm typography.',
+            'Implementation with care for GDPR, accessibility and 4G performance.',
+          ],
+        },
+        result:
+          'A site where the patient breathes deeper before booking. Trust is built from the first screen.',
+        visuals: {
+          heading: 'A closer look.',
+          mobileHeading: 'Mobile experience',
+          mobileCaption:
+            'Booking in three steps on the phone. The calendar is calm, free from last-chance offers.',
+          interfaceDetailsHeading: 'Interface details',
+          interfaceDetailsCaption:
+            'A button, a form field, a treatment card — small components where all the quality lives.',
+        },
+        mock: {
+          brand: 'AURA Clinic',
+          url: 'auraclinic.com',
+          navLinks: ['Treatments', 'Specialists', 'About', 'Contact'],
+          navCta: 'Book',
+          heroLabel: 'Aesthetic medicine clinic',
+          heroHeading: 'Calm in front of the mirror.',
+          heroSubline:
+            'Consultations and treatments delivered with care. Every visit begins with a conversation.',
+          heroCta: 'Book a consultation',
+          editorialLabel: 'Clinic philosophy',
+          editorialHeading: "An aesthetic that isn't seen at once.",
+          editorialBody:
+            'We work in micro-changes. Naturalness is a value — not a side effect of caution. Every treatment is preceded by a conversation in which we listen more than we speak.',
+          editorialSignature: 'AURA team',
+          bookingLabel: 'Visit booking',
+          bookingHeading: 'Calmly choose your time.',
+          bookingSubline:
+            'No queues, no rush. A consultation always precedes the first treatment.',
+          bookingDateLabel: 'Visit date',
+          bookingDateValue: 'November 16',
+          bookingTimeSlots: ['10:00', '11:30', '14:00', '15:30', '17:00'],
+          bookingTreatments: [
+            { name: 'Consultation', duration: '45 min', price: 'free' },
+            { name: 'Needle mesotherapy', duration: '60 min', price: 'from €110' },
+            { name: 'Face lifting', duration: '90 min', price: 'from €280' },
+          ],
+          bookingCta: 'Confirm booking',
+          ctaHeading: 'The first step begins with a conversation.',
+          ctaSubline:
+            'The consultation is free and without obligation. We meet to understand — not to sell.',
+          ctaButton: 'Book a consultation',
+          footerTagline: 'Aesthetic medicine clinic in Warsaw.',
+          footerColumns: [
+            { title: 'Clinic', links: ['About', 'Specialists', 'Certifications'] },
+            { title: 'Treatments', links: ['Face', 'Body', 'Consultations'] },
+            { title: 'Help', links: ['Contact', 'Pricing', 'Privacy'] },
+          ],
+          footerCopyright: '© 2026 AURA Clinic — all rights reserved.',
+        },
+      },
     },
   },
 
@@ -998,6 +1354,184 @@ const translations = {
             { title: 'Hilfe', links: ['Kontakt', 'Versand', 'Rückgabe'] },
           ],
           footerCopyright: '© 2026 Noir Élan — alle Rechte vorbehalten.',
+        },
+      },
+      maisonAtelier: {
+        category: 'E-Commerce / Fashion',
+        title: 'Maison Atelier',
+        subtitle: 'Editorial-E-Commerce für ein Modehaus, dessen Rhythmus die Kollektion bestimmt — nicht der Promotionszyklus.',
+        concept: {
+          heading: 'Schnitt als Signatur.',
+          body: 'Der Shop musste das Tempo des Ateliers widerspiegeln: keine Countdowns, keine aggressiven Badges, keine Pop-ups. Nur Bild, Schnitt, Beschreibung. Eine redaktionelle Erzählung führt den Kunden durch die Kollektion wie durch ein Magazin.',
+        },
+        deliverables: {
+          heading: 'Vollständiges Erlebnis — von der Kampagne bis zur Erfüllung.',
+          items: [
+            'Redaktionelle UX für die limitierte Kollektion',
+            'Lookbook als Erzählung, nicht als Fotogalerie',
+            'Produktkarten mit Studio- und Streetfotografie',
+            'Größenleitfaden und Atelier-Abholung',
+            'Mobile-First-Checkout in drei Schritten',
+            'CMS für saisonale Kampagnen',
+          ],
+        },
+        goal: {
+          heading: 'Ein Shop, der das Tempo des Ateliers widerspiegelt.',
+          pillarBodies: [
+            'Maison Atelier vom Fast-Fashion-Zyklus abheben — als mehrjährige, nicht saisonale Wahl.',
+            'Generische Shopify-Templates, keine Erzählung um die Kollektion, schwache Präsentation der redaktionellen Fotografie.',
+            'Der Kunde kauft einen Schnitt, dessen Ton er versteht, bevor das Paket eintrifft.',
+          ],
+        },
+        process: {
+          heading: 'Von der Fotografie bis zum Launch — im selben Rhythmus.',
+          stepDescriptions: [
+            'Saisonbriefing, Markenarchetyp, Entscheidungen zu Ton und Tempo.',
+            'Karte des Shops — vom Kampagnen-Hero über das Lookbook bis zum Atelierbesuch.',
+            'Visuelles System: Serif-Typografie, Palette Creme + Schwarz + Gold, natürliche und Studiofotografie.',
+            'Umsetzung mit Atelier-Sorgfalt — Geschwindigkeit, Barrierefreiheit, Shopify-Plus-Integration.',
+          ],
+        },
+        result:
+          'Ein Shop, der sich liest wie ein Magazin. Die Kollektion bleibt lange nach dem Schließen des Tabs in Erinnerung.',
+        visuals: {
+          heading: 'Ein näherer Blick.',
+          mobileHeading: 'Mobile-Erlebnis',
+          mobileCaption:
+            'Das Lookbook auf dem Handy bewahrt die Proportionen redaktioneller Fotografie. Keine typografischen Kompromisse.',
+          interfaceDetailsHeading: 'Interface-Details',
+          interfaceDetailsCaption:
+            'Ein Button, ein Formularfeld, eine Lookbook-Karte — kleine Komponenten, in denen die ganze Qualität steckt.',
+        },
+        mock: {
+          brand: 'Maison Atelier',
+          url: 'maisonatelier.com',
+          navLinks: ['Kollektion', 'Lookbook', 'Atelier', 'Kontakt'],
+          navCta: 'Abonnieren',
+          heroLabel: 'Hiver 2026 Kollektion',
+          heroHeading: 'Ein Schnitt, der bleibt.',
+          heroSubline:
+            'Eine limitierte Herbst-Winter-Kollektion, destilliert aus der Kontemplation über Detail und Material.',
+          heroCta: 'Kollektion ansehen',
+          editorialLabel: 'Editorial-Notiz',
+          editorialHeading: 'Die Zeit, die ein Kleidungsstück in sich trägt.',
+          editorialBody:
+            'Jeder Schnitt durchläuft die Hände eines Schneiders, der das Material kennt, bevor der Kunde es tut. Das ist keine Fast Fashion — das ist eine mehrjährige Wahl in Stilen, die flüstern, statt zu schreien.',
+          editorialSignature: 'Atelier Maison',
+          lookbookLabel: 'Lookbook',
+          lookbookHeading: 'Looks der Saison',
+          lookbookItems: [
+            { name: 'Look 01', caption: 'Soirée' },
+            { name: 'Look 02', caption: 'Atelier' },
+            { name: 'Look 03', caption: 'Editorial' },
+            { name: 'Look 04', caption: 'Salon' },
+          ],
+          newsletterLabel: 'Warteliste',
+          newsletterHeading: 'Werden Sie Teil privater Premieren.',
+          newsletterSubline:
+            'Lookbooks, private Shows, Atelierbesuche — erste Einladungen gehen an die Warteliste.',
+          newsletterPlaceholder: 'sie@email.com',
+          newsletterCta: 'Abonnieren',
+          ctaHeading: 'Das Atelier lädt ein.',
+          ctaSubline:
+            'Eine private Sitzung in Warschau — vollständige Präsentation der Kollektion und Beratung mit dem Schneider.',
+          ctaButton: 'Termin buchen',
+          footerTagline:
+            'Editorial-Mode, gestaltet in saisonalen Editionen. Atelier in Warschau.',
+          footerColumns: [
+            { title: 'Marke', links: ['Über uns', 'Atelier', 'Editorial', 'Press'] },
+            { title: 'Shop', links: ['Kollektion', 'Lookbook', 'Warteliste'] },
+            { title: 'Hilfe', links: ['Kontakt', 'Versand', 'Sizing'] },
+          ],
+          footerCopyright: '© 2026 Maison Atelier — alle Rechte vorbehalten.',
+        },
+      },
+      auraClinic: {
+        category: 'Ästhetische Medizin',
+        title: 'AURA Clinic',
+        subtitle: 'Eine Klinikwebsite, deren Ruhe vor der ersten Behandlung beginnt.',
+        concept: {
+          heading: 'Ein ruhiger Ton — vom ersten Klick an.',
+          body: 'Kliniken für ästhetische Medizin kommunizieren oft mit Druck: „letzte Plätze", „Aktion endet heute". AURA spricht anders. Die Seite führt ruhig, wie ein gut gestaltetes Wartezimmer: sauber, hell, mit subtiler Wärme.',
+        },
+        deliverables: {
+          heading: 'Eine Seite, auf der eine Buchung wie eine Beratung anfühlt.',
+          items: [
+            'Ruhige Kommunikation der Behandlungen — kein Clickbait',
+            'Buchungssystem für Termine mit Spezialistenauswahl',
+            'Arztprofile mit Zertifizierungen',
+            'Diskrete Before/After-Sektion',
+            'Mobile-First für Termine unterwegs',
+            'CMS für Terminplan und neue Behandlungen',
+          ],
+        },
+        goal: {
+          heading: 'Eine Klinik, die bewusst gebucht wird.',
+          pillarBodies: [
+            'AURA Clinic als einen mit Sorgfalt gewählten Ort positionieren — nicht impulsiv oder unter Druck.',
+            'Generische Klinik-Templates, aggressive Badges, fehlende Transparenz bei Preisen und Verfahren.',
+            'Der Patient kommt vorbereitet — er weiß, was ihn erwartet und wem er vertrauen kann.',
+          ],
+        },
+        process: {
+          heading: 'Vom medizinischen Briefing bis zum Launch — ruhig.',
+          stepDescriptions: [
+            'Gespräch mit Ärzten, Patientenreise abbilden, Tonfall der Kommunikation definieren.',
+            'Informationsarchitektur: Behandlung → Spezialist → Buchung, ohne Sackgassen.',
+            'Visuelles System: Rosé + Salbei-Pastelle, Naturlicht-Fotografie, ruhige Typografie.',
+            'Umsetzung mit Aufmerksamkeit für DSGVO, Barrierefreiheit und Geschwindigkeit auf 4G.',
+          ],
+        },
+        result:
+          'Eine Seite, auf der der Patient tiefer atmet, bevor er einen Termin bucht. Vertrauen entsteht ab dem ersten Bildschirm.',
+        visuals: {
+          heading: 'Ein näherer Blick.',
+          mobileHeading: 'Mobile-Erlebnis',
+          mobileCaption:
+            'Buchung in drei Schritten am Handy. Der Kalender ist ruhig, frei von Last-Chance-Angeboten.',
+          interfaceDetailsHeading: 'Interface-Details',
+          interfaceDetailsCaption:
+            'Ein Button, ein Formularfeld, eine Behandlungskarte — kleine Komponenten, in denen die ganze Qualität steckt.',
+        },
+        mock: {
+          brand: 'AURA Clinic',
+          url: 'auraclinic.com',
+          navLinks: ['Behandlungen', 'Spezialisten', 'Über uns', 'Kontakt'],
+          navCta: 'Buchen',
+          heroLabel: 'Klinik für ästhetische Medizin',
+          heroHeading: 'Ruhe vor dem Spiegel.',
+          heroSubline:
+            'Beratungen und Behandlungen mit Sorgfalt. Jeder Termin beginnt mit einem Gespräch.',
+          heroCta: 'Beratung buchen',
+          editorialLabel: 'Klinikphilosophie',
+          editorialHeading: 'Eine Ästhetik, die man nicht sofort sieht.',
+          editorialBody:
+            'Wir arbeiten in Mikro-Veränderungen. Natürlichkeit ist ein Wert — kein Nebeneffekt der Vorsicht. Jeder Behandlung geht ein Gespräch voraus, in dem wir mehr zuhören als sprechen.',
+          editorialSignature: 'AURA-Team',
+          bookingLabel: 'Termin buchen',
+          bookingHeading: 'Wählen Sie Ihren Termin in Ruhe.',
+          bookingSubline:
+            'Keine Schlangen, keine Hektik. Eine Beratung geht der ersten Behandlung immer voraus.',
+          bookingDateLabel: 'Termindatum',
+          bookingDateValue: '16. November',
+          bookingTimeSlots: ['10:00', '11:30', '14:00', '15:30', '17:00'],
+          bookingTreatments: [
+            { name: 'Beratung', duration: '45 Min.', price: 'kostenlos' },
+            { name: 'Nadelmesotherapie', duration: '60 Min.', price: 'ab 110 €' },
+            { name: 'Gesichtslifting', duration: '90 Min.', price: 'ab 280 €' },
+          ],
+          bookingCta: 'Buchung bestätigen',
+          ctaHeading: 'Der erste Schritt beginnt mit einem Gespräch.',
+          ctaSubline:
+            'Die Beratung ist kostenlos und unverbindlich. Wir treffen uns, um zu verstehen — nicht um zu verkaufen.',
+          ctaButton: 'Beratung buchen',
+          footerTagline: 'Klinik für ästhetische Medizin in Warschau.',
+          footerColumns: [
+            { title: 'Klinik', links: ['Über uns', 'Spezialisten', 'Zertifizierungen'] },
+            { title: 'Behandlungen', links: ['Gesicht', 'Körper', 'Beratungen'] },
+            { title: 'Hilfe', links: ['Kontakt', 'Preise', 'Datenschutz'] },
+          ],
+          footerCopyright: '© 2026 AURA Clinic — alle Rechte vorbehalten.',
         },
       },
     },

@@ -256,6 +256,7 @@ const NoirElanView: React.FC = () => {
         category={p.category}
         title={p.title}
         subtitle={p.subtitle}
+        visual={FullPageMock}
       />
 
       <CaseStudyConcept label={s.conceptLabel} heading={p.concept.heading} body={p.concept.body} />
@@ -291,12 +292,6 @@ const NoirElanView: React.FC = () => {
       <CaseStudyVisuals
         label={s.visualsLabel}
         heading={p.visuals.heading}
-        desktopView={{
-          label: s.desktopLabel,
-          heading: p.visuals.desktopHeading,
-          caption: p.visuals.desktopCaption,
-          visual: FullPageMock,
-        }}
         mobileView={{
           label: s.mobileLabel,
           heading: p.visuals.mobileHeading,

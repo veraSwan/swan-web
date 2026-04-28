@@ -14,7 +14,7 @@ const CaseStudyBackNav: React.FC<CaseStudyBackNavProps> = ({ backLabel }) => {
   const { variants } = useScrollAnimation();
 
   return (
-    <section className="relative pb-32 md:pb-40">
+    <section className="relative pb-24 md:pb-32">
       <div className="layout-container-wide relative z-10 max-w-4xl mx-auto text-center">
         <motion.div
           initial="hidden"

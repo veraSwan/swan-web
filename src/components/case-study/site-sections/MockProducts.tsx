@@ -53,17 +53,29 @@ const MockProducts: React.FC<MockProductsProps> = ({ theme, label, heading, item
                   ? { background: item.tileBg }
                   : {
                       background:
-                        "linear-gradient(135deg, rgba(255,255,255,0.06), rgba(0,0,0,0.25))",
+                        "radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.10), transparent 55%), linear-gradient(160deg, rgba(255,255,255,0.04) 0%, rgba(0,0,0,0.35) 100%)",
                     }
               }
             >
+              {/* Soft top highlight */}
               <div
-                className="absolute inset-0"
+                className="absolute inset-x-0 top-0 h-[35%] pointer-events-none opacity-60"
                 style={{
-                  background:
-                    "radial-gradient(ellipse at 35% 30%, rgba(255,255,255,0.08), transparent 60%)",
+                  background: "linear-gradient(180deg, rgba(255,255,255,0.04) 0%, transparent 100%)",
                 }}
               />
+              {/* Centered object silhouette */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div
+                  className="w-[35%] h-[60%] rounded-[0.3rem] opacity-55"
+                  style={{
+                    background:
+                      "linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 30%, rgba(0,0,0,0.5) 100%)",
+                    boxShadow:
+                      "0 8px 18px -6px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08)",
+                  }}
+                />
+              </div>
             </div>
             <div className="flex items-baseline justify-between gap-2 px-1">
               <span

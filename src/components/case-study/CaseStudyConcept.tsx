@@ -15,7 +15,7 @@ const CaseStudyConcept: React.FC<CaseStudyConceptProps> = ({ label, heading, bod
   const { variants } = useScrollAnimation();
 
   return (
-    <section className="relative py-20 md:py-28 overflow-hidden">
+    <section className="relative py-16 md:py-24 overflow-hidden">
       <div className="layout-container-wide relative z-10 max-w-5xl mx-auto">
         <motion.div
           variants={variants.staggerContainer(0.18, 0.05)}

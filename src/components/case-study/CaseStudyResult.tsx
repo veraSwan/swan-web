@@ -14,7 +14,7 @@ const CaseStudyResult: React.FC<CaseStudyResultProps> = ({ label, body }) => {
   const { variants } = useScrollAnimation();
 
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden">
+    <section className="relative py-20 md:py-24 overflow-hidden">
       <div aria-hidden="true" className="absolute inset-0 z-0 pointer-events-none">
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full blur-[160px] opacity-40"

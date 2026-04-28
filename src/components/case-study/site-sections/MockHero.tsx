@@ -22,14 +22,14 @@ const MockHero: React.FC<MockHeroProps> = ({
   image,
   compact = false,
 }) => {
-  const padX = compact ? "px-4" : "px-8 md:px-12 lg:px-16";
-  const padY = compact ? "py-8" : "py-16 md:py-24 lg:py-28";
-  const labelSize = compact ? "text-[0.45rem]" : "text-[0.55rem] md:text-[0.65rem]";
+  const padX = compact ? "px-4" : "px-8 md:px-14 lg:px-20";
+  const padY = compact ? "py-8" : "py-20 md:py-28 lg:py-32";
+  const labelSize = compact ? "text-[0.45rem]" : "text-[0.55rem] md:text-[0.7rem]";
   const headingSize = compact
     ? "text-base"
-    : "text-2xl md:text-4xl lg:text-5xl";
-  const sublineSize = compact ? "text-[0.55rem]" : "text-[0.7rem] md:text-[0.85rem]";
-  const ctaSize = compact ? "text-[0.45rem] px-3 py-1.5" : "text-[0.55rem] md:text-[0.65rem] px-5 py-2.5 md:px-6 md:py-3";
+    : "text-3xl md:text-5xl lg:text-[4rem]";
+  const sublineSize = compact ? "text-[0.55rem]" : "text-[0.75rem] md:text-[0.95rem]";
+  const ctaSize = compact ? "text-[0.45rem] px-3 py-1.5" : "text-[0.6rem] md:text-[0.75rem] px-7 py-3 md:px-8 md:py-4";
 
   return (
     <div
@@ -45,13 +45,13 @@ const MockHero: React.FC<MockHeroProps> = ({
             {label}
           </span>
           <h1
-            className={`${headingSize} ${theme.text} font-medium leading-[1.05] tracking-[-0.02em] mb-3 md:mb-5`}
+            className={`${headingSize} ${theme.text} font-medium leading-[1.02] tracking-[-0.03em] mb-4 md:mb-7`}
             style={{ fontFamily: theme.displayFont }}
           >
             {heading}
           </h1>
           <p
-            className={`${sublineSize} ${theme.textMuted} font-light leading-[1.7] mb-5 md:mb-8 max-w-[28ch]`}
+            className={`${sublineSize} ${theme.textMuted} font-light leading-[1.75] mb-6 md:mb-10 max-w-[32ch]`}
             style={{ fontFamily: theme.bodyFont }}
           >
             {subline}
@@ -70,13 +70,33 @@ const MockHero: React.FC<MockHeroProps> = ({
               {image ? (
                 <img src={image} alt="" className="w-full h-full object-cover" loading="lazy" />
               ) : (
-                <div className={`w-full h-full ${theme.surface}`}>
-                  {/* Subtle gradient placeholder */}
+                <div className="w-full h-full relative">
+                  {/* Layered atmospheric gradient — feels like a magazine spread */}
                   <div
-                    className="w-full h-full"
+                    className="absolute inset-0"
                     style={{
                       background:
-                        "radial-gradient(ellipse at 30% 40%, rgba(255,255,255,0.06), transparent 60%), linear-gradient(135deg, rgba(255,255,255,0.03), rgba(0,0,0,0.2))",
+                        "radial-gradient(ellipse at 30% 25%, rgba(255,255,255,0.10), transparent 55%), radial-gradient(ellipse at 80% 80%, rgba(192,87,117,0.18), transparent 60%), linear-gradient(160deg, rgba(255,255,255,0.04) 0%, rgba(0,0,0,0.35) 100%)",
+                    }}
+                  />
+                  {/* Centered "object" silhouette suggesting a perfume bottle / product still life */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div
+                      className="w-[40%] h-[60%] rounded-[0.5rem] opacity-60"
+                      style={{
+                        background:
+                          "linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 30%, rgba(0,0,0,0.4) 100%)",
+                        boxShadow:
+                          "0 30px 60px -20px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -20px 40px rgba(0,0,0,0.3)",
+                      }}
+                    />
+                  </div>
+                  {/* Soft top highlight */}
+                  <div
+                    className="absolute inset-x-0 top-0 h-[40%] pointer-events-none opacity-50"
+                    style={{
+                      background:
+                        "linear-gradient(180deg, rgba(255,255,255,0.04) 0%, transparent 100%)",
                     }}
                   />
                 </div>

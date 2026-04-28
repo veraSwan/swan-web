@@ -20,8 +20,8 @@ type CaseStudyVisualsProps = {
   desktopView: SubSection;
   /** "Mobile experience" — PhoneMockup. */
   mobileView: SubSection;
-  /** "Najważniejsze sekcje" — 3 cropped section mocks. */
-  keySections: SubSection;
+  /** Optional "Najważniejsze sekcje" — 3 cropped section mocks. Often redundant when desktopView already shows the whole landing. */
+  keySections?: SubSection;
   /** "Detale interfejsu" — close-ups of components (button, form field, card). */
   interfaceDetails: SubSection;
 };
@@ -61,7 +61,7 @@ const CaseStudyVisuals: React.FC<CaseStudyVisualsProps> = ({
   const { variants } = useScrollAnimation();
 
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden">
+    <section className="relative py-20 md:py-24 overflow-hidden">
       <div className="layout-container-wide relative z-10 max-w-6xl mx-auto">
         {/* Top-level title */}
         <motion.div
@@ -69,7 +69,7 @@ const CaseStudyVisuals: React.FC<CaseStudyVisualsProps> = ({
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="mb-20 md:mb-28 text-center max-w-3xl mx-auto"
+          className="mb-14 md:mb-20 text-center max-w-3xl mx-auto"
         >
           <motion.div variants={variants.fadeInUp}>
             <SectionLabel className="mx-auto inline-block">— {label}</SectionLabel>
@@ -89,14 +89,14 @@ const CaseStudyVisuals: React.FC<CaseStudyVisualsProps> = ({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-28 md:mb-36"
+          className="mb-14 md:mb-20"
         >
           <SubSectionHeader {...desktopView} />
           {desktopView.visual}
         </motion.div>
 
-        {/* Mobile view + key sections side-by-side */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 mb-28 md:mb-36 items-start">
+        {/* Mobile view + Interface Details side-by-side */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 mb-14 md:mb-20 items-start">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -115,21 +115,23 @@ const CaseStudyVisuals: React.FC<CaseStudyVisualsProps> = ({
             transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="lg:col-span-7"
           >
-            <SubSectionHeader {...keySections} />
-            {keySections.visual}
+            <SubSectionHeader {...interfaceDetails} />
+            {interfaceDetails.visual}
           </motion.div>
         </div>
 
-        {/* Interface details */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <SubSectionHeader {...interfaceDetails} />
-          {interfaceDetails.visual}
-        </motion.div>
+        {/* Optional "key sections" full-width strip */}
+        {keySections && (
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <SubSectionHeader {...keySections} />
+            {keySections.visual}
+          </motion.div>
+        )}
       </div>
     </section>
   );

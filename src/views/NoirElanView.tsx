@@ -5,8 +5,11 @@ import BrowserMockup from "@/components/mockups/BrowserMockup";
 import PhoneMockup from "@/components/mockups/PhoneMockup";
 import MockNav from "@/components/case-study/site-sections/MockNav";
 import MockHero from "@/components/case-study/site-sections/MockHero";
+import MockEditorial from "@/components/case-study/site-sections/MockEditorial";
 import MockProducts from "@/components/case-study/site-sections/MockProducts";
+import MockNewsletter from "@/components/case-study/site-sections/MockNewsletter";
 import MockCTA from "@/components/case-study/site-sections/MockCTA";
+import MockFooter from "@/components/case-study/site-sections/MockFooter";
 import type { MockTheme } from "@/components/case-study/site-sections/types";
 import CaseStudyHero from "@/components/case-study/CaseStudyHero";
 import CaseStudyConcept from "@/components/case-study/CaseStudyConcept";
@@ -27,18 +30,20 @@ const noirTheme: MockTheme = {
   border: "border-white/[0.07]",
   surface: "bg-white/[0.03]",
   heroGradient:
-    "radial-gradient(ellipse at 25% 15%, rgba(192,87,117,0.18), transparent 55%), radial-gradient(ellipse at 80% 80%, rgba(58,35,96,0.22), transparent 55%), linear-gradient(180deg, #0A0A0C 0%, #131015 100%)",
+    "radial-gradient(ellipse at 25% 15%, rgba(192,87,117,0.20), transparent 55%), radial-gradient(ellipse at 80% 80%, rgba(58,35,96,0.25), transparent 55%), linear-gradient(180deg, #0A0A0C 0%, #131015 100%)",
   displayFont: "DM Sans, sans-serif",
   bodyFont: "Inter, sans-serif",
 };
 
 /** Small inline pieces for the "Detale interfejsu" section. */
-const InterfaceDetails: React.FC<{ theme: MockTheme; ctaLabel: string; cardName: string; cardPrice: string }> = ({
-  theme,
-  ctaLabel,
-  cardName,
-  cardPrice,
-}) => (
+const InterfaceDetails: React.FC<{
+  theme: MockTheme;
+  ctaLabel: string;
+  cardName: string;
+  cardPrice: string;
+  emailLabel: string;
+  emailPlaceholder: string;
+}> = ({ theme, ctaLabel, cardName, cardPrice, emailLabel, emailPlaceholder }) => (
   <div className={`relative rounded-[1.5rem] ${theme.surface} border ${theme.border} p-8 md:p-12 overflow-hidden`}>
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 items-center">
       {/* Button detail */}
@@ -61,14 +66,11 @@ const InterfaceDetails: React.FC<{ theme: MockTheme; ctaLabel: string; cardName:
             className="text-[0.6rem] tracking-[0.2em] uppercase text-white/55"
             style={{ fontFamily: theme.bodyFont }}
           >
-            Email
+            {emailLabel}
           </span>
           <div className={`h-12 rounded-md ${theme.surface} border ${theme.border} flex items-center px-4`}>
-            <span
-              className="text-[0.75rem] text-white/50"
-              style={{ fontFamily: theme.bodyFont }}
-            >
-              you@noirelan.com
+            <span className="text-[0.75rem] text-white/50" style={{ fontFamily: theme.bodyFont }}>
+              {emailPlaceholder}
             </span>
           </div>
         </div>
@@ -82,15 +84,20 @@ const InterfaceDetails: React.FC<{ theme: MockTheme; ctaLabel: string; cardName:
             className={`relative aspect-[3/4] w-full max-w-[180px] rounded-[0.6rem] overflow-hidden border ${theme.border}`}
             style={{
               background:
-                "linear-gradient(135deg, rgba(255,255,255,0.06), rgba(0,0,0,0.3))",
+                "radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.10), transparent 55%), linear-gradient(160deg, rgba(255,255,255,0.04) 0%, rgba(0,0,0,0.35) 100%)",
             }}
           >
-            <div
-              className="absolute inset-0"
-              style={{
-                background: "radial-gradient(ellipse at 35% 30%, rgba(255,255,255,0.08), transparent 60%)",
-              }}
-            />
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div
+                className="w-[35%] h-[60%] rounded-[0.3rem] opacity-55"
+                style={{
+                  background:
+                    "linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 30%, rgba(0,0,0,0.5) 100%)",
+                  boxShadow:
+                    "0 8px 18px -6px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08)",
+                }}
+              />
+            </div>
           </div>
           <div className="flex items-baseline justify-between gap-2 px-1 max-w-[180px]">
             <span
@@ -116,36 +123,87 @@ const NoirElanView: React.FC = () => {
   const tr = useTranslation();
   const p = tr.projects.noirElan;
   const s = tr.projects.shared;
+  const m = p.mock;
 
-  // Build the full homepage mock that's used both in hero and in the desktop visual section.
+  /** Full homepage rendered inside the BrowserMockup — used in hero AND in the Visuals "Widok strony" section. */
   const HomepageMock = (
-    <BrowserMockup url={p.mock.url} innerBg={noirTheme.bg}>
-      <MockNav
-        theme={noirTheme}
-        brand={p.mock.brand}
-        links={[...p.mock.navLinks]}
-        cta={p.mock.navCta}
-      />
+    <BrowserMockup url={m.url} innerBg={noirTheme.bg}>
+      <MockNav theme={noirTheme} brand={m.brand} links={[...m.navLinks]} cta={m.navCta} />
       <MockHero
         theme={noirTheme}
-        label={p.mock.heroLabel}
-        heading={p.mock.heroHeading}
-        subline={p.mock.heroSubline}
-        cta={p.mock.heroCta}
+        label={m.heroLabel}
+        heading={m.heroHeading}
+        subline={m.heroSubline}
+        cta={m.heroCta}
+      />
+      <MockEditorial
+        theme={noirTheme}
+        label={m.editorialLabel}
+        heading={m.editorialHeading}
+        body={m.editorialBody}
+        signature={m.editorialSignature}
       />
       <MockProducts
         theme={noirTheme}
-        label={p.mock.productsLabel}
-        heading={p.mock.productsHeading}
-        items={[...p.mock.productItems]}
+        label={m.productsLabel}
+        heading={m.productsHeading}
+        items={[...m.productItems]}
+      />
+      <MockNewsletter
+        theme={noirTheme}
+        label={m.newsletterLabel}
+        heading={m.newsletterHeading}
+        subline={m.newsletterSubline}
+        placeholder={m.newsletterPlaceholder}
+        cta={m.newsletterCta}
       />
       <MockCTA
         theme={noirTheme}
-        heading={p.mock.ctaHeading}
-        subline={p.mock.ctaSubline}
-        cta={p.mock.ctaButton}
+        heading={m.ctaHeading}
+        subline={m.ctaSubline}
+        cta={m.ctaButton}
+      />
+      <MockFooter
+        theme={noirTheme}
+        brand={m.brand}
+        tagline={m.footerTagline}
+        columns={m.footerColumns.map((c) => ({ title: c.title, links: [...c.links] }))}
+        copyright={m.footerCopyright}
       />
     </BrowserMockup>
+  );
+
+  /** Compact mobile flow inside the PhoneMockup. */
+  const MobileMock = (
+    <PhoneMockup innerBg={noirTheme.bg}>
+      <div className="flex flex-col h-full overflow-hidden">
+        <MockNav theme={noirTheme} brand={m.brand} compact />
+        <MockHero
+          theme={noirTheme}
+          label={m.heroLabel}
+          heading={m.heroHeading}
+          subline={m.heroSubline}
+          cta={m.heroCta}
+          compact
+        />
+        <MockProducts
+          theme={noirTheme}
+          label={m.productsLabel}
+          heading={m.productsHeading}
+          items={[...m.productItems].slice(0, 2)}
+          compact
+        />
+        <MockNewsletter
+          theme={noirTheme}
+          label={m.newsletterLabel}
+          heading={m.newsletterHeading}
+          subline={m.newsletterSubline}
+          placeholder={m.newsletterPlaceholder}
+          cta={m.newsletterCta}
+          compact
+        />
+      </div>
+    </PhoneMockup>
   );
 
   return (
@@ -200,62 +258,7 @@ const NoirElanView: React.FC = () => {
           label: s.mobileLabel,
           heading: p.visuals.mobileHeading,
           caption: p.visuals.mobileCaption,
-          visual: (
-            <PhoneMockup innerBg={noirTheme.bg}>
-              <div className="flex flex-col h-full overflow-hidden">
-                <MockNav theme={noirTheme} brand={p.mock.brand} compact />
-                <MockHero
-                  theme={noirTheme}
-                  label={p.mock.heroLabel}
-                  heading={p.mock.heroHeading}
-                  subline={p.mock.heroSubline}
-                  cta={p.mock.heroCta}
-                  compact
-                />
-                <MockProducts
-                  theme={noirTheme}
-                  label={p.mock.productsLabel}
-                  heading={p.mock.productsHeading}
-                  items={[...p.mock.productItems].slice(0, 2)}
-                  compact
-                />
-              </div>
-            </PhoneMockup>
-          ),
-        }}
-        keySections={{
-          label: s.keySectionsLabel,
-          heading: p.visuals.keySectionsHeading,
-          caption: p.visuals.keySectionsCaption,
-          visual: (
-            <div className="flex flex-col gap-6 md:gap-8">
-              <BrowserMockup url={`${p.mock.url}#hero`} innerBg={noirTheme.bg} rounded="lg">
-                <MockHero
-                  theme={noirTheme}
-                  label={p.mock.heroLabel}
-                  heading={p.mock.heroHeading}
-                  subline={p.mock.heroSubline}
-                  cta={p.mock.heroCta}
-                />
-              </BrowserMockup>
-              <BrowserMockup url={`${p.mock.url}/collection`} innerBg={noirTheme.bg} rounded="lg">
-                <MockProducts
-                  theme={noirTheme}
-                  label={p.mock.productsLabel}
-                  heading={p.mock.productsHeading}
-                  items={[...p.mock.productItems]}
-                />
-              </BrowserMockup>
-              <BrowserMockup url={`${p.mock.url}/subscribe`} innerBg={noirTheme.bg} rounded="lg">
-                <MockCTA
-                  theme={noirTheme}
-                  heading={p.mock.ctaHeading}
-                  subline={p.mock.ctaSubline}
-                  cta={p.mock.ctaButton}
-                />
-              </BrowserMockup>
-            </div>
-          ),
+          visual: MobileMock,
         }}
         interfaceDetails={{
           label: s.interfaceDetailsLabel,
@@ -264,9 +267,11 @@ const NoirElanView: React.FC = () => {
           visual: (
             <InterfaceDetails
               theme={noirTheme}
-              ctaLabel={p.mock.heroCta}
-              cardName={p.mock.productItems[0].name}
-              cardPrice={p.mock.productItems[0].price}
+              ctaLabel={m.heroCta}
+              cardName={m.productItems[0].name}
+              cardPrice={m.productItems[0].price}
+              emailLabel="Email"
+              emailPlaceholder={m.newsletterPlaceholder}
             />
           ),
         }}

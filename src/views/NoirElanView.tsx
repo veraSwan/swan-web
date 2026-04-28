@@ -71,27 +71,7 @@ const NoirElanView = () => {
             </motion.p>
           </motion.div>
 
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={variants.staggerContainer(0.2)}
-            className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 mb-32"
-          >
-            {["https://images.unsplash.com/photo-1650432506678-d187258c0900", "https://images.unsplash.com/photo-1598532108985-5413981e30b7"].map((imgSrc, idx) => (
-              <motion.div key={idx} variants={variants.scaleIn} className="w-full">
-                <div className="rounded-[2rem] overflow-hidden aspect-[4/5] bg-[#121212] shadow-2xl group hover-lift border border-white/5">
-                  <img 
-                    src={imgSrc} 
-                    alt="Perfume Detail" 
-                    className="w-full h-full object-cover transition-transform duration-[2s] ease-[0.22,1,0.36,1] group-hover:scale-[1.03] opacity-80 group-hover:opacity-100"
-                  />
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          <motion.nav 
+          <motion.nav
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

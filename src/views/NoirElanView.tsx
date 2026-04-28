@@ -165,18 +165,52 @@ const NoirElanView: React.FC = () => {
     image: noirImages.products[i % noirImages.products.length],
   }));
 
-  /** Just the first fold (Nav + Hero) — used in the case-study hero so it stays short. */
-  const HeroFoldMock = (
+  /**
+   * Atmospheric "browser frame around a single editorial photo" — used as
+   * the case-study hero. The browser chrome signals "this is a website",
+   * the photo carries the brand mood; the full landing is shown later in
+   * the Visuals section so we never repeat the same content twice.
+   */
+  const AtmosphericMock = (
     <BrowserMockup url={m.url} innerBg={noirTheme.bg}>
-      <MockNav theme={noirTheme} brand={m.brand} links={[...m.navLinks]} cta={m.navCta} />
-      <MockHero
-        theme={noirTheme}
-        label={m.heroLabel}
-        heading={m.heroHeading}
-        subline={m.heroSubline}
-        cta={m.heroCta}
-        image={noirImages.hero}
-      />
+      <div className="relative aspect-[16/9] w-full overflow-hidden">
+        <img
+          src={noirImages.hero}
+          alt={`${m.brand} editorial`}
+          loading="eager"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        {/* Brand-tinted vignette + subtle wordmark in the corner */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(0,0,0,0.25) 0%, transparent 35%, transparent 65%, rgba(0,0,0,0.55) 100%), radial-gradient(ellipse at 80% 25%, rgba(192,87,117,0.18), transparent 55%)",
+          }}
+        />
+        <div className="absolute top-6 md:top-8 left-6 md:left-10">
+          <span
+            className="text-white/95 text-[0.85rem] md:text-[1rem] font-light tracking-[0.32em] uppercase"
+            style={{ fontFamily: noirTheme.displayFont }}
+          >
+            {m.brand}
+          </span>
+        </div>
+        <div className="absolute bottom-6 md:bottom-10 left-6 md:left-10 right-6 md:right-10">
+          <span
+            className="text-[#E889A1] text-[0.55rem] md:text-[0.65rem] font-medium tracking-[0.32em] uppercase block mb-2"
+            style={{ fontFamily: noirTheme.bodyFont }}
+          >
+            {m.heroLabel}
+          </span>
+          <h2
+            className="text-white text-2xl md:text-4xl lg:text-5xl font-medium leading-[1.05] tracking-[-0.025em] max-w-[18ch]"
+            style={{ fontFamily: noirTheme.displayFont }}
+          >
+            {m.heroHeading}
+          </h2>
+        </div>
+      </div>
     </BrowserMockup>
   );
 
@@ -269,7 +303,7 @@ const NoirElanView: React.FC = () => {
         category={p.category}
         title={p.title}
         subtitle={p.subtitle}
-        visual={HeroFoldMock}
+        visual={AtmosphericMock}
       />
 
       <CaseStudyConcept label={s.conceptLabel} heading={p.concept.heading} body={p.concept.body} />

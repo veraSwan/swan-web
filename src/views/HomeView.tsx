@@ -18,6 +18,8 @@ const HomeView = () => {
   const router = useRouter();
   const tr = useTranslation();
   const { theme } = useTheme();
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => { setMounted(true); }, []);
 
   const { ref: heroRef, isVisible: heroVisible, variants: heroVariants } = useScrollAnimation({ threshold: 0.1 });
   const { ref: servicesRef, isVisible: servicesVisible, variants: servicesVariants } = useScrollAnimation({ threshold: 0.1 });
@@ -33,7 +35,7 @@ const HomeView = () => {
   return (
     <main className="bg-[#08090C] overflow-x-hidden min-h-screen selection:bg-[#C05775]/30">
       <section ref={heroRef} className="relative overflow-hidden min-h-[100svh] flex items-center border-b border-white/[0.02]">
-        {theme === 'dark' && (
+        {(!mounted || theme === 'dark') && (
           <div
             className="absolute inset-0 z-0 pointer-events-none"
             style={{
@@ -72,7 +74,7 @@ const HomeView = () => {
           </div>
         </div>
 
-        {theme === 'dark' && (
+        {(!mounted || theme === 'dark') && (
           <div className="absolute bottom-0 inset-x-0 h-[35%] bg-gradient-to-t from-[#08090C] via-[#08090C]/80 to-transparent z-0 pointer-events-none" />
         )}
         <div className="bg-noise" />

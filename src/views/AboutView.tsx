@@ -75,6 +75,67 @@ const AboutView: React.FC = () => {
         </div>
       </section>
 
+      {/* FOUNDER */}
+      <section className="relative py-16 md:py-24 overflow-hidden">
+        <div className="layout-container-wide relative z-10">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-80px' }}
+            variants={stagger(0.15)}
+            className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center"
+          >
+            <motion.div variants={fadeInUp} className="lg:col-span-4 flex flex-col gap-6">
+              <div className="relative w-full max-w-[340px] mx-auto lg:mx-0">
+                {/* outer decorative frame */}
+                <div className="absolute -inset-3 rounded-[2.25rem] border border-[#C05775]/15 pointer-events-none" />
+                <div className="absolute -inset-6 rounded-[2.75rem] border border-[#C05775]/06 pointer-events-none" />
+                <div className="aspect-[3/4] rounded-[1.75rem] overflow-hidden bg-white/[0.03] border border-white/[0.10] relative shadow-2xl">
+                  <img
+                    src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=700&q=80"
+                    alt="Weronika Łabędź — Swan Web Studio"
+                    className="w-full h-full object-cover object-center opacity-90 hover:opacity-100 transition-opacity duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <span className="text-white/60 text-[0.65rem] tracking-[0.25em] uppercase font-medium">
+                      Swan Web Studio
+                    </span>
+                  </div>
+                </div>
+                <div className="absolute -bottom-3 -right-3 w-[72px] h-[72px] rounded-[1rem] bg-[#C05775]/15 border border-[#C05775]/25 backdrop-blur-xl flex flex-col items-center justify-center gap-0.5">
+                  <span className="text-[#C05775] text-base font-semibold leading-none">3+</span>
+                  <span className="text-[#C05775]/70 text-[0.6rem] tracking-[0.15em] uppercase">lat</span>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div variants={fadeInUp} className="lg:col-span-8 flex flex-col gap-6">
+              <span className="text-[#C05775] text-[0.7rem] font-medium tracking-[0.4em] uppercase block">
+                {a.founderLabel}
+              </span>
+              <div>
+                <h2 className="text-3xl md:text-4xl font-medium text-white leading-[1.1] tracking-tight mb-1">
+                  {a.founderName}
+                </h2>
+                <span className="text-[#A1A1AA] text-sm font-light tracking-[0.15em] uppercase">{a.founderRole}</span>
+              </div>
+              <p className="text-base md:text-lg text-white/65 font-light leading-[1.8] max-w-xl" style={{ fontFamily: 'Inter, sans-serif' }}>
+                {a.founderBio}
+              </p>
+              <div className="flex gap-8 pt-2">
+                {a.founderStats.map((s) => (
+                  <div key={s.label}>
+                    <div className="text-2xl md:text-3xl font-medium text-white tracking-tight">{s.value}</div>
+                    <div className="text-xs text-[#A1A1AA] font-light mt-1 tracking-wide" style={{ fontFamily: 'Inter, sans-serif' }}>{s.label}</div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* MOTTO */}
       <section className="relative py-24 md:py-32 overflow-hidden">
         <div className="layout-container-wide relative z-10">

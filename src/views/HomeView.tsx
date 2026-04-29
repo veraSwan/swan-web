@@ -72,7 +72,9 @@ const HomeView = () => {
           </div>
         </div>
 
-        <div className="absolute bottom-0 inset-x-0 h-[35%] bg-gradient-to-t from-[#08090C] via-[#08090C]/80 to-transparent z-0 pointer-events-none" />
+        {theme === 'dark' && (
+          <div className="absolute bottom-0 inset-x-0 h-[35%] bg-gradient-to-t from-[#08090C] via-[#08090C]/80 to-transparent z-0 pointer-events-none" />
+        )}
         <div className="bg-noise" />
 
         <div className="layout-container-wide relative z-10 w-full pt-28 md:pt-36 pb-24 md:pb-32">

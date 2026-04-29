@@ -11,6 +11,7 @@ import MockCTA from "@/components/case-study/site-sections/MockCTA";
 import MockFooter from "@/components/case-study/site-sections/MockFooter";
 import type { MockTheme } from "@/components/case-study/site-sections/types";
 import CaseStudyHero from "@/components/case-study/CaseStudyHero";
+import CaseStudyTopBack from "@/components/case-study/CaseStudyTopBack";
 import CaseStudyConcept from "@/components/case-study/CaseStudyConcept";
 import CaseStudyDeliverables from "@/components/case-study/CaseStudyDeliverables";
 import CaseStudyGoal from "@/components/case-study/CaseStudyGoal";
@@ -39,9 +40,9 @@ const auraTheme: MockTheme = {
 };
 
 const auraImages = {
-  hero: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&q=80",
+  hero: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1200&q=80",
   editorial:
-    "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80",
+    "https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&w=900&q=80",
 };
 
 const InterfaceDetails: React.FC<{
@@ -191,6 +192,7 @@ const AURAClinicCaseStudyView: React.FC = () => {
 
   return (
     <main className="min-h-screen bg-[#08090C] text-white overflow-x-hidden">
+      <CaseStudyTopBack label={s.backToPortfolio} />
       <CaseStudyHero
         category={p.category}
         title={p.title}

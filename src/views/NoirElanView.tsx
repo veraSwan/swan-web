@@ -12,6 +12,7 @@ import MockCTA from "@/components/case-study/site-sections/MockCTA";
 import MockFooter from "@/components/case-study/site-sections/MockFooter";
 import type { MockTheme } from "@/components/case-study/site-sections/types";
 import CaseStudyHero from "@/components/case-study/CaseStudyHero";
+import CaseStudyTopBack from "@/components/case-study/CaseStudyTopBack";
 import CaseStudyConcept from "@/components/case-study/CaseStudyConcept";
 import CaseStudyDeliverables from "@/components/case-study/CaseStudyDeliverables";
 import CaseStudyGoal from "@/components/case-study/CaseStudyGoal";
@@ -252,6 +253,7 @@ const NoirElanView: React.FC = () => {
 
   return (
     <main className="min-h-screen bg-[#08090C] text-white overflow-x-hidden">
+      <CaseStudyTopBack label={s.backToPortfolio} />
       <CaseStudyHero
         category={p.category}
         title={p.title}

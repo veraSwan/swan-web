@@ -18,7 +18,7 @@ const CaseStudyHero: React.FC<CaseStudyHeroProps> = ({ category, title, subtitle
   const { variants } = useScrollAnimation();
 
   return (
-    <section className="relative pt-32 md:pt-40 pb-12 md:pb-16 overflow-hidden">
+    <section className="relative pt-10 md:pt-14 pb-12 md:pb-16 overflow-hidden">
       <div aria-hidden="true" className="absolute inset-0 bg-[var(--page-glow)] z-0 opacity-80 pointer-events-none" />
       <div className="layout-container-wide relative z-10 max-w-6xl mx-auto">
         <motion.header

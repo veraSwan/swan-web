@@ -1,113 +1,243 @@
 "use client";
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useRouter } from "next/navigation";
-import { Button } from '@/components/ui/button';
-import { ArrowLeft } from 'lucide-react';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import React from "react";
+import CaseStudyHero from "@/components/case-study/CaseStudyHero";
+import CaseStudyConcept from "@/components/case-study/CaseStudyConcept";
+import CaseStudyDeliverables from "@/components/case-study/CaseStudyDeliverables";
+import CaseStudyGoal from "@/components/case-study/CaseStudyGoal";
+import CaseStudyProcess from "@/components/case-study/CaseStudyProcess";
+import CaseStudyResult from "@/components/case-study/CaseStudyResult";
+import CaseStudyMiniMockup from "@/components/case-study/CaseStudyMiniMockup";
+import CaseStudyTopBack from "@/components/case-study/CaseStudyTopBack";
+import CaseStudyBackNav from "@/components/case-study/CaseStudyBackNav";
 
-const CalmaStudioView = () => {
-  const router = useRouter();
-  const { variants } = useScrollAnimation({ threshold: 0.1 });
+const heroImage =
+  "https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/729b57238098fd92f310dc04dcb1867f.png";
 
-  return (
-    <>      <main className="min-h-screen bg-[#08090C] text-white pt-32 pb-40 overflow-x-hidden">
-        <div className="absolute inset-0 bg-[var(--page-glow)] z-0 opacity-80 pointer-events-none" />
+const HeroBrowserFrame: React.FC<{ src: string; alt: string }> = ({ src, alt }) => (
+  <div className="relative w-full bg-[#1A1C20] rounded-t-[1.5rem] p-2 sm:p-3 pb-0 shadow-2xl border border-white/5 border-b-0">
+    <div className="aspect-[16/10] bg-black rounded-t-xl overflow-hidden relative">
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        className="w-full h-full object-cover object-top opacity-95 transition-transform duration-[2s] ease-[0.22,1,0.36,1] hover:scale-[1.02]"
+      />
+    </div>
+    <div className="w-[110%] -ml-[5%] h-3 sm:h-4 bg-[#2A2B30] rounded-b-2xl mt-0 border-t border-white/5 shadow-xl relative z-10" />
+  </div>
+);
 
-        <article className="layout-container relative z-10 max-w-5xl mx-auto">
-          <motion.header 
-            initial="hidden"
-            animate="visible"
-            variants={variants.staggerContainer(0.2)}
-            className="mb-24 text-center flex flex-col items-center"
-          >
-            <motion.div variants={variants.fadeInUp} className="w-full mb-6">
-              <span className="text-[#A1A1AA] uppercase tracking-[0.3em] text-xs font-medium">Wellness & SPA</span>
-            </motion.div>
-            <motion.h1 
-              variants={variants.fadeInUp}
-              className="text-5xl md:text-7xl lg:text-[6rem] font-light text-white mb-8 leading-[1.1] tracking-tight"
-              style={{ fontFamily: 'Playfair Display, serif' }}
+/** Inline mock site — sage + cream slow-life palette. */
+const CalmaMockSite: React.FC = () => (
+  <div
+    className="bg-[#F1EEE7] text-[#2D3A32]"
+    style={{ fontFamily: "Inter, sans-serif" }}
+  >
+    {/* Nav */}
+    <div className="flex items-center justify-between px-6 md:px-10 py-5 border-b border-[#2D3A32]/10">
+      <span
+        className="text-base tracking-[0.32em] uppercase font-medium"
+        style={{ fontFamily: "DM Sans, sans-serif" }}
+      >
+        Calma Studio
+      </span>
+      <div className="hidden md:flex items-center gap-7 text-[0.7rem] tracking-[0.22em] uppercase text-[#2D3A32]/55">
+        <span>Filozofia</span>
+        <span>Zabiegi</span>
+        <span>Cennik</span>
+        <span>Kontakt</span>
+      </div>
+      <span className="text-[0.65rem] tracking-[0.22em] uppercase font-semibold bg-[#7A9079] text-white px-4 py-2 rounded-full">
+        Rezerwacja
+      </span>
+    </div>
+
+    {/* Hero */}
+    <div className="px-6 md:px-10 py-12 md:py-16">
+      <span className="block text-[0.6rem] tracking-[0.32em] uppercase text-[#7A9079] mb-5">
+        — Slow wellness
+      </span>
+      <h3
+        className="text-3xl md:text-5xl font-medium leading-[1.05] tracking-[-0.025em] max-w-2xl mb-5"
+        style={{ fontFamily: "DM Sans, sans-serif" }}
+      >
+        Cisza zaczyna się od scrolla.
+      </h3>
+      <p className="text-sm md:text-base text-[#2D3A32]/70 leading-[1.7] max-w-xl mb-7">
+        Zabiegi prowadzone w naturalnym tempie. Konsultacja zawsze przed pierwszą wizytą.
+      </p>
+      <span className="inline-flex items-center gap-2 text-[0.7rem] tracking-[0.28em] uppercase font-semibold bg-[#7A9079] text-white px-6 py-3 rounded-full">
+        Umów wizytę
+        <span className="text-[0.7em]">→</span>
+      </span>
+    </div>
+
+    {/* Treatments + slots */}
+    <div className="px-6 md:px-10 py-10 md:py-14 bg-white/55 border-t border-[#2D3A32]/8">
+      <span className="block text-[0.6rem] tracking-[0.32em] uppercase text-[#7A9079] mb-4">
+        — Harmonogram
+      </span>
+      <h4
+        className="text-xl md:text-2xl font-medium tracking-[-0.02em] mb-7"
+        style={{ fontFamily: "DM Sans, sans-serif" }}
+      >
+        Wybierz spokojnie zabieg.
+      </h4>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10">
+        <div className="space-y-3">
+          <span className="block text-[0.6rem] tracking-[0.22em] uppercase text-[#2D3A32]/45 mb-2">
+            Zabiegi
+          </span>
+          {[
+            { name: "Masaż signature", duration: "90 min", price: "od 380 zł" },
+            { name: "Rytuał aromaterapii", duration: "120 min", price: "od 520 zł" },
+            { name: "Zabieg na twarz", duration: "75 min", price: "od 340 zł" },
+            { name: "Sauna fińska", duration: "60 min", price: "od 180 zł" },
+          ].map((t, i) => (
+            <div
+              key={i}
+              className="flex items-baseline justify-between gap-4 border-b border-[#2D3A32]/8 pb-3"
             >
-              Calma Studio
-            </motion.h1>
-            <motion.p variants={variants.fadeInUp} className="text-lg md:text-xl text-white/70 font-light leading-[1.8] tracking-wide max-w-2xl">
-              Czysty cyfrowy relaks. Architektura informacji zmuszająca do spowolnienia.
-            </motion.p>
-          </motion.header>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={variants.scaleIn}
-            className="w-full mb-32 md:mb-40"
-          >
-            <div className="relative w-full bg-[#1A1C20] rounded-t-[1.5rem] p-3 pb-0 shadow-2xl border border-white/5 border-b-0 hover-lift">
-              <div className="aspect-[16/10] bg-[#121212] rounded-t-xl overflow-hidden relative">
-                <img 
-                  src="https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/729b57238098fd92f310dc04dcb1867f.png" 
-                  alt="Calma Studio Hero" 
-                  className="w-full h-full object-cover object-top transition-transform duration-[2s] ease-[0.22,1,0.36,1] hover:scale-[1.03] opacity-90 hover:opacity-100"
-                />
+              <span className="text-sm md:text-base">{t.name}</span>
+              <div className="flex items-center gap-3 text-xs md:text-sm text-[#2D3A32]/55 shrink-0">
+                <span>{t.duration}</span>
+                <span>·</span>
+                <span>{t.price}</span>
               </div>
-              <div className="w-[106%] -ml-[3%] h-4 bg-[#2A2B30] rounded-b-2xl mt-0 border-t border-white/5 shadow-xl" />
             </div>
-          </motion.div>
+          ))}
+        </div>
 
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={variants.staggerContainer(0.2)}
-            className="max-w-3xl mx-auto mb-32 md:mb-40 text-center"
-          >
-            <motion.h2 variants={variants.fadeInUp} className="text-3xl md:text-5xl font-light mb-8 tracking-tight" style={{ fontFamily: 'Playfair Display, serif' }}>Sztuka niedopowiedzenia</motion.h2>
-            <motion.p variants={variants.fadeInUp} className="text-base md:text-lg font-light leading-[1.8] text-white/70 tracking-wide">
-              Zamiast klasycznej wymiany handlowej projekt skupia się na doświadczaniu. Ograniczenie bodźców i celowe pustki kreują aurę całkowitego komfortu.
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={variants.staggerContainer(0.2)}
-            className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 mb-32"
-          >
-            {["https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/a63d174e0fbd9962eb59dc688b02bf23.png", "https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/49f9faad35f0f13f19c358ba20991d8e.png"].map((imgSrc, idx) => (
-              <motion.div key={idx} variants={variants.scaleIn} className="w-full">
-                <div className="rounded-[2rem] overflow-hidden aspect-[4/5] bg-[#121212] shadow-2xl group hover-lift border border-white/5">
-                  <img 
-                    src={imgSrc} 
-                    alt="Spa Detail" 
-                    className="w-full h-full object-cover transition-transform duration-[2s] ease-[0.22,1,0.36,1] group-hover:scale-[1.03] opacity-90 group-hover:opacity-100"
-                  />
-                </div>
-              </motion.div>
+        <div className="space-y-3">
+          <span className="block text-[0.6rem] tracking-[0.22em] uppercase text-[#2D3A32]/45 mb-2">
+            Wolne terminy — sobota, 21 listopada
+          </span>
+          <div className="grid grid-cols-3 gap-2">
+            {["10:00", "12:30", "14:00", "16:00", "17:30", "19:00"].map((t, i) => (
+              <span
+                key={i}
+                className={`text-xs md:text-sm py-2.5 rounded-md border text-center ${
+                  i === 1
+                    ? "bg-[#7A9079] text-white border-transparent"
+                    : "border-[#2D3A32]/15 text-[#2D3A32]/75"
+                }`}
+              >
+                {t}
+              </span>
             ))}
-          </motion.div>
+          </div>
+          <span className="inline-flex items-center justify-center w-full mt-2 text-[0.7rem] tracking-[0.28em] uppercase font-semibold bg-[#2D3A32] text-white px-4 py-3 rounded-md">
+            Potwierdź rezerwację
+          </span>
+        </div>
+      </div>
+    </div>
 
-          <motion.nav 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="pt-10 border-t border-white/10 flex justify-center"
-          >
-            <Button
-              variant="outline"
-              onClick={() => router.push('/portfolio')}
-              className="bg-transparent border border-white/15 text-white hover:bg-white/5 px-10 py-7 uppercase tracking-[0.2em] text-xs font-medium rounded-full transition-all duration-500 group hover:-translate-y-1"
-            >
-              <ArrowLeft className="w-4 h-4 mr-3 group-hover:-translate-x-1 transition-transform" />
-              Powrót do portfolio
-            </Button>
-          </motion.nav>
+    <div className="px-6 md:px-10 py-6 border-t border-[#2D3A32]/10 text-[0.65rem] tracking-[0.22em] uppercase text-[#2D3A32]/45">
+      Calma Studio · Slow wellness · Warszawa
+    </div>
+  </div>
+);
 
-        </article>
-      </main>
-    </>
+const CalmaStudioView: React.FC = () => {
+  return (
+    <main className="bg-[#08090C] min-h-screen text-white selection:bg-[#C05775]/30">
+      <CaseStudyTopBack label="Powrót do portfolio" />
+
+      <CaseStudyHero
+        category="Wellness & SPA"
+        title="Calma Studio"
+        subtitle="Strona spa, na której tempo zwalnia wcześniej niż wejdziesz przez próg."
+        visual={<HeroBrowserFrame src={heroImage} alt="Calma Studio — strona główna" />}
+      />
+
+      <CaseStudyConcept
+        label="Koncepcja"
+        heading="Cyfrowa cisza przed pierwszym oddechem."
+        body="Większość stron spa krzyczy promocjami i pakietami. Calma robi inaczej. Strona wygląda jak okładka magazynu wellness — duże zdjęcia, jedna myśl na ekran, brak migających banerów. Klient zwalnia jeszcze przed rezerwacją, a sama wizyta zaczyna się od scrolla."
+      />
+
+      <CaseStudyDeliverables
+        label="Co zaprojektowaliśmy"
+        heading="Strona, która nie sprzedaje pakietów — sprzedaje rytuał."
+        items={[
+          "Spokojna komunikacja zabiegów — bez countdownów",
+          "System rezerwacji w 3 krokach",
+          "Profile terapeutek i opisy filozofii pracy",
+          "Harmonogram wolnych terminów w czasie rzeczywistym",
+          "Mobile-first dla wizyt umawianych w drodze",
+          "CMS dla sezonowych rytuałów",
+        ]}
+      />
+
+      <CaseStudyGoal
+        label="Cel projektu"
+        heading="Spa wybierane z uwagą — nie z impulsu."
+        pillars={[
+          {
+            label: "Cel",
+            body: "Pozycjonować Calma Studio jako miejsce slow life — alternatywę dla pakietów weekendowych i ofert ostatniej szansy.",
+          },
+          {
+            label: "Co poprawiliśmy",
+            body: "Zlikwidowane pop-upy z rabatem, zlikwidowane countdowny. W zamian — kalendarz wizyt z naturalnym tempem i opisami zabiegów bez marketingowego żargonu.",
+          },
+          {
+            label: "Efekt dla użytkownika",
+            body: "Klient rezerwuje wizytę spokojnie, czyta opisy zabiegów jak menu degustacyjne, a w studiu pojawia się już zrelaksowany.",
+          },
+        ]}
+      />
+
+      <CaseStudyProcess
+        label="Proces"
+        heading="Od briefu wellness po wdrożenie — w jednym oddechu."
+        steps={[
+          {
+            number: "01",
+            title: "Strategia",
+            description:
+              "Rozmowa z zespołem o filozofii pracy, definiowanie tonu komunikacji i typu klienta, którego chcemy przyciągnąć.",
+          },
+          {
+            number: "02",
+            title: "Struktura",
+            description:
+              "Architektura informacji: filozofia → zabiegi → rezerwacja. Bez bocznych odnóg, bez ofert pakietowych.",
+          },
+          {
+            number: "03",
+            title: "Design",
+            description:
+              "Paleta off-white + sage + ciepły kamień. Typografia szeryfowa do nagłówków, oddech między sekcjami jak w salonie SPA.",
+          },
+          {
+            number: "04",
+            title: "Wdrożenie",
+            description:
+              "Lekka strona nawet z dużymi zdjęciami, integracja systemu rezerwacji, mobile-first dla wizyt umawianych w drodze.",
+          },
+        ]}
+      />
+
+      <CaseStudyResult
+        label="Efekt"
+        body="Strona, która oddycha jak salon — i w której klient zaczyna swoją wizytę zanim wybierze termin."
+      />
+
+      <CaseStudyMiniMockup
+        label="Sekcje strony"
+        heading="Tak prowadzimy klienta od pierwszego scrolla do rezerwacji."
+        caption="Spokojna nawigacja, harmonogram bez wibracji ofert ostatniej szansy, opisy zabiegów czytane jak menu degustacyjne."
+        url="calmastudio.pl"
+        innerBg="bg-[#F1EEE7]"
+      >
+        <CalmaMockSite />
+      </CaseStudyMiniMockup>
+
+      <CaseStudyBackNav backLabel="Powrót do portfolio" />
+    </main>
   );
 };
 

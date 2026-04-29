@@ -541,7 +541,93 @@ html.light .via-\[\#08090C\]\/30 { --tw-gradient-via: rgba(243,240,230,0.30) !im
 html.light .from-\[\#3A2360\] { opacity: 0 !important; }
 html.light .from-\[\#2A1B4B\] { opacity: 0 !important; }
 
+/* ── Body background — override the hardcoded dark gradient ─────────────── */
+html.light body {
+  background: #F3F0E6 !important;
+}
+
+/* ── Dark section backgrounds → transparent (inherits cream body) ────────── */
+html.light .bg-\[\#08090C\]   { background-color: transparent !important; }
+html.light .bg-\[\#06070A\]   { background-color: transparent !important; }
+html.light .bg-\[\#0A0B0E\]   { background-color: transparent !important; }
+html.light .bg-\[\#0E0F12\]   { background-color: rgba(236,231,220,0.70) !important; }
+
+/* ── Dark card frames → light warm equivalents ───────────────────────────── */
+html.light .bg-\[\#1A1C20\]         { background-color: #EDE9E0 !important; }
+html.light .bg-\[\#1A1C20\]\/40     { background-color: rgba(237,233,224,0.55) !important; }
+html.light .bg-\[\#2A2B30\]         { background-color: #DDD8CE !important; }
+
+/* ── Page glow — soft blush glow on cream ───────────────────────────────── */
+html.light {
+  --page-glow: radial-gradient(circle at 50% 30%, rgba(192, 87, 117, 0.08) 0%, rgba(243, 240, 230, 0.0) 60%);
+}
+
+/* ── Glass cards (bg-white/[0.025] etc.) — boost to clearly visible white ── */
+html.light .bg-white\/\[0\.025\]    { background-color: rgba(255,255,255,0.65) !important; }
+html.light .bg-white\/\[0\.03\]     { background-color: rgba(255,255,255,0.70) !important; }
+html.light .bg-white\/\[0\.04\]     { background-color: rgba(255,255,255,0.75) !important; }
+html.light .bg-white\/\[0\.05\]     { background-color: rgba(255,255,255,0.80) !important; }
+
+/* Black-anchored gradients used on grid cards + various overlays — flip to cream on light */
+html.light .from-black                { --tw-gradient-from: rgba(243,240,230,1) !important; }
+html.light .from-black\/95            { --tw-gradient-from: rgba(243,240,230,0.95) !important; }
+html.light .from-black\/90            { --tw-gradient-from: rgba(243,240,230,0.90) !important; }
+html.light .from-black\/85            { --tw-gradient-from: rgba(243,240,230,0.85) !important; }
+html.light .from-black\/80            { --tw-gradient-from: rgba(243,240,230,0.80) !important; }
+html.light .from-black\/70            { --tw-gradient-from: rgba(243,240,230,0.70) !important; }
+html.light .from-black\/60            { --tw-gradient-from: rgba(243,240,230,0.60) !important; }
+html.light .from-black\/50            { --tw-gradient-from: rgba(243,240,230,0.50) !important; }
+html.light .from-black\/40            { --tw-gradient-from: rgba(243,240,230,0.40) !important; }
+html.light .from-black\/30            { --tw-gradient-from: rgba(243,240,230,0.30) !important; }
+html.light .from-black\/20            { --tw-gradient-from: rgba(243,240,230,0.20) !important; }
+html.light .from-black\/10            { --tw-gradient-from: rgba(243,240,230,0.10) !important; }
+html.light .via-black\/95             { --tw-gradient-via: rgba(243,240,230,0.95) !important; }
+html.light .via-black\/90             { --tw-gradient-via: rgba(243,240,230,0.90) !important; }
+html.light .via-black\/85             { --tw-gradient-via: rgba(243,240,230,0.85) !important; }
+html.light .via-black\/80             { --tw-gradient-via: rgba(243,240,230,0.80) !important; }
+html.light .via-black\/70             { --tw-gradient-via: rgba(243,240,230,0.70) !important; }
+html.light .via-black\/60             { --tw-gradient-via: rgba(243,240,230,0.60) !important; }
+html.light .via-black\/50             { --tw-gradient-via: rgba(243,240,230,0.50) !important; }
+html.light .via-black\/40             { --tw-gradient-via: rgba(243,240,230,0.40) !important; }
+html.light .via-black\/30             { --tw-gradient-via: rgba(243,240,230,0.30) !important; }
+html.light .via-black\/20             { --tw-gradient-via: rgba(243,240,230,0.20) !important; }
+html.light .to-black                  { --tw-gradient-to: rgba(243,240,230,1) !important; }
+html.light .to-black\/95              { --tw-gradient-to: rgba(243,240,230,0.95) !important; }
+html.light .to-black\/85              { --tw-gradient-to: rgba(243,240,230,0.85) !important; }
+html.light .to-black\/70              { --tw-gradient-to: rgba(243,240,230,0.70) !important; }
+html.light .to-black\/30              { --tw-gradient-to: rgba(243,240,230,0.30) !important; }
+html.light .to-black\/20              { --tw-gradient-to: rgba(243,240,230,0.20) !important; }
+html.light .to-black\/10              { --tw-gradient-to: rgba(243,240,230,0.10) !important; }
+
+/* Card text on grid (was light text on dark gradient) needs to flip dark on cream */
+html.light .text-\[\#E5E7EB\]\/85,
+html.light .text-\[\#E5E7EB\]\/70 { color: rgba(17,17,17,0.70) !important; }
+html.light .text-\[\#D4D4D8\]\/90,
+html.light .text-\[\#D4D4D8\]\/85 { color: rgba(17,17,17,0.75) !important; }
+
 /* Logo text in light mode */
 html.light .logo-glow:hover {
   text-shadow: 0 0 20px rgba(192,87,117,0.40), 0 0 40px rgba(192,87,117,0.18);
 }
+
+/* ── Shadows — neutralise dark shadows in light mode ────────────────────────
+   Tailwind shadow-* uses black-based values that look harsh on cream.
+   We replace them with near-invisible warm-tinted shadows.              */
+html.light .shadow-sm   { box-shadow: 0 1px 4px -1px rgba(80,40,55,0.06) !important; }
+html.light .shadow-md   { box-shadow: 0 2px 8px -2px rgba(80,40,55,0.07) !important; }
+html.light .shadow-lg   { box-shadow: 0 4px 14px -4px rgba(80,40,55,0.08) !important; }
+html.light .shadow-xl   { box-shadow: 0 6px 20px -6px rgba(80,40,55,0.09) !important; }
+html.light .shadow-2xl  { box-shadow: 0 10px 30px -10px rgba(80,40,55,0.10) !important; }
+
+/* Custom inline box-shadow strings in group-hover — globally dampen */
+html.light [class*="group-hover:shadow-["] { --tw-shadow: none; }
+
+/* drop-shadow utilities */
+html.light .drop-shadow-\[0_20px_40px_rgba\(0\,0\,0\,0\.6\)\] {
+  filter: drop-shadow(0 8px 16px rgba(80,40,55,0.08)) !important;
+}
+
+/* bg-[#1A1C20] laptop/phone mockup frames — make them light in light mode */
+html.light .bg-\[\#1A1C20\] { background-color: #EDE9E0 !important; }
+html.light .bg-\[\#2A2B30\] { background-color: #DDD8CE !important; }
+html.light .bg-\[\#0A0B0E\] { background-color: #C8C2B6 !important; }

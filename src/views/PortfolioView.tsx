@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useTranslation } from '@/hooks/useTranslation';
 
@@ -14,23 +14,29 @@ interface ProjectData {
   phoneImage?: string;
 }
 
-const projectsMeta: ProjectData[] = [
-  { name: 'Noir Élan',        image: 'https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/47b5652ee02da20ef7e0a2e8a2b19e94.png', category: 'E-commerce / Luksus',        link: '/noir-elan',                      phoneImage: 'https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/47b5652ee02da20ef7e0a2e8a2b19e94.png' },
-  { name: 'Maison Atelier',   image: 'https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/0071c8caf9b1e0c7eef64c7629390188.png', category: 'E-commerce / Fashion',        link: '/maison-atelier' },
-  { name: 'AURA Clinic',      image: 'https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/62a1292f8cade28ede176ba9c66f5607.png', category: 'Medycyna estetyczna',         link: '/portfolio/aura-clinic',          phoneImage: 'https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/62a1292f8cade28ede176ba9c66f5607.png' },
-  { name: 'LINIA Studio',     image: 'https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/c76ba9fd61e35ebe713826728483816e.png', category: 'Projektowanie wnętrz',        link: '/portfolio/linia-studio-wnetrz' },
-  { name: 'Calma Studio',     image: 'https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/729b57238098fd92f310dc04dcb1867f.png', category: 'Wellness & SPA',             link: '/calma-studio' },
-  { name: 'Aureline District', image: 'https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/e7f12d1666d12ef5043f14e68faa15d5.png', category: 'Nieruchomości',              link: '/aureline-district',              phoneImage: 'https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/e7f12d1666d12ef5043f14e68faa15d5.png' },
+const featuredProjects: ProjectData[] = [
+  { name: 'Noir Élan',      image: 'https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/47b5652ee02da20ef7e0a2e8a2b19e94.png', category: 'E-commerce / Luksus',  link: '/noir-elan',             phoneImage: 'https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/47b5652ee02da20ef7e0a2e8a2b19e94.png' },
+  { name: 'Maison Atelier', image: 'https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/0071c8caf9b1e0c7eef64c7629390188.png', category: 'E-commerce / Fashion',  link: '/maison-atelier' },
+  { name: 'AURA Clinic',    image: 'https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/62a1292f8cade28ede176ba9c66f5607.png', category: 'Medycyna estetyczna',   link: '/portfolio/aura-clinic', phoneImage: 'https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/62a1292f8cade28ede176ba9c66f5607.png' },
 ];
 
-interface EditorialProjectProps {
+const gridProjects: ProjectData[] = [
+  { name: 'LINIA Studio',      image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80',                category: 'Projektowanie wnętrz',   link: '/portfolio/linia-studio-wnetrz' },
+  { name: 'Calma Studio',      image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80',                category: 'Wellness & SPA',        link: '/calma-studio' },
+  { name: 'Aureline District', image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=1200&q=80',                category: 'Nieruchomości premium', link: '/aureline-district' },
+  { name: 'Smile Studio',      image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80',                category: 'Stomatologia premium',  link: '/portfolio/smile-studio' },
+  { name: 'Tessera',           image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80',                category: 'Fine dining',           link: '/portfolio/tessera' },
+  { name: 'Daniel Kanzlei',    image: 'https://api.microlink.io/?url=https%3A%2F%2Fdaniel-kanzlei.de%2Fen&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1200&viewport.height=900', category: 'Biuro rachunkowe', link: '/portfolio/daniel-kanzlei' },
+];
+
+interface FeaturedProjectProps {
   meta: ProjectData;
   description: string;
   viewProject: string;
   index: number;
 }
 
-const EditorialProject: React.FC<EditorialProjectProps> = ({ meta, description, viewProject, index }) => {
+const FeaturedProject: React.FC<FeaturedProjectProps> = ({ meta, description, viewProject, index }) => {
   const anim = useScrollAnimation({ threshold: 0.1 });
   const isEven = index % 2 === 0;
 
@@ -99,16 +105,76 @@ const EditorialProject: React.FC<EditorialProjectProps> = ({ meta, description, 
   );
 };
 
+interface GridProjectProps {
+  meta: ProjectData;
+  description: string;
+  viewProject: string;
+}
+
+const GridProject: React.FC<GridProjectProps> = ({ meta, description, viewProject }) => {
+  const anim = useScrollAnimation({ threshold: 0.15 });
+
+  return (
+    <Link
+      href={meta.link}
+      ref={anim.ref}
+      className={`group relative block scroll-animate ${anim.isVisible ? 'is-visible' : ''}`}
+    >
+      <div className="relative aspect-[4/5] overflow-hidden rounded-[1.25rem] bg-[#1A1C20] border border-white/[0.06] transition-all duration-700 ease-[0.22,1,0.36,1] group-hover:border-[#C05775]/25 group-hover:shadow-[0_30px_60px_-25px_rgba(0,0,0,0.6)]">
+        <motion.img
+          src={meta.image}
+          alt={meta.name}
+          loading="lazy"
+          className="absolute inset-0 w-full h-full object-cover object-top opacity-75 transition-all duration-[1.2s] ease-[0.22,1,0.36,1] group-hover:opacity-90 group-hover:scale-[1.04]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/30" />
+        <div className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-black via-black/90 to-transparent" />
+        <div className="absolute top-5 right-5 w-9 h-9 rounded-full bg-white/10 backdrop-blur-md border border-white/15 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0 z-10">
+          <ArrowUpRight className="w-4 h-4 text-white" />
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 p-7 md:p-8 z-10">
+          <span className="block text-[#E5E7EB]/85 uppercase tracking-[0.22em] text-[0.65rem] mb-3 font-medium">
+            {meta.category}
+          </span>
+          <h3
+            className="text-2xl md:text-3xl font-light text-white mb-3 tracking-tight transition-colors duration-500 group-hover:text-[#E889A1]"
+            style={{ fontFamily: 'DM Sans, sans-serif' }}
+          >
+            {meta.name}
+          </h3>
+          <p
+            className="text-sm text-[#D4D4D8]/90 font-light leading-[1.7] line-clamp-2 max-w-md"
+            style={{ fontFamily: 'Inter, sans-serif' }}
+          >
+            {description}
+          </p>
+          <span
+            className="mt-5 inline-flex items-center gap-2 text-[0.65rem] tracking-[0.22em] uppercase text-white/80 font-medium opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-1 group-hover:translate-y-0"
+            style={{ fontFamily: 'Inter, sans-serif' }}
+          >
+            {viewProject}
+            <ArrowRight className="w-3 h-3" />
+          </span>
+        </div>
+      </div>
+    </Link>
+  );
+};
+
 const PortfolioView: React.FC = () => {
   const titleAnim = useScrollAnimation();
+  const moreAnim = useScrollAnimation({ threshold: 0.2 });
   const tr = useTranslation();
   const p = tr.portfolio;
+
+  const featuredDescriptions = p.projects.slice(0, 3);
+  const gridDescriptions = p.projects.slice(3);
 
   return (
     <main className="bg-[#08090C] min-h-screen selection:bg-[#C05775]/30">
       <section
         ref={titleAnim.ref}
-        className={`layout-container relative overflow-hidden pb-32 pt-32 md:pt-40 scroll-animate ${titleAnim.isVisible ? 'is-visible' : ''}`}
+        className={`layout-container relative overflow-hidden pb-24 pt-32 md:pt-40 scroll-animate ${titleAnim.isVisible ? 'is-visible' : ''}`}
       >
         <div className="absolute inset-0 bg-[var(--page-glow)] z-0 opacity-80 pointer-events-none" />
         <div className="w-full text-center relative z-10 flex flex-col items-center max-w-4xl mx-auto">
@@ -126,15 +192,42 @@ const PortfolioView: React.FC = () => {
 
       <section className="layout-container py-10 relative z-10">
         <div className="flex flex-col w-full max-w-6xl mx-auto">
-          {projectsMeta.map((meta, index) => (
-            <EditorialProject
+          {featuredProjects.map((meta, index) => (
+            <FeaturedProject
               key={meta.name}
               meta={meta}
-              description={p.projects[index]?.description ?? ''}
+              description={featuredDescriptions[index]?.description ?? ''}
               viewProject={p.viewProject}
               index={index}
             />
           ))}
+        </div>
+      </section>
+
+      <section
+        ref={moreAnim.ref}
+        className={`layout-container pt-12 md:pt-20 pb-32 md:pb-40 relative z-10 scroll-animate ${moreAnim.isVisible ? 'is-visible' : ''}`}
+      >
+        <div className="w-full max-w-6xl mx-auto">
+          <div className="flex flex-col items-center text-center mb-16 md:mb-20">
+            <span className="text-[#A1A1AA] uppercase tracking-[0.3em] text-xs mb-6 font-medium">
+              {p.moreLabel ?? '— Pozostałe realizacje'}
+            </span>
+            <h2 className="text-3xl md:text-5xl font-light text-white tracking-tight leading-[1.15] max-w-2xl">
+              {p.moreHeading ?? 'Mniejsze formaty, ten sam standard.'}
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {gridProjects.map((meta, index) => (
+              <GridProject
+                key={meta.name}
+                meta={meta}
+                description={gridDescriptions[index]?.description ?? ''}
+                viewProject={p.viewProject}
+              />
+            ))}
+          </div>
         </div>
       </section>
     </main>

@@ -50,7 +50,7 @@ const ContactView: React.FC = () => {
     const serviceLabel = c.serviceOptions.find((o) => o.value === formData.service)?.label ?? 'Nowy projekt';
     const subject = encodeURIComponent(`Zapytanie: ${serviceLabel}`);
     const body = encodeURIComponent(`Od: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`);
-    window.location.href = `mailto:hello@swanwebstudio.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:hello@swanweb.pl?subject=${subject}&body=${body}`;
     setSubmitted(true);
   };
 
@@ -117,14 +117,14 @@ const ContactView: React.FC = () => {
 
               <motion.a
                 variants={fadeInUp}
-                href="mailto:hello@swanwebstudio.com"
+                href="mailto:hello@swanweb.pl"
                 className="group inline-flex items-center gap-3 text-white/65 hover:text-white transition-colors duration-300"
               >
                 <div className="w-9 h-9 rounded-full bg-white/[0.04] border border-white/[0.09] group-hover:border-[#C05775]/45 group-hover:bg-[#C05775]/[0.07] flex items-center justify-center transition-all duration-300 shrink-0">
                   <Mail className="w-4 h-4 stroke-[1.5]" />
                 </div>
                 <span className="text-[0.88rem] font-light tracking-wide" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  hello@swanwebstudio.com
+                  hello@swanweb.pl
                 </span>
               </motion.a>
             </motion.div>
@@ -148,8 +148,8 @@ const ContactView: React.FC = () => {
                   </h2>
                   <p className="text-white/55 font-light leading-[1.75] max-w-sm mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
                     {c.successText}{' '}
-                    <a href="mailto:hello@swanwebstudio.com" className="text-[#C05775] hover:underline">
-                      hello@swanwebstudio.com
+                    <a href="mailto:hello@swanweb.pl" className="text-[#C05775] hover:underline">
+                      hello@swanweb.pl
                     </a>
                   </p>
                 </div>

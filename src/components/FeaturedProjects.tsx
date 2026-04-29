@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useTheme } from "@/contexts/ThemeContext";
 
 const featuredMeta = [
   { name: "Aureline District", category: "Nieruchomości",        image: "https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/e7f12d1666d12ef5043f14e68faa15d5.png", link: "/aureline-district",            descIndex: 5 },
@@ -23,6 +24,7 @@ const FeaturedProjects: React.FC = () => {
   const tr = useTranslation();
   const fp = tr.featuredProjects;
   const portfolioProjects = tr.portfolio.projects;
+  const { theme } = useTheme();
 
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start", dragFree: false, skipSnaps: false, containScroll: "trimSnaps" });
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -81,8 +83,17 @@ const FeaturedProjects: React.FC = () => {
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          <div className="pointer-events-none absolute top-0 bottom-0 left-0 w-6 md:w-10 z-10 bg-gradient-to-r from-[#08090C]/85 via-[#08090C]/30 to-transparent" />
-          <div className="pointer-events-none absolute top-0 bottom-0 right-0 w-6 md:w-10 z-10 bg-gradient-to-l from-[#08090C]/85 via-[#08090C]/30 to-transparent" />
+          {theme === 'dark' ? (
+            <>
+              <div className="pointer-events-none absolute top-0 bottom-0 left-0 w-6 md:w-10 z-10 bg-gradient-to-r from-[#08090C]/85 via-[#08090C]/30 to-transparent" />
+              <div className="pointer-events-none absolute top-0 bottom-0 right-0 w-6 md:w-10 z-10 bg-gradient-to-l from-[#08090C]/85 via-[#08090C]/30 to-transparent" />
+            </>
+          ) : (
+            <>
+              <div className="pointer-events-none absolute top-0 bottom-0 left-0 w-6 md:w-10 z-10 bg-gradient-to-r from-[#F3F0E6]/90 to-transparent" />
+              <div className="pointer-events-none absolute top-0 bottom-0 right-0 w-6 md:w-10 z-10 bg-gradient-to-l from-[#F3F0E6]/90 to-transparent" />
+            </>
+          )}
 
           <div className="overflow-hidden -mx-3 md:-mx-4" ref={emblaRef}>
             <div className="flex">
@@ -90,9 +101,9 @@ const FeaturedProjects: React.FC = () => {
                 <div key={p.name} className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%] min-w-0 px-3 md:px-4">
                   <Link href={p.link} className="group block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C05775]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090C] rounded-[1.5rem]">
                     <article className="relative h-full overflow-hidden rounded-[1.5rem] bg-white/[0.025] backdrop-blur-2xl border border-white/[0.07] transition-all duration-700 ease-[0.22,1,0.36,1] group-hover:-translate-y-1.5 group-hover:bg-white/[0.04] group-hover:border-[#C05775]/30 group-hover:shadow-[0_30px_60px_-20px_rgba(192,87,117,0.32),0_0_0_1px_rgba(192,87,117,0.08)_inset]">
-                      <div className="relative aspect-[4/5] overflow-hidden bg-[#0E0F14]">
+                      <div className="relative aspect-[4/5] overflow-hidden" style={{ backgroundColor: theme === 'dark' ? '#0E0F14' : '#EDE9E0' }}>
                         <img src={p.image} alt={p.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.06]" loading="lazy" draggable={false} />
-                        <div className="pointer-events-none absolute inset-0 opacity-70 group-hover:opacity-40 transition-opacity duration-700" style={{ background: "linear-gradient(180deg, rgba(8,9,12,0) 35%, rgba(8,9,12,0.85) 100%)" }} />
+                        <div className="pointer-events-none absolute inset-0 opacity-70 group-hover:opacity-40 transition-opacity duration-700" style={{ background: theme === 'dark' ? "linear-gradient(180deg, rgba(8,9,12,0) 35%, rgba(8,9,12,0.85) 100%)" : "linear-gradient(180deg, rgba(243,240,230,0) 35%, rgba(243,240,230,0.7) 100%)" }} />
                       </div>
                       <div className="p-6 md:p-7">
                         <span className="text-[#C05775] text-[0.65rem] font-medium tracking-[0.3em] uppercase mb-3 block">{p.category}</span>

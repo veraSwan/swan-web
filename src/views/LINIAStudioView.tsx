@@ -1,135 +1,227 @@
 "use client";
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useRouter } from "next/navigation";
-import { Button } from '@/components/ui/button';
-import { ArrowLeft } from 'lucide-react';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import React from "react";
+import CaseStudyHero from "@/components/case-study/CaseStudyHero";
+import CaseStudyConcept from "@/components/case-study/CaseStudyConcept";
+import CaseStudyDeliverables from "@/components/case-study/CaseStudyDeliverables";
+import CaseStudyGoal from "@/components/case-study/CaseStudyGoal";
+import CaseStudyProcess from "@/components/case-study/CaseStudyProcess";
+import CaseStudyResult from "@/components/case-study/CaseStudyResult";
+import CaseStudyMiniMockup from "@/components/case-study/CaseStudyMiniMockup";
+import CaseStudyTopBack from "@/components/case-study/CaseStudyTopBack";
+import CaseStudyBackNav from "@/components/case-study/CaseStudyBackNav";
 
-const LINIAStudioView = () => {
-  const router = useRouter();
-  const { variants } = useScrollAnimation({ threshold: 0.1 });
+const heroImage =
+  "https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/c76ba9fd61e35ebe713826728483816e.png";
+const projectImages = [
+  "https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/299dd1e4832812b867fd30099c8dbf7a.png",
+  "https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/dd0438c17472af90e9f7c1c165d8c436.png",
+];
 
-  const images = {
-    hero: "https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/c76ba9fd61e35ebe713826728483816e.png",
-    gallery1: "https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/299dd1e4832812b867fd30099c8dbf7a.png",
-    gallery2: "https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/dd0438c17472af90e9f7c1c165d8c436.png",
-  };
+const HeroBrowserFrame: React.FC<{ src: string; alt: string }> = ({ src, alt }) => (
+  <div className="relative w-full bg-[#1A1C20] rounded-t-[1.5rem] p-2 sm:p-3 pb-0 shadow-2xl border border-white/5 border-b-0">
+    <div className="aspect-[16/10] bg-black rounded-t-xl overflow-hidden relative">
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        className="w-full h-full object-cover object-top opacity-95 transition-transform duration-[2s] ease-[0.22,1,0.36,1] hover:scale-[1.02]"
+      />
+    </div>
+    <div className="w-[110%] -ml-[5%] h-3 sm:h-4 bg-[#2A2B30] rounded-b-2xl mt-0 border-t border-white/5 shadow-xl relative z-10" />
+  </div>
+);
 
-  return (
-    <>      <main className="min-h-screen bg-[#08090C] text-white pt-32 pb-40 overflow-x-hidden">
-        <div className="absolute inset-0 bg-[var(--page-glow)] z-0 opacity-80 pointer-events-none" />
+/** Inline mock site — minimal off-white with serif + portfolio grid. */
+const LINIAMockSite: React.FC = () => (
+  <div
+    className="bg-[#F4F1EC] text-[#22231F]"
+    style={{ fontFamily: "Inter, sans-serif" }}
+  >
+    {/* Nav */}
+    <div className="flex items-center justify-between px-6 md:px-10 py-5 border-b border-[#22231F]/10">
+      <span
+        className="text-base tracking-[0.32em] uppercase font-medium"
+        style={{ fontFamily: "Playfair Display, serif" }}
+      >
+        LINIA Studio
+      </span>
+      <div className="hidden md:flex items-center gap-7 text-[0.7rem] tracking-[0.22em] uppercase text-[#22231F]/55">
+        <span>Projekty</span>
+        <span>Studio</span>
+        <span>Proces</span>
+        <span>Kontakt</span>
+      </div>
+      <span className="text-[0.65rem] tracking-[0.22em] uppercase text-[#22231F]/70 border-b border-[#22231F]/40 pb-0.5">
+        Zarezerwuj rozmowę
+      </span>
+    </div>
 
-        <article className="layout-container relative z-10 max-w-5xl mx-auto">
-          <motion.header 
-            initial="hidden"
-            animate="visible"
-            variants={variants.staggerContainer(0.2)}
-            className="mb-24 text-center flex flex-col items-center"
-          >
-            <motion.div variants={variants.fadeInUp} className="w-full mb-6">
-              <span className="text-[#A1A1AA] uppercase tracking-[0.3em] text-xs font-medium">Projektowanie wnętrz</span>
-            </motion.div>
-            <motion.h1 
-              variants={variants.fadeInUp}
-              className="text-5xl md:text-7xl lg:text-[6rem] font-light text-white mb-8 leading-[1.1] tracking-tight"
-              style={{ fontFamily: 'Playfair Display, serif' }}
-            >
-              LINIA Studio
-            </motion.h1>
-            <motion.p variants={variants.fadeInUp} className="text-lg md:text-xl text-white/70 font-light leading-[1.8] tracking-wide max-w-2xl">
-              Przestrzeń oddychająca światłem, szeryfową elegancją i idealnymi proporcjami.
-            </motion.p>
-          </motion.header>
+    {/* Hero */}
+    <div className="px-6 md:px-10 py-12 md:py-16">
+      <span className="block text-[0.6rem] tracking-[0.32em] uppercase text-[#22231F]/55 mb-5">
+        — Pracownia autorska
+      </span>
+      <h3
+        className="text-3xl md:text-5xl leading-[1.05] tracking-[-0.02em] max-w-2xl mb-5"
+        style={{ fontFamily: "Playfair Display, serif", fontStyle: "italic" }}
+      >
+        Wnętrze, które oddycha między ścianami.
+      </h3>
+      <p className="text-sm md:text-base text-[#22231F]/65 leading-[1.7] max-w-xl">
+        Projekty mieszkaniowe i komercyjne prowadzone przez jedną osobę — od briefu po nadzór autorski.
+      </p>
+    </div>
 
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={variants.scaleIn}
-            className="w-full mb-32 md:mb-40"
-          >
-            <div className="relative w-full bg-[#1A1C20] rounded-t-[1.5rem] p-3 pb-0 shadow-2xl border border-white/5 border-b-0 hover-lift">
-              <div className="aspect-[16/10] bg-[#121212] rounded-t-xl overflow-hidden relative">
-                <img 
-                  src={images.hero} 
-                  alt="LINIA Studio Wnętrz" 
-                  className="w-full h-full object-cover object-top transition-transform duration-[2s] ease-[0.22,1,0.36,1] hover:scale-[1.03] opacity-90 hover:opacity-100"
-                />
-              </div>
-              <div className="w-[106%] -ml-[3%] h-4 bg-[#2A2B30] rounded-b-2xl mt-0 border-t border-white/5 shadow-xl" />
+    {/* Portfolio grid */}
+    <div className="px-6 md:px-10 pb-12 md:pb-16">
+      <div className="flex items-baseline justify-between mb-7">
+        <span
+          className="text-base md:text-lg tracking-[-0.01em]"
+          style={{ fontFamily: "Playfair Display, serif" }}
+        >
+          Wybrane realizacje
+        </span>
+        <span className="text-[0.65rem] tracking-[0.22em] uppercase text-[#22231F]/45">
+          2024 — 2026
+        </span>
+      </div>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+        {[
+          { name: "Apartament Mokotów", year: "2026" },
+          { name: "Dom Konstancin", year: "2025" },
+          { name: "Atelier Praga", year: "2025" },
+          { name: "Penthouse Powiśle", year: "2024" },
+        ].map((p, i) => (
+          <div key={i} className="group">
+            <div className="relative aspect-[4/5] bg-[#22231F]/8 overflow-hidden rounded-sm">
+              <img
+                src={projectImages[i % projectImages.length]}
+                alt={p.name}
+                className="w-full h-full object-cover opacity-90"
+                loading="lazy"
+              />
             </div>
-          </motion.div>
+            <div className="pt-3">
+              <span
+                className="block text-sm md:text-[0.95rem] tracking-tight"
+                style={{ fontFamily: "Playfair Display, serif" }}
+              >
+                {p.name}
+              </span>
+              <span className="block text-[0.65rem] tracking-[0.22em] uppercase text-[#22231F]/45 pt-1">
+                {p.year}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
 
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={variants.staggerContainer(0.2)}
-            className="grid md:grid-cols-2 gap-16 lg:gap-24 mb-32 md:mb-40"
-          >
-            <motion.div variants={variants.fadeInUp}>
-              <h2 className="text-3xl md:text-4xl font-light mb-8 tracking-tight" style={{ fontFamily: 'Playfair Display, serif' }}>Brak zbędnych ozdobników</h2>
-              <div className="space-y-6">
-                <p className="text-base md:text-lg font-light leading-[1.8] text-white/70 tracking-wide">
-                  Minimalistyczna paleta barw oraz elegancka typografia pozwalają głównym projektom wnętrz odgrywać najważniejszą rolę. Cyfrowe płótno skupia uwagę.
-                </p>
-              </div>
-            </motion.div>
+    {/* Footer band */}
+    <div className="px-6 md:px-10 py-6 border-t border-[#22231F]/10 text-[0.65rem] tracking-[0.22em] uppercase text-[#22231F]/45">
+      LINIA Studio · Pracownia autorska · Warszawa
+    </div>
+  </div>
+);
 
-            <motion.div variants={variants.fadeInUp}>
-              <h2 className="text-3xl md:text-4xl font-light mb-8 tracking-tight" style={{ fontFamily: 'Playfair Display, serif' }}>Filary kreacji</h2>
-              <ul className="space-y-6">
-                {["Czysta wizualna paleta", "Elegancka typografia szeryfowa", "Ekspozycja architektoniczna"].map((item, idx) => (
-                  <li key={idx} className="flex items-center gap-4">
-                    <span className="text-[#C05775] font-serif italic text-xl">0{idx + 1}</span>
-                    <p className="font-light text-base text-white/80">{item}</p>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          </motion.div>
+const LINIAStudioView: React.FC = () => {
+  return (
+    <main className="bg-[#08090C] min-h-screen text-white selection:bg-[#C05775]/30">
+      <CaseStudyTopBack label="Powrót do portfolio" />
 
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={variants.staggerContainer(0.2)}
-            className="space-y-16 md:space-y-24 mb-32"
-          >
-            {[images.gallery1, images.gallery2].map((imgSrc, idx) => (
-              <motion.div key={idx} variants={variants.scaleIn} className="w-full">
-                <div className="rounded-[2rem] overflow-hidden aspect-[16/10] bg-[#121212] shadow-2xl group hover-lift border border-white/5">
-                  <img 
-                    src={imgSrc} 
-                    alt="Gallery image" 
-                    className="w-full h-full object-cover transition-transform duration-[2s] ease-[0.22,1,0.36,1] group-hover:scale-[1.02] opacity-90 group-hover:opacity-100"
-                  />
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+      <CaseStudyHero
+        category="Projektowanie wnętrz"
+        title="LINIA Studio"
+        subtitle="Cyfrowe portfolio architekta wnętrz, w którym pustka jest tak samo zaprojektowana jak materiał."
+        visual={<HeroBrowserFrame src={heroImage} alt="LINIA Studio — strona główna" />}
+      />
 
-          <motion.nav 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="pt-10 border-t border-white/10 flex justify-center"
-          >
-            <Button
-              variant="outline"
-              onClick={() => router.push('/portfolio')}
-              className="bg-transparent border border-white/15 text-white hover:bg-white/5 px-10 py-7 uppercase tracking-[0.2em] text-xs font-medium rounded-full transition-all duration-500 group hover:-translate-y-1"
-            >
-              <ArrowLeft className="w-4 h-4 mr-3 group-hover:-translate-x-1 transition-transform" />
-              Powrót do portfolio
-            </Button>
-          </motion.nav>
+      <CaseStudyConcept
+        label="Koncepcja"
+        heading="Przestrzeń, która oddycha między projektami."
+        body="Strona miała być przedłużeniem warsztatu — bez ozdobników, bez pop-upów, bez agresywnej narracji sprzedażowej. Każde projektowane wnętrze dostaje pełen oddech: dużo białego marginesu, fotografia w pełnej skali, opis krótki i konkretny. Klient czyta projekty jak album architektoniczny, nie jak ofertę."
+      />
 
-        </article>
-      </main>
-    </>
+      <CaseStudyDeliverables
+        label="Co zaprojektowaliśmy"
+        heading="Strona, która eksponuje pracę — nie ofertę."
+        items={[
+          "Editorialowa struktura portfolio",
+          "Karta projektu z fotografią w pełnej skali",
+          "Sekcja procesu współpracy bez sprzedażowego tonu",
+          "Atelier visit — formularz prywatnej konsultacji",
+          "Mobile-first dla przeglądania w drodze",
+          "Headless CMS dla pracowni",
+        ]}
+      />
+
+      <CaseStudyGoal
+        label="Cel projektu"
+        heading="Studio wybierane z kolekcjonerską uwagą."
+        pillars={[
+          {
+            label: "Cel",
+            body: "Pozycjonować LINIA Studio jako pracownię autorską — dla klientów, którzy szukają jednej osoby z pełną odpowiedzialnością projektową, nie zespołu generycznego.",
+          },
+          {
+            label: "Co poprawiliśmy",
+            body: "Stara strona była galerią mieszanego portfolio bez hierarchii. Brakowało narracji, kontekstu projektu i informacji o procesie współpracy.",
+          },
+          {
+            label: "Efekt dla użytkownika",
+            body: "Klient ogląda dzieła w spokoju, rozumie metodę pracy i wybiera kontakt świadomie — z gotowością do długiej rozmowy, nie szybkiej wyceny.",
+          },
+        ]}
+      />
+
+      <CaseStudyProcess
+        label="Proces"
+        heading="Od briefu architektonicznego po wdrożenie."
+        steps={[
+          {
+            number: "01",
+            title: "Strategia",
+            description:
+              "Rozmowa o klientach docelowych, archetypie pracowni i decyzjach projektowych, których nie negocjujemy.",
+          },
+          {
+            number: "02",
+            title: "Struktura",
+            description:
+              "Mapa stron: portfolio jako rdzeń, proces współpracy, atelier visit, krótka biografia. Bez kategorii, bez filtrów.",
+          },
+          {
+            number: "03",
+            title: "Design",
+            description:
+              "System wizualny: szeryfowa typografia, paleta off-white + grafit, fotografia w pełnej skali — bez crop'owania pod siatkę.",
+          },
+          {
+            number: "04",
+            title: "Wdrożenie",
+            description:
+              "Headless CMS dla pracowni, lazy loading dużej fotografii, Core Web Vitals w zielonym pasku.",
+          },
+        ]}
+      />
+
+      <CaseStudyResult
+        label="Efekt"
+        body="Studio, które ogląda się jak monografię. Klient kontaktuje się gotowy na rozmowę — nie szuka wyceny, szuka autora."
+      />
+
+      <CaseStudyMiniMockup
+        label="Sekcje strony"
+        heading="Tak prowadzimy klienta przez portfolio."
+        caption="Editorial layout, fotografia w pełnej skali, projekty bez filtrów i kategorii. Klient ogląda monografię, nie sklep."
+        url="liniastudio.pl"
+        innerBg="bg-[#F4F1EC]"
+      >
+        <LINIAMockSite />
+      </CaseStudyMiniMockup>
+
+      <CaseStudyBackNav backLabel="Powrót do portfolio" />
+    </main>
   );
 };
 

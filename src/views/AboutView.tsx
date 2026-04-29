@@ -92,9 +92,9 @@ const AboutView: React.FC = () => {
                 <div className="absolute -inset-6 rounded-[2.75rem] border border-[#C05775]/06 pointer-events-none" />
                 <div className="aspect-[3/4] rounded-[1.75rem] overflow-hidden bg-white/[0.03] border border-white/[0.10] relative shadow-2xl">
                   <img
-                    src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=700&q=80"
+                    src="/weronika.jpg"
                     alt="Weronika Łabędź — Swan Web Studio"
-                    className="w-full h-full object-cover object-center opacity-90 hover:opacity-100 transition-opacity duration-700"
+                    className="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-6">

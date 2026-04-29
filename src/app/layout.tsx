@@ -22,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pl" className="dark" suppressHydrationWarning>
+    <html lang="pl" className="dark" translate="no" suppressHydrationWarning>
       <body suppressHydrationWarning>
         <Providers>
           <ScrollToTop />

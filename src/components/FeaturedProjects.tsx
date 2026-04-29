@@ -25,6 +25,7 @@ const FeaturedProjects: React.FC = () => {
   const fp = tr.featuredProjects;
   const portfolioProjects = tr.portfolio.projects;
   const { theme } = useTheme();
+  const [mounted, setMounted] = React.useState(false);
 
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start", dragFree: false, skipSnaps: false, containScroll: "trimSnaps" });
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -35,6 +36,8 @@ const FeaturedProjects: React.FC = () => {
   const scrollTo = useCallback((index: number) => emblaApi && emblaApi.scrollTo(index), [emblaApi]);
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
+
+  useEffect(() => { setMounted(true); }, []);
 
   useEffect(() => {
     if (!emblaApi) return;
@@ -83,7 +86,7 @@ const FeaturedProjects: React.FC = () => {
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          {theme === 'dark' ? (
+          {(!mounted || theme === 'dark') ? (
             <>
               <div className="pointer-events-none absolute top-0 bottom-0 left-0 w-6 md:w-10 z-10 bg-gradient-to-r from-[#08090C]/85 via-[#08090C]/30 to-transparent" />
               <div className="pointer-events-none absolute top-0 bottom-0 right-0 w-6 md:w-10 z-10 bg-gradient-to-l from-[#08090C]/85 via-[#08090C]/30 to-transparent" />

@@ -1,18 +1,16 @@
 "use client";
 import React from 'react';
 import Link from "next/link";
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useTranslation } from '@/hooks/useTranslation';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const { ref, isVisible } = useScrollAnimation();
   const tr = useTranslation();
   const f = tr.footer;
   const nav = tr.nav;
 
   return (
-    <footer ref={ref} className={`bg-[#0E0F12] border-t border-[#5A4B81]/20 pt-16 pb-8 relative z-10 overflow-hidden scroll-animate ${isVisible ? 'is-visible' : ''}`}>
+    <footer className="bg-[#0E0F12] border-t border-[#5A4B81]/20 pt-16 pb-8 relative z-10 overflow-hidden">
       <div className="layout-container">
         <div className="grid grid-cols-1 md:grid-cols-4 grid-spacing mb-12">
           <div className="md:col-span-2 flex flex-col gap-6 items-center md:items-start text-center md:text-left">

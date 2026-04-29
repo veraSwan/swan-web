@@ -27,7 +27,7 @@ const gridProjects: ProjectData[] = [
   { name: 'Aureline District', image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=1200&q=80',                category: 'Nieruchomości premium', link: '/aureline-district' },
   { name: 'Smile Studio',      image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80',                category: 'Stomatologia premium',  link: '/portfolio/smile-studio' },
   { name: 'Tessera',           image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80',                category: 'Fine dining',           link: '/portfolio/tessera' },
-  { name: 'Stal Mar',          image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1200&q=80',                  category: 'Ogrodzenia / Metaloplastyka', link: '/portfolio/stal-mar' },
+  { name: 'Stal Mar',          image: 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=1200&q=80',                  category: 'Ogrodzenia / Metaloplastyka', link: '/portfolio/stal-mar' },
 ];
 
 interface FeaturedProjectProps {

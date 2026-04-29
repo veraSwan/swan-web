@@ -13,9 +13,12 @@ const LANGS: Lang[] = ['pl', 'en', 'de'];
 const Header = () => {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const { lang, setLang } = useLang();
   const tr = useTranslation();
+
+  useEffect(() => { setMounted(true); }, []);
 
   const navItems = [
     { name: tr.nav.home, path: '/' },
@@ -87,6 +90,7 @@ const Header = () => {
                     }`}
                   >
                     <span
+                      suppressHydrationWarning
                       className="text-[0.78rem] uppercase tracking-[0.18em] relative z-10"
                       style={{ fontFamily: 'Inter, sans-serif' }}
                     >
@@ -103,6 +107,7 @@ const Header = () => {
               <div className="hidden md:flex items-center rounded-full border border-white/[0.08] bg-white/[0.03] px-1 py-1 gap-0.5">
                 {LANGS.map((l) => (
                   <button
+                    suppressHydrationWarning
                     key={l}
                     onClick={() => setLang(l)}
                     className={`px-2.5 py-1 rounded-full text-[0.65rem] tracking-[0.18em] uppercase font-medium transition-all duration-300 ${
@@ -119,11 +124,12 @@ const Header = () => {
 
               {/* Theme toggle */}
               <button
+                suppressHydrationWarning
                 onClick={toggleTheme}
                 aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
                 className="hidden md:flex w-9 h-9 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.03] text-white/55 hover:text-white hover:border-white/20 hover:bg-white/[0.07] transition-all duration-300 ease-[0.22,1,0.36,1]"
               >
-                {theme === 'dark'
+                {(!mounted || theme === 'dark')
                   ? <Sun className="w-4 h-4 stroke-[1.5]" />
                   : <Moon className="w-4 h-4 stroke-[1.5]" />
                 }
@@ -135,6 +141,7 @@ const Header = () => {
                 <div className="flex items-center rounded-full border border-white/[0.08] bg-white/[0.03] px-1 py-0.5 gap-0">
                   {LANGS.map((l) => (
                     <button
+                      suppressHydrationWarning
                       key={l}
                       onClick={() => setLang(l)}
                       className={`px-2 py-0.5 rounded-full text-[0.58rem] tracking-[0.15em] uppercase font-medium transition-all duration-300 ${
@@ -149,11 +156,12 @@ const Header = () => {
 
                 {/* Mobile theme toggle */}
                 <button
+                  suppressHydrationWarning
                   onClick={toggleTheme}
                   aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
                   className="w-8 h-8 flex items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.03] text-white/55 hover:text-white transition-all duration-300"
                 >
-                  {theme === 'dark'
+                  {(!mounted || theme === 'dark')
                     ? <Sun className="w-3.5 h-3.5 stroke-[1.5]" />
                     : <Moon className="w-3.5 h-3.5 stroke-[1.5]" />
                   }
@@ -216,6 +224,7 @@ const Header = () => {
                     transition={{ duration: 0.28, delay: i * 0.055, ease: [0.22, 1, 0.36, 1] }}
                   >
                     <Link
+                      suppressHydrationWarning
                       href={item.path}
                       onClick={handleNavClick}
                       className={`block w-full px-5 py-4 rounded-xl text-[0.8rem] uppercase tracking-[0.2em] font-medium transition-all duration-300 ${

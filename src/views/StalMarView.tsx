@@ -85,7 +85,7 @@ const StalMarMockSite: React.FC = () => (
 
 const StalMarView: React.FC = () => (
   <main className="bg-[#08090C] min-h-screen">
-    <CaseStudyTopBack />
+    <CaseStudyTopBack label="Powrót do portfolio" />
 
     <CaseStudyHero
       category="Ogrodzenia / Metaloplastyka"

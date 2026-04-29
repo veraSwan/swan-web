@@ -103,10 +103,6 @@ const AboutView: React.FC = () => {
                     </span>
                   </div>
                 </div>
-                <div className="absolute -bottom-3 -right-3 w-[72px] h-[72px] rounded-[1rem] bg-[#C05775]/15 border border-[#C05775]/25 backdrop-blur-xl flex flex-col items-center justify-center gap-0.5">
-                  <span className="text-[#C05775] text-base font-semibold leading-none">3+</span>
-                  <span className="text-[#C05775]/70 text-[0.6rem] tracking-[0.15em] uppercase">lat</span>
-                </div>
               </div>
             </motion.div>
 

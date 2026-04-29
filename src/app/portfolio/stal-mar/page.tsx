@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import StalMarView from "@/views/StalMarView";
 
 export const metadata: Metadata = {
   title: "Stal Mar — Swan Web Studio",
@@ -6,5 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return null;
+  return <StalMarView />;
 }

@@ -27,7 +27,7 @@ const Footer = () => {
                 Swan Web Studio
               </span>
             </Link>
-            <p className="text-[#E5E7EB]/80 text-sm leading-relaxed max-w-sm transition-opacity hover:opacity-100" style={{ fontFamily: 'Inter, sans-serif' }}>
+            <p suppressHydrationWarning className="text-[#E5E7EB]/80 text-sm leading-relaxed max-w-sm transition-opacity hover:opacity-100" style={{ fontFamily: 'Inter, sans-serif' }}>
               {f.description}
             </p>
           </div>

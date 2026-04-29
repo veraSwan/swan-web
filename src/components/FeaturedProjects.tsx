@@ -101,9 +101,9 @@ const FeaturedProjects: React.FC = () => {
                 <div key={p.name} className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%] min-w-0 px-3 md:px-4">
                   <Link href={p.link} className="group block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C05775]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090C] rounded-[1.5rem]">
                     <article className="relative h-full overflow-hidden rounded-[1.5rem] bg-white/[0.025] backdrop-blur-2xl border border-white/[0.07] transition-all duration-700 ease-[0.22,1,0.36,1] group-hover:-translate-y-1.5 group-hover:bg-white/[0.04] group-hover:border-[#C05775]/30 group-hover:shadow-[0_30px_60px_-20px_rgba(192,87,117,0.32),0_0_0_1px_rgba(192,87,117,0.08)_inset]">
-                      <div className="relative aspect-[4/5] overflow-hidden" style={{ backgroundColor: theme === 'dark' ? '#0E0F14' : '#EDE9E0' }}>
+                      <div suppressHydrationWarning className="relative aspect-[4/5] overflow-hidden" style={{ backgroundColor: theme === 'dark' ? '#0E0F14' : '#EDE9E0' }}>
                         <img src={p.image} alt={p.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.06]" loading="lazy" draggable={false} />
-                        <div className="pointer-events-none absolute inset-0 opacity-70 group-hover:opacity-40 transition-opacity duration-700" style={{ background: theme === 'dark' ? "linear-gradient(180deg, rgba(8,9,12,0) 35%, rgba(8,9,12,0.85) 100%)" : "linear-gradient(180deg, rgba(243,240,230,0) 35%, rgba(243,240,230,0.7) 100%)" }} />
+                        <div suppressHydrationWarning className="pointer-events-none absolute inset-0 opacity-70 group-hover:opacity-40 transition-opacity duration-700" style={{ background: theme === 'dark' ? "linear-gradient(180deg, rgba(8,9,12,0) 35%, rgba(8,9,12,0.85) 100%)" : "linear-gradient(180deg, rgba(243,240,230,0) 35%, rgba(243,240,230,0.7) 100%)" }} />
                       </div>
                       <div className="p-6 md:p-7">
                         <span className="text-[#C05775] text-[0.65rem] font-medium tracking-[0.3em] uppercase mb-3 block">{p.category}</span>

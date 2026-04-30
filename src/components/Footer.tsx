@@ -15,21 +15,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 grid-spacing mb-12">
           <div className="md:col-span-2 flex flex-col gap-6 items-center md:items-start text-center md:text-left">
             <Link href="/" className="flex items-center gap-3 group w-fit mx-auto md:mx-0">
-              <div
-                style={{
-                  width: '28px',
-                  height: '28px',
-                  backgroundColor: '#C05775',
-                  maskImage: 'url(/logo.svg)',
-                  WebkitMaskImage: 'url(/logo.svg)',
-                  maskSize: 'contain',
-                  maskRepeat: 'no-repeat',
-                  maskPosition: 'center',
-                  flexShrink: 0,
-                }}
-                className="transition-transform duration-300 group-hover:scale-105 group-hover:rotate-1"
-              />
-              <span 
+              <span
                 className="text-white font-medium text-xl tracking-[0.05em] transition-colors duration-300 group-hover:text-[#C05775]" 
                 style={{ fontFamily: 'DM Sans, sans-serif' }}
               >

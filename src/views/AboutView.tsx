@@ -166,9 +166,10 @@ const AboutView: React.FC = () => {
 
         <div className="layout-container-wide relative z-10">
           <motion.div
+            key={a.valuesHeading}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-80px' }}
+            viewport={{ once: true, amount: 0.1 }}
             variants={stagger(0.18)}
             className="text-center mb-16 md:mb-20"
           >
@@ -184,9 +185,10 @@ const AboutView: React.FC = () => {
           </motion.div>
 
           <motion.div
+            key={a.valuesLabel}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-80px' }}
+            viewport={{ once: true, amount: 0.1 }}
             variants={stagger(0.15, 0.1)}
             className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
           >

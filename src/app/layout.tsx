@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   icons: {
     icon: "https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/ccb4ebf22fc923ffd0529cf619c7ac26.png",
   },
+  other: {
+    "google": "notranslate",
+  },
 };
 
 export default function RootLayout({
@@ -22,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pl" className="dark" translate="no" suppressHydrationWarning>
+    <html lang="pl" className="dark notranslate" suppressHydrationWarning>
       <body suppressHydrationWarning>
         <Providers>
           <ScrollToTop />

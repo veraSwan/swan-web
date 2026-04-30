@@ -32,17 +32,13 @@ const AboutView: React.FC = () => {
           className="absolute inset-0 z-0 pointer-events-none"
           style={{ background: 'radial-gradient(ellipse 60% 45% at 50% 0%, rgba(58, 35, 96, 0.08) 0%, transparent 65%)' }}
         />
-        <motion.div
+        <div
           aria-hidden="true"
-          animate={{ scale: [1, 1.06, 1], opacity: [0.04, 0.08, 0.04] }}
-          transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-[-15%] right-[-10%] w-[700px] h-[700px] bg-gradient-to-bl from-[#3A2360] via-[#2A1B4B] to-transparent rounded-full blur-[180px] pointer-events-none z-0"
+          className="absolute top-[-15%] right-[-10%] w-[700px] h-[700px] bg-gradient-to-bl from-[#3A2360] via-[#2A1B4B] to-transparent rounded-full blur-[180px] pointer-events-none z-0 opacity-[0.06]"
         />
-        <motion.div
+        <div
           aria-hidden="true"
-          animate={{ scale: [1, 1.08, 1], opacity: [0.03, 0.06, 0.03] }}
-          transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-          className="absolute bottom-[-25%] left-[-15%] w-[600px] h-[600px] bg-gradient-to-tr from-[#C05775]/25 to-transparent rounded-full blur-[200px] pointer-events-none z-0"
+          className="absolute bottom-[-25%] left-[-15%] w-[600px] h-[600px] bg-gradient-to-tr from-[#C05775]/25 to-transparent rounded-full blur-[200px] pointer-events-none z-0 opacity-[0.045]"
         />
 
         <div className="layout-container-wide relative z-10">

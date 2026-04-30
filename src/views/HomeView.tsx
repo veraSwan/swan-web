@@ -45,15 +45,13 @@ const HomeView = () => {
         )}
         <div className="absolute inset-0 bg-[var(--ambient-gradient)] z-0 opacity-90 pointer-events-none" />
 
-        <motion.div
-          animate={{ scale: [1, 1.06, 1], opacity: [0.10, 0.16, 0.10] }}
-          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[-15%] right-[-10%] w-[900px] h-[900px] bg-gradient-to-bl from-[#3A2360] via-[#2A1B4B] to-transparent rounded-full blur-[160px] pointer-events-none z-0"
+        <div
+          className="absolute top-[-15%] right-[-10%] w-[900px] h-[900px] bg-gradient-to-bl from-[#3A2360] via-[#2A1B4B] to-transparent rounded-full blur-[160px] pointer-events-none z-0 opacity-[0.13]"
+          style={{ willChange: 'auto' }}
         />
-        <motion.div
-          animate={{ scale: [1, 1.08, 1], opacity: [0.06, 0.12, 0.06] }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute bottom-[-25%] left-[-15%] w-[800px] h-[800px] bg-gradient-to-tr from-[#C05775]/30 to-transparent rounded-full blur-[180px] pointer-events-none z-0"
+        <div
+          className="absolute bottom-[-25%] left-[-15%] w-[800px] h-[800px] bg-gradient-to-tr from-[#C05775]/30 to-transparent rounded-full blur-[180px] pointer-events-none z-0 opacity-[0.09]"
+          style={{ willChange: 'auto' }}
         />
 
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">

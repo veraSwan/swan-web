@@ -55,9 +55,23 @@ const Header = () => {
             {/* Logo */}
             <Link
               href="/"
-              className="flex items-center group z-10 whitespace-nowrap shrink-0"
+              className="flex items-center gap-3 group z-10 whitespace-nowrap shrink-0"
               onClick={handleNavClick}
             >
+              {/* Swan logo icon */}
+              <div
+                className="shrink-0 transition-transform duration-300 ease-[0.22,1,0.36,1] group-hover:scale-[1.03]"
+                style={{
+                  width: '30px',
+                  height: '30px',
+                  backgroundColor: '#C05775',
+                  maskImage: 'url(/logo.svg)',
+                  WebkitMaskImage: 'url(/logo.svg)',
+                  maskSize: 'contain',
+                  maskRepeat: 'no-repeat',
+                  maskPosition: 'center',
+                }}
+              />
               <div className="flex flex-col items-center transition-transform duration-300 ease-[0.22,1,0.36,1] group-hover:scale-[1.03]">
                 <span
                   className="logo-glow text-[1.65rem] md:text-[1.75rem] font-light uppercase text-white leading-none mb-1.5 transition-all duration-300 group-hover:text-[#E889A1]"

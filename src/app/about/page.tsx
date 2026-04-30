@@ -2,9 +2,16 @@ import type { Metadata } from "next";
 import AboutView from "@/views/AboutView";
 
 export const metadata: Metadata = {
-  title: "O nas - Swan Web Studio",
+  title: "O mnie — Weronika Łabędź, web designer",
   description:
-    "Poznaj Swan Web Studio. Jesteśmy kameralnym zespołem, który wierzy w sensowne projekty i szczere rzemiosło.",
+    "Weronika Łabędź — web designer i developer, założycielka Swan Web Studio. Projektuję strony internetowe premium dla firm i marek, które chcą wyglądać poważnie.",
+  alternates: { canonical: "https://swanweb.pl/about" },
+  openGraph: {
+    title: "O mnie — Weronika Łabędź, web designer | Swan Web Studio",
+    description:
+      "Projektuję strony internetowe premium dla firm i marek, które chcą wyglądać poważnie.",
+    url: "https://swanweb.pl/about",
+  },
 };
 
 export default function Page() {

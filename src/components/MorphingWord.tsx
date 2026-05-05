@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 
 type Props = {
-  words: string[];
+  words: readonly string[];
   intervalMs?: number;
   className?: string;
   accentColor?: string;

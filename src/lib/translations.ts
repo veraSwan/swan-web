@@ -16,7 +16,7 @@ const translations = {
       line3: 'klasy premium',
       morphWords: ['strony', 'sklepy', 'marki', 'atelier', 'doświadczenia'],
       subtitle: 'Tworzymy strony internetowe, w których świadomy design spotyka się z perfekcyjnym wykonaniem i detalami.',
-      cta1: 'Rozpocznij projekt',
+      cta1: 'Zapytaj o wycenę',
       cta2: 'Nasze prace',
     },
     heroCards: [
@@ -31,12 +31,12 @@ const translations = {
     ],
     process: {
       heading: 'Jak pracujemy',
-      subheading: 'Sprawdzony i transparentny proces, który gwarantuje doskonały rezultat końcowy.',
+      subheading: 'Od pierwszej rozmowy do wdrożenia — przejrzyście, bez zaskoczeń, w czterech etapach.',
       steps: [
-        { title: 'Fundament', description: 'Słuchamy, pytamy i definiujemy priorytety Twojego projektu.' },
-        { title: 'Koncepcja', description: 'Przekładamy strategię na spójną wizję łączącą estetykę z użytecznością.' },
-        { title: 'Budowa', description: 'Zmieniamy projekt w sprawne narzędzie, dbając o aspekty techniczne.' },
-        { title: 'Start', description: 'Wypuszczamy stronę w świat i wspieramy jej dalszy bezproblemowy rozwój.' },
+        { title: 'Rozmowa (bezpłatna)', description: 'Spotykamy się online na 30 minut. Słuchamy, zadajemy pytania o cele, grupę odbiorców i budżet — bez zobowiązań.' },
+        { title: 'Wycena i koncepcja', description: 'W ciągu 3 dni dostajesz wycenę i umowę. Po akceptacji projektujemy strukturę i wygląd w Figmie — z dwiema rundami poprawek w cenie.' },
+        { title: 'Budowa strony', description: 'Implementacja zajmuje 2–4 tygodnie. Czysty kod (Next.js, React), optymalizacja wydajności, SEO techniczne, pełna responsywność na każdym urządzeniu.' },
+        { title: 'Publikacja i wsparcie', description: 'Wdrażamy stronę na Twojej domenie. W cenie 30 dni wsparcia: szkolenie z edycji, monitoring, drobne poprawki bez dodatkowych kosztów.' },
       ],
     },
     testimonials: { heading: 'Zaufanie klientów' },
@@ -80,7 +80,7 @@ const translations = {
       founderBio: 'Jestem studentką informatyki na II roku i od 3 lat projektuję strony internetowe dla firm, które chcą wyglądać poważnie. Wierzę, że dobry design to nie ozdoba — to narzędzie, które pracuje na Twój cel.',
       founderStats: [
         { value: '3+', label: 'lata w branży' },
-        { value: '15+', label: 'zrealizowanych projektów' },
+        { value: '10+', label: 'zrealizowanych projektów' },
         { value: '100%', label: 'autorskiego designu' },
       ],
       mottoLabel: '— Moja dewiza',
@@ -542,7 +542,7 @@ const translations = {
       line3: 'of premium quality',
       morphWords: ['websites', 'stores', 'brands', 'ateliers', 'experiences'],
       subtitle: 'We build websites where intentional design meets flawless execution and craftsmanship.',
-      cta1: 'Start a project',
+      cta1: 'Get a quote',
       cta2: 'Our work',
     },
     heroCards: [
@@ -557,12 +557,12 @@ const translations = {
     ],
     process: {
       heading: 'How we work',
-      subheading: 'A proven and transparent process that guarantees an outstanding final result.',
+      subheading: 'From first conversation to launch — transparent, no surprises, in four stages.',
       steps: [
-        { title: 'Foundation', description: 'We listen, ask questions and define the priorities of your project.' },
-        { title: 'Concept', description: 'We translate strategy into a coherent vision that unites aesthetics and usability.' },
-        { title: 'Build', description: 'We turn the concept into a working tool, taking care of every technical aspect.' },
-        { title: 'Launch', description: 'We release the site and continue to support its smooth ongoing development.' },
+        { title: 'Free intro call', description: 'A 30-minute online meeting. We listen, ask about goals, audience and budget — no strings attached.' },
+        { title: 'Quote & concept', description: 'You receive a quote and contract within 3 days. After approval we design structure and visuals in Figma — two rounds of revisions included.' },
+        { title: 'Build', description: 'Implementation takes 2–4 weeks. Clean code (Next.js, React), performance optimization, technical SEO, full responsiveness on every device.' },
+        { title: 'Launch & support', description: 'We deploy to your domain. 30 days of support included: editing training, monitoring, small fixes at no extra cost.' },
       ],
     },
     testimonials: { heading: 'Client trust' },
@@ -606,7 +606,7 @@ const translations = {
       founderBio: "I'm a second-year Computer Science student with 3+ years of experience designing websites for businesses that want to be taken seriously. Good design isn't decoration — it's a tool that works toward your goal.",
       founderStats: [
         { value: '3+', label: 'years in the industry' },
-        { value: '15+', label: 'completed projects' },
+        { value: '10+', label: 'completed projects' },
         { value: '100%', label: 'original design' },
       ],
       mottoLabel: '— My motto',
@@ -1071,7 +1071,7 @@ const translations = {
       line3: 'der Premiumklasse',
       morphWords: ['Websites', 'Shops', 'Marken', 'Ateliers', 'Erlebnisse'],
       subtitle: 'Wir bauen Websites, bei denen bewusstes Design auf makellose Ausführung und Handwerkskunst trifft.',
-      cta1: 'Projekt starten',
+      cta1: 'Angebot anfragen',
       cta2: 'Unsere Arbeiten',
     },
     heroCards: [
@@ -1086,12 +1086,12 @@ const translations = {
     ],
     process: {
       heading: 'Wie wir arbeiten',
-      subheading: 'Ein bewährter und transparenter Prozess, der ein hervorragendes Endergebnis garantiert.',
+      subheading: 'Vom ersten Gespräch bis zum Launch — transparent, ohne Überraschungen, in vier Schritten.',
       steps: [
-        { title: 'Fundament', description: 'Wir hören zu, stellen Fragen und definieren die Prioritäten Ihres Projekts.' },
-        { title: 'Konzept', description: 'Wir übersetzen die Strategie in eine kohärente Vision, die Ästhetik und Benutzerfreundlichkeit vereint.' },
-        { title: 'Aufbau', description: 'Wir verwandeln das Konzept in ein funktionierendes Werkzeug und kümmern uns um jeden technischen Aspekt.' },
-        { title: 'Start', description: 'Wir veröffentlichen die Website und unterstützen ihre reibungslose Weiterentwicklung.' },
+        { title: 'Kostenloses Erstgespräch', description: 'Ein 30-minütiges Online-Treffen. Wir hören zu, fragen nach Zielen, Zielgruppe und Budget — unverbindlich.' },
+        { title: 'Angebot & Konzept', description: 'Innerhalb von 3 Tagen erhalten Sie Angebot und Vertrag. Nach Freigabe gestalten wir Struktur und Design in Figma — zwei Korrekturrunden inklusive.' },
+        { title: 'Umsetzung', description: 'Die Implementierung dauert 2–4 Wochen. Sauberer Code (Next.js, React), Performance-Optimierung, technisches SEO, volle Responsivität auf jedem Gerät.' },
+        { title: 'Launch & Support', description: 'Wir veröffentlichen auf Ihrer Domain. 30 Tage Support inklusive: Schulung zur Bearbeitung, Monitoring, kleine Anpassungen ohne Aufpreis.' },
       ],
     },
     testimonials: { heading: 'Kundenvertrauen' },
@@ -1135,7 +1135,7 @@ const translations = {
       founderBio: 'Ich bin Informatikstudentin im zweiten Jahr und gestalte seit über 3 Jahren Websites für Unternehmen, die seriös wirken wollen. Gutes Design ist kein Schmuck — es ist ein Werkzeug, das auf Ihr Ziel hinarbeitet.',
       founderStats: [
         { value: '3+', label: 'Jahre in der Branche' },
-        { value: '15+', label: 'abgeschlossene Projekte' },
+        { value: '10+', label: 'abgeschlossene Projekte' },
         { value: '100%', label: 'originelles Design' },
       ],
       mottoLabel: '— Mein Motto',

@@ -49,8 +49,8 @@ const StatItem = ({ value, suffix = '', label, delay = 0 }: { value: string; suf
 };
 
 const statValues = [
-  { value: "50", suffix: "+" },
-  { value: "20", suffix: "+" },
+  { value: "10", suffix: "+" },
+  { value: "8", suffix: "+" },
   { value: "3",  suffix: "+" },
   { value: "100", suffix: "%" },
 ];

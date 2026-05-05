@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import PolicyView from "@/views/PolicyView";
 
 export const metadata: Metadata = {
-  title: "Polityka Prywatności — Swan Web Studio",
+  title: "Polityka Prywatności",
   description: "Informacje o przetwarzaniu danych osobowych w Swan Web Studio — Weronika Łabędź.",
 };
 

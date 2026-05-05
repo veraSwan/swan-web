@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import StalMarView from "@/views/StalMarView";
 
 export const metadata: Metadata = {
-  title: "Stal Mar — Swan Web Studio",
+  title: "Stal Mar",
   description: "Nowoczesne ogrodzenia panelowe i ozdobne — projekt strony dla Stal Mar.",
 };
 

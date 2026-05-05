@@ -44,12 +44,12 @@ const MockHero: React.FC<MockHeroProps> = ({
           >
             {label}
           </span>
-          <h1
+          <h2
             className={`${headingSize} ${theme.text} font-medium leading-[1.02] tracking-[-0.03em] mb-4 md:mb-7`}
             style={{ fontFamily: theme.displayFont }}
           >
             {heading}
-          </h1>
+          </h2>
           <p
             className={`${sublineSize} ${theme.textMuted} font-light leading-[1.75] mb-6 md:mb-10 max-w-[32ch]`}
             style={{ fontFamily: theme.bodyFont }}

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import TesseraView from "@/views/TesseraView";
 
 export const metadata: Metadata = {
-  title: "Tessera — Swan Web Studio",
+  title: "Tessera",
   description: "Case study restauracji fine dining. Editorial zamiast wizytówki.",
 };
 

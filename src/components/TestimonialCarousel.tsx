@@ -7,27 +7,32 @@ const testimonials = [
   {
     text: "Współpraca była bardzo uporządkowana, a efekt końcowy naprawdę profesjonalny. Wszystkie cele zostały płynnie zrealizowane.",
     author: "Joanna",
-    industry: "marka osobista"
+    industry: "marka osobista",
+    accent: "from-[#D37E8A] via-[#C05775] to-[#9D5B8B]"
   },
   {
     text: "Strona wygląda świetnie i od razu lepiej pokazuje moją markę. Kontakt był jasny na każdym etapie projektowania.",
     author: "Karolina",
-    industry: "branża beauty"
+    industry: "branża beauty",
+    accent: "from-[#E8B4B8] via-[#C99DA3] to-[#8E6D8A]"
   },
   {
     text: "Najbardziej doceniam estetykę, stały kontakt i bezkompromisową dbałość o każdy najmniejszy szczegół wizualny.",
     author: "Michał",
-    industry: "firma usługowa"
+    industry: "firma usługowa",
+    accent: "from-[#5C7E8F] via-[#3F5B6E] to-[#2A3F4F]"
   },
   {
     text: "Cały proces przebiegł bardzo sprawnie, a ostateczny projekt był rzetelnie dopracowany w każdym możliwym detalu.",
     author: "Natalia",
-    industry: "projektantka wnętrz"
+    industry: "projektantka wnętrz",
+    accent: "from-[#C8A96E] via-[#A8865A] to-[#6E5638]"
   },
   {
     text: "Nowa strona od razu wygląda obłędnie i nowocześnie. Działa w pełni płynnie na każdym urządzeniu i budzi szerokie zaufanie.",
     author: "Tomasz",
-    industry: "mały biznes"
+    industry: "mały biznes",
+    accent: "from-[#7A9079] via-[#566B58] to-[#2D3A32]"
   }
 ];
 
@@ -97,8 +102,12 @@ const TestimonialCarousel = () => {
                   </p>
                 </div>
                 <div className="flex items-center gap-5">
-                  <div className="w-14 h-14 bg-gradient-to-br from-[#2A2C32] to-[#1A1C20] border border-white/10 group-hover:border-[#C05775]/40 rounded-full flex items-center justify-center text-white font-light text-xl shadow-inner transition-colors duration-500">
-                    {testimonials[currentIndex].author.charAt(0)}
+                  <div className="relative w-14 h-14 shrink-0">
+                    <div className={`absolute -inset-[2px] rounded-full bg-gradient-to-br ${testimonials[currentIndex].accent} opacity-90 blur-[1px]`} />
+                    <div className={`relative w-full h-full rounded-full bg-gradient-to-br ${testimonials[currentIndex].accent} flex items-center justify-center text-white font-medium text-xl shadow-[0_8px_24px_-8px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.18)]`}
+                         style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                      {testimonials[currentIndex].author.charAt(0)}
+                    </div>
                   </div>
                   <div>
                     <div className="text-white font-medium text-lg tracking-wide group-hover:text-[#C05775] transition-colors duration-300" style={{ fontFamily: 'DM Sans, sans-serif' }}>

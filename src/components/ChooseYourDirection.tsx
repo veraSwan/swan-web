@@ -463,9 +463,10 @@ const ChooseYourDirection: React.FC = () => {
                     <Link
                       href={preview.caseStudyHref}
                       onClick={() => setPreviewId(null)}
-                      className="group inline-flex items-center justify-center gap-2 h-[50px] px-7 rounded-full bg-transparent border border-white/15 text-white/85 text-[0.7rem] tracking-[0.22em] uppercase font-medium transition-all duration-500 ease-[0.22,1,0.36,1] hover:border-[#C05775]/40 hover:text-white hover:bg-white/[0.03] hover:-translate-y-0.5"
+                      className="group inline-flex flex-col items-center justify-center gap-0.5 min-h-[50px] h-auto py-3 px-7 rounded-full bg-transparent border border-white/15 text-white/85 text-[0.62rem] tracking-[0.18em] uppercase font-medium transition-all duration-500 ease-[0.22,1,0.36,1] hover:border-[#C05775]/40 hover:text-white hover:bg-white/[0.03] hover:-translate-y-0.5"
                     >
-                      {cyd.fullRealization} {preview.caseStudyName}
+                      <span className="text-white/45 text-[0.55rem] tracking-[0.22em]">{cyd.fullRealization}</span>
+                      <span>{preview.caseStudyName}</span>
                       <ArrowRight className="w-3.5 h-3.5 transition-transform duration-500 group-hover:translate-x-1" />
                     </Link>
                   </div>

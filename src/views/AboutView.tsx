@@ -267,7 +267,7 @@ const AboutView: React.FC = () => {
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-            className="relative overflow-hidden rounded-[2rem] md:rounded-[2.5rem] p-12 md:p-20 lg:p-24 text-center bg-white/[0.025] backdrop-blur-2xl border border-white/[0.08] shadow-[0_40px_100px_-40px_rgba(0,0,0,0.7),0_0_0_1px_rgba(192,87,117,0.06)_inset]"
+            className="relative overflow-hidden rounded-[2rem] md:rounded-[2.5rem] p-6 sm:p-10 md:p-20 lg:p-24 text-center bg-white/[0.025] backdrop-blur-2xl border border-white/[0.08] shadow-[0_40px_100px_-40px_rgba(0,0,0,0.7),0_0_0_1px_rgba(192,87,117,0.06)_inset]"
           >
             <div
               aria-hidden="true"
@@ -284,7 +284,7 @@ const AboutView: React.FC = () => {
               </p>
               <Button
                 onClick={() => router.push('/contact')}
-                className="group bg-[#C05775] text-white hover:bg-[#CB6280] px-10 py-7 text-[0.72rem] tracking-[0.22em] uppercase font-semibold rounded-full transition-all duration-500 ease-[0.22,1,0.36,1] hover:shadow-[0_0_55px_-8px_rgba(192,87,117,0.7)] hover:-translate-y-0.5 hover:scale-[1.02]"
+                className="group max-w-full whitespace-normal h-auto bg-[#C05775] text-white hover:bg-[#CB6280] px-6 sm:px-8 md:px-10 py-5 sm:py-6 md:py-7 text-[0.62rem] sm:text-[0.68rem] md:text-[0.72rem] tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.22em] leading-snug uppercase font-semibold rounded-full transition-all duration-500 ease-[0.22,1,0.36,1] hover:shadow-[0_0_55px_-8px_rgba(192,87,117,0.7)] hover:-translate-y-0.5 hover:scale-[1.02]"
               >
                 {a.ctaButton}
               </Button>

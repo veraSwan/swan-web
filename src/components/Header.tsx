@@ -75,7 +75,7 @@ const Header = () => {
             </Link>
 
             {/* Desktop nav */}
-            <div className="hidden md:flex items-center gap-2 relative z-20 flex-1 justify-center">
+            <div className="hidden lg:flex items-center gap-2 relative z-20 flex-1 justify-center">
               {navItems.map((item) => {
                 const isActive = pathname === item.path;
                 return (
@@ -91,7 +91,7 @@ const Header = () => {
                   >
                     <span
                       suppressHydrationWarning
-                      className="text-[0.78rem] uppercase tracking-[0.18em] relative z-10"
+                      className="text-[0.78rem] uppercase tracking-[0.18em] relative z-10 whitespace-nowrap"
                       style={{ fontFamily: 'Inter, sans-serif' }}
                     >
                       {item.name}
@@ -104,7 +104,7 @@ const Header = () => {
             {/* Right controls */}
             <div className="flex items-center gap-2 shrink-0 relative z-20">
               {/* Language switcher */}
-              <div className="hidden md:flex items-center rounded-full border border-white/[0.08] bg-white/[0.03] px-1 py-1 gap-0.5">
+              <div className="hidden lg:flex items-center rounded-full border border-white/[0.08] bg-white/[0.03] px-1 py-1 gap-0.5">
                 {LANGS.map((l) => (
                   <button
                     suppressHydrationWarning
@@ -127,7 +127,7 @@ const Header = () => {
                 suppressHydrationWarning
                 onClick={toggleTheme}
                 aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-                className="hidden md:flex w-9 h-9 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.03] text-white/55 hover:text-white hover:border-white/20 hover:bg-white/[0.07] transition-all duration-300 ease-[0.22,1,0.36,1]"
+                className="hidden lg:flex w-9 h-9 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.03] text-white/55 hover:text-white hover:border-white/20 hover:bg-white/[0.07] transition-all duration-300 ease-[0.22,1,0.36,1]"
               >
                 {(!mounted || theme === 'dark')
                   ? <Sun className="w-4 h-4 stroke-[1.5]" />
@@ -136,7 +136,7 @@ const Header = () => {
               </button>
 
               {/* Mobile — controls + hamburger */}
-              <div className="md:hidden flex items-center gap-2">
+              <div className="lg:hidden flex items-center gap-2">
                 {/* Mobile lang */}
                 <div className="flex items-center rounded-full border border-white/[0.08] bg-white/[0.03] px-1 py-0.5 gap-0">
                   {LANGS.map((l) => (
@@ -200,7 +200,7 @@ const Header = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 md:hidden"
+            className="fixed inset-0 z-40 lg:hidden"
           >
             <div
               className="absolute inset-0 bg-[#06070A]/90 backdrop-blur-xl"

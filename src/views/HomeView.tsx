@@ -10,6 +10,9 @@ import ChooseYourDirection from '@/components/ChooseYourDirection';
 import AnimatedStatistics from '@/components/AnimatedStatistics';
 import FeaturedProjects from '@/components/FeaturedProjects';
 import HeroCard from '@/components/HeroCard';
+import MouseSpotlight from '@/components/MouseSpotlight';
+import MorphingWord from '@/components/MorphingWord';
+import MarqueeBand from '@/components/MarqueeBand';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useTranslation } from '@/hooks/useTranslation';
 import { useTheme } from '@/contexts/ThemeContext';
@@ -75,6 +78,7 @@ const HomeView = () => {
         {(!mounted || theme === 'dark') && (
           <div className="absolute bottom-0 inset-x-0 h-[35%] bg-gradient-to-t from-[#08090C] via-[#08090C]/80 to-transparent z-0 pointer-events-none" />
         )}
+        <MouseSpotlight size={620} color="rgba(192,87,117,0.14)" />
         <div className="bg-noise" />
 
         <div className="layout-container-wide relative z-10 w-full pt-28 md:pt-36 pb-24 md:pb-32">
@@ -103,7 +107,11 @@ const HomeView = () => {
                   {tr.hero.line1}
                 </span>
                 <span className="block text-[3.25rem] sm:text-[4rem] md:text-[5rem] lg:text-[6rem] font-light text-white/95">
-                  {tr.hero.line2}
+                  <MorphingWord
+                    words={tr.hero.morphWords}
+                    intervalMs={3400}
+                    accentColor="#E889A1"
+                  />
                 </span>
                 <span className="block text-[3.25rem] sm:text-[4rem] md:text-[5rem] lg:text-[6rem] font-medium text-white mt-2">
                   {tr.hero.line3}<span className="text-[#C05775]">.</span>
@@ -171,6 +179,11 @@ const HomeView = () => {
         </div>
       </section>
 
+      <MarqueeBand
+        items={['Estetyka', 'Strategia', 'Rzemiosło', 'Detal', 'Charakter', 'Finezja', 'Tempo', 'Spokój']}
+        speedSec={42}
+      />
+
       <section ref={servicesRef} className="scroll-mt-24 section-spacing relative overflow-hidden bg-[#08090C]">
         <div className="absolute inset-0 bg-[var(--page-glow)] z-0 opacity-50 pointer-events-none" />
         <div className="layout-container relative z-10">
@@ -217,7 +230,7 @@ const HomeView = () => {
             animate={processVisible ? "visible" : "hidden"}
             className="text-center mb-20"
           >
-            <motion.h2 variants={processVariants.fadeInUp} className="text-4xl md:text-5xl lg:text-[4rem] font-bold text-white tracking-tight">
+            <motion.h2 variants={processVariants.fadeInUp} className="text-4xl md:text-5xl lg:text-[4rem] font-semibold text-white tracking-[-0.02em]">
               {tr.process.heading}
             </motion.h2>
             <motion.p variants={processVariants.fadeInUp} className="mt-6 text-lg text-white/60 font-light max-w-2xl mx-auto">

@@ -80,7 +80,7 @@ const translations = {
       founderBio: 'Jestem studentką informatyki na II roku i od 3 lat projektuję strony internetowe dla firm, które chcą wyglądać poważnie. Wierzę, że dobry design to nie ozdoba — to narzędzie, które pracuje na Twój cel.',
       founderStats: [
         { value: '3+', label: 'lata w branży' },
-        { value: '10+', label: 'zrealizowanych projektów' },
+        { value: '20+', label: 'zrealizowanych projektów' },
         { value: '100%', label: 'autorskiego designu' },
       ],
       mottoLabel: '— Moja dewiza',
@@ -606,7 +606,7 @@ const translations = {
       founderBio: "I'm a second-year Computer Science student with 3+ years of experience designing websites for businesses that want to be taken seriously. Good design isn't decoration — it's a tool that works toward your goal.",
       founderStats: [
         { value: '3+', label: 'years in the industry' },
-        { value: '10+', label: 'completed projects' },
+        { value: '20+', label: 'completed projects' },
         { value: '100%', label: 'original design' },
       ],
       mottoLabel: '— My motto',
@@ -1135,7 +1135,7 @@ const translations = {
       founderBio: 'Ich bin Informatikstudentin im zweiten Jahr und gestalte seit über 3 Jahren Websites für Unternehmen, die seriös wirken wollen. Gutes Design ist kein Schmuck — es ist ein Werkzeug, das auf Ihr Ziel hinarbeitet.',
       founderStats: [
         { value: '3+', label: 'Jahre in der Branche' },
-        { value: '10+', label: 'abgeschlossene Projekte' },
+        { value: '20+', label: 'abgeschlossene Projekte' },
         { value: '100%', label: 'originelles Design' },
       ],
       mottoLabel: '— Mein Motto',

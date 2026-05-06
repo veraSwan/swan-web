@@ -1,9 +1,12 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Mail, Clock, ShieldCheck, MessageCircle } from 'lucide-react';
+import { ArrowRight, Mail, Clock, ShieldCheck, MessageCircle, Loader2 } from 'lucide-react';
 import { ChevronDown } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
+import FAQ from '@/components/FAQ';
+
+const FORMSPREE_ENDPOINT = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
 
 const trustIcons = [Clock, ShieldCheck, MessageCircle];
 
@@ -23,6 +26,8 @@ const ContactView: React.FC = () => {
 
   const [formData, setFormData] = useState({ name: '', email: '', service: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [errors, setErrors] = useState({ name: false, email: false, message: false });
 
   useEffect(() => {
@@ -37,7 +42,7 @@ const ContactView: React.FC = () => {
     if (errors[name as keyof typeof errors]) setErrors((prev) => ({ ...prev, [name]: false }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const newErrors = {
       name: !formData.name.trim(),
@@ -47,7 +52,38 @@ const ContactView: React.FC = () => {
     setErrors(newErrors);
     if (Object.values(newErrors).some(Boolean)) return;
 
+    setSubmitError(null);
     const serviceLabel = c.serviceOptions.find((o) => o.value === formData.service)?.label ?? 'Nowy projekt';
+
+    if (FORMSPREE_ENDPOINT) {
+      setSubmitting(true);
+      try {
+        const res = await fetch(FORMSPREE_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            service: serviceLabel,
+            message: formData.message,
+            _subject: `Zapytanie: ${serviceLabel}`,
+          }),
+        });
+        if (!res.ok) {
+          const data = await res.json().catch(() => null);
+          throw new Error(data?.error ?? `HTTP ${res.status}`);
+        }
+        setSubmitted(true);
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : 'Unknown error';
+        setSubmitError(msg);
+      } finally {
+        setSubmitting(false);
+      }
+      return;
+    }
+
+    // Fallback: open user's mail client
     const subject = encodeURIComponent(`Zapytanie: ${serviceLabel}`);
     const body = encodeURIComponent(`Od: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`);
     window.location.href = `mailto:hello@swanweb.pl?subject=${subject}&body=${body}`;
@@ -144,13 +180,18 @@ const ContactView: React.FC = () => {
                     </svg>
                   </div>
                   <h2 className="text-3xl md:text-4xl font-medium text-white mb-5 tracking-tight">
-                    {c.successHeading}
+                    {FORMSPREE_ENDPOINT ? 'Wiadomość wysłana' : c.successHeading}
                   </h2>
                   <p className="text-white/55 font-light leading-[1.75] max-w-sm mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
-                    {c.successText}{' '}
-                    <a href="mailto:hello@swanweb.pl" className="text-[#C05775] hover:underline">
-                      hello@swanweb.pl
-                    </a>
+                    {FORMSPREE_ENDPOINT ? (
+                      <>Dziękuję! Odezwę się do Ciebie w ciągu 24 godzin. Jeśli pilne — napisz na{' '}
+                        <a href="mailto:hello@swanweb.pl" className="text-[#C05775] hover:underline">hello@swanweb.pl</a>.
+                      </>
+                    ) : (
+                      <>{c.successText}{' '}
+                        <a href="mailto:hello@swanweb.pl" className="text-[#C05775] hover:underline">hello@swanweb.pl</a>
+                      </>
+                    )}
                   </p>
                 </div>
               ) : (
@@ -225,12 +266,30 @@ const ContactView: React.FC = () => {
                       {errors.message && <p className="text-[0.72rem] text-red-400/80 font-light" style={{ fontFamily: 'Inter, sans-serif' }}>{c.required}</p>}
                     </div>
 
+                    {submitError && (
+                      <div className="rounded-xl border border-red-500/40 bg-red-500/[0.05] px-5 py-3.5 text-[0.82rem] text-red-300/90 font-light leading-[1.55]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                        Nie udało się wysłać wiadomości. Spróbuj ponownie lub napisz bezpośrednio na{' '}
+                        <a href="mailto:hello@swanweb.pl" className="underline hover:text-red-200">hello@swanweb.pl</a>.
+                      </div>
+                    )}
+
                     <button
                       type="submit"
-                      className="group w-full flex items-center justify-center gap-2.5 bg-[#C05775] text-white hover:bg-[#CB6280] h-[58px] text-[0.7rem] tracking-[0.22em] uppercase font-semibold rounded-full transition-all duration-500 ease-[0.22,1,0.36,1] hover:shadow-[0_0_55px_-8px_rgba(192,87,117,0.7)] hover:-translate-y-0.5 hover:scale-[1.01] mt-2"
+                      disabled={submitting}
+                      aria-busy={submitting}
+                      className="group w-full flex items-center justify-center gap-2.5 bg-[#C05775] text-white hover:bg-[#CB6280] h-[58px] text-[0.7rem] tracking-[0.22em] uppercase font-semibold rounded-full transition-all duration-500 ease-[0.22,1,0.36,1] hover:shadow-[0_0_55px_-8px_rgba(192,87,117,0.7)] hover:-translate-y-0.5 hover:scale-[1.01] mt-2 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:scale-100 disabled:hover:shadow-none"
                     >
-                      {c.submit}
-                      <ArrowRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" />
+                      {submitting ? (
+                        <>
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                          Wysyłanie...
+                        </>
+                      ) : (
+                        <>
+                          {c.submit}
+                          <ArrowRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" />
+                        </>
+                      )}
                     </button>
 
                     <p className="text-center text-[0.72rem] text-white/30 font-light pt-1" style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -243,6 +302,8 @@ const ContactView: React.FC = () => {
           </div>
         </div>
       </section>
+
+      <FAQ />
     </main>
   );
 };

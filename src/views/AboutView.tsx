@@ -90,6 +90,9 @@ const AboutView: React.FC = () => {
                   <img
                     src="/weronika.jpg"
                     alt="Weronika Łabędź — Swan Web Studio"
+                    loading="eager"
+                    fetchPriority="high"
+                    decoding="async"
                     className="w-full h-full object-cover object-center opacity-90 hover:opacity-100 transition-opacity duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />

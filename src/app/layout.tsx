@@ -4,6 +4,8 @@ import Header from "@/components/Header";
 import ScrollToTop from "@/components/ScrollToTop";
 import Providers from "@/components/Providers";
 import CustomCursor from "@/components/CustomCursor";
+import ScrollProgress from "@/components/ScrollProgress";
+import CookieBanner from "@/components/CookieBanner";
 
 const BASE_URL = "https://swanweb.pl";
 const OG_IMAGE = "https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/ccb4ebf22fc923ffd0529cf619c7ac26.png";
@@ -134,11 +136,13 @@ export default function RootLayout({
       <body suppressHydrationWarning>
         <Providers>
           <ScrollToTop />
+          <ScrollProgress />
           <CustomCursor />
           <div className="min-h-screen bg-[#08090C] text-foreground selection:bg-accent/30 selection:text-foreground">
             <Header />
             {children}
           </div>
+          <CookieBanner />
           <div className="grain-overlay" aria-hidden="true" />
         </Providers>
       </body>

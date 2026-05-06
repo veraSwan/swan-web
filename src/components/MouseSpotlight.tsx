@@ -19,6 +19,9 @@ const MouseSpotlight: React.FC<Props> = ({
 
   useEffect(() => {
     if (window.matchMedia("(pointer: coarse)").matches) return;
+    if (window.innerWidth < 768) return;
+
+    let visible = true;
 
     const onMove = (e: MouseEvent) => {
       const rect = ref.current?.parentElement?.getBoundingClientRect();
@@ -28,6 +31,10 @@ const MouseSpotlight: React.FC<Props> = ({
     };
 
     const tick = () => {
+      if (!visible) {
+        raf.current = requestAnimationFrame(tick);
+        return;
+      }
       const lerp = 0.12;
       current.current.x += (target.current.x - current.current.x) * lerp;
       current.current.y += (target.current.y - current.current.y) * lerp;
@@ -37,11 +44,20 @@ const MouseSpotlight: React.FC<Props> = ({
       raf.current = requestAnimationFrame(tick);
     };
 
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        visible = entry.isIntersecting;
+      },
+      { threshold: 0, rootMargin: "120px" },
+    );
+    if (ref.current) io.observe(ref.current);
+
     window.addEventListener("mousemove", onMove);
     raf.current = requestAnimationFrame(tick);
 
     return () => {
       window.removeEventListener("mousemove", onMove);
+      io.disconnect();
       if (raf.current) cancelAnimationFrame(raf.current);
     };
   }, [size]);

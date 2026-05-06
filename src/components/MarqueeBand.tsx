@@ -30,13 +30,13 @@ const MarqueeBand: React.FC<Props> = ({
         {track.map((it, i) => (
           <span
             key={i}
-            className="inline-flex items-center gap-12 md:gap-20 text-[2.5rem] md:text-[4rem] lg:text-[5.5rem] font-light tracking-[-0.02em] text-white/[0.07] hover:text-[#C05775]/60 transition-colors duration-700"
+            className="group inline-flex items-center gap-12 md:gap-20 text-[2.5rem] md:text-[4rem] lg:text-[5.5rem] font-light tracking-[-0.02em] text-white/[0.07] hover:text-[#E889A1] transition-all duration-500 ease-[0.22,1,0.36,1] hover:-translate-y-1 hover:[text-shadow:0_0_24px_rgba(232,137,161,0.45)] cursor-default"
             style={{ fontFamily: "DM Sans, sans-serif" }}
           >
             {it}
             <span
               aria-hidden="true"
-              className="inline-block w-px h-[0.55em] bg-gradient-to-b from-transparent via-[#C05775]/35 to-transparent"
+              className="inline-block w-px h-[0.55em] bg-gradient-to-b from-transparent via-[#C05775]/35 to-transparent group-hover:via-[#E889A1] transition-colors duration-500"
             />
           </span>
         ))}

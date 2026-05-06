@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Layout, Globe, Palette, Check, ArrowRight } from 'lucide-react';
+import { Layout, Globe, Palette, Check, ArrowRight, ShieldCheck, Compass, Coins } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useTranslation } from '@/hooks/useTranslation';
 
@@ -228,6 +228,93 @@ const ServicesView: React.FC = () => {
           >
             {s.footnote}
           </motion.p>
+        </div>
+      </section>
+
+      {/* Filozofia ceny */}
+      <section className="relative py-24 md:py-32 overflow-hidden bg-[#08090C] border-t border-white/[0.04]">
+        <div
+          aria-hidden="true"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[420px] bg-[#C05775]/[0.03] blur-[170px] rounded-full pointer-events-none"
+        />
+
+        <div className="layout-container-wide relative z-10">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-80px' }}
+            variants={stagger(0.18)}
+            className="text-center max-w-2xl mx-auto mb-14 md:mb-16"
+          >
+            <motion.span variants={fadeInUp} className="text-[#C05775] text-[0.7rem] font-medium tracking-[0.4em] uppercase mb-6 block">
+              — Filozofia ceny
+            </motion.span>
+            <motion.h2
+              variants={fadeInUp}
+              className="text-4xl md:text-5xl lg:text-[3.5rem] font-medium text-white leading-[1.1] tracking-[-0.02em]"
+            >
+              Dlaczego nie ma sztywnego cennika
+            </motion.h2>
+            <motion.p
+              variants={fadeInUp}
+              className="mt-5 text-base md:text-lg text-white/55 font-light leading-[1.7]"
+              style={{ fontFamily: 'Inter, sans-serif' }}
+            >
+              Bo każdy projekt ma inny zakres, tempo i cel. Zamiast wpychać Cię w pakiet — mówię wprost, ile kosztuje to, czego naprawdę potrzebujesz.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-80px' }}
+            variants={stagger(0.15, 0.1)}
+            className="grid md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto"
+          >
+            {[
+              {
+                icon: ShieldCheck,
+                title: 'Bez ukrytych kosztów',
+                description: 'Wycena, którą dostaniesz, jest finalna. Brak dopisków typu „dodatkowa runda poprawek 500 zł". Wszystko wchodzi w cenę z umowy.',
+              },
+              {
+                icon: Compass,
+                title: 'Wycena dopasowana',
+                description: 'Mała kawiarnia nie potrzebuje takiej samej strony co butik luksusowy. Pytam o cel, kontekst i budżet — wycena wynika z rozmowy, nie z tabelki.',
+              },
+              {
+                icon: Coins,
+                title: 'Płatność etapowa',
+                description: '40% zaliczki przy starcie, reszta po wdrożeniu. Bez płacenia z góry za niewidoczną pracę. Jeśli na etapie projektu zrezygnujesz — zostaje to, co już zrobiliśmy.',
+              },
+            ].map((p) => {
+              const Icon = p.icon;
+              return (
+                <motion.div
+                  key={p.title}
+                  variants={fadeInUp}
+                  className="group relative h-full overflow-hidden rounded-[1.5rem] p-8 md:p-9 backdrop-blur-2xl bg-white/[0.025] border border-white/[0.07] transition-all duration-700 ease-[0.22,1,0.36,1] hover:-translate-y-1.5 hover:bg-white/[0.045] hover:border-[#C05775]/30 hover:shadow-[0_30px_60px_-20px_rgba(192,87,117,0.28)]"
+                >
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 rounded-[1.5rem] opacity-60"
+                    style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.045) 0%, rgba(255,255,255,0) 45%)' }}
+                  />
+                  <div className="relative z-10">
+                    <div className="mb-6 w-12 h-12 flex items-center justify-center rounded-xl bg-white/[0.04] border border-white/[0.06] group-hover:border-[#C05775]/40 group-hover:bg-[#C05775]/12 group-hover:shadow-[0_0_25px_-5px_rgba(192,87,117,0.45)] transition-all duration-700 ease-[0.22,1,0.36,1]">
+                      <Icon className="w-5 h-5 text-white/65 group-hover:text-[#C05775] transition-all duration-700 ease-[0.22,1,0.36,1] stroke-[1.5] group-hover:rotate-[8deg] group-hover:scale-110" />
+                    </div>
+                    <h3 className="text-[1.2rem] md:text-[1.3rem] font-medium text-white/95 mb-3 tracking-tight">
+                      {p.title}
+                    </h3>
+                    <p className="text-[0.92rem] text-white/55 font-light leading-[1.7]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                      {p.description}
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
         </div>
       </section>
     </main>

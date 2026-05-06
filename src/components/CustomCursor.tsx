@@ -39,7 +39,7 @@ const CustomCursor: React.FC = () => {
       isHover.current = interactive;
       if (ringRef.current) {
         ringRef.current.style.transform = `translate3d(${ring.current.x}px, ${ring.current.y}px, 0) translate(-50%, -50%) scale(${interactive ? 1.8 : 1})`;
-        ringRef.current.style.borderColor = interactive ? "rgba(192,87,117,0.85)" : "rgba(255,255,255,0.5)";
+        ringRef.current.style.borderColor = interactive ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.55)";
       }
     };
 
@@ -92,12 +92,13 @@ const CustomCursor: React.FC = () => {
         aria-hidden="true"
         style={{
           ...baseStyle,
-          width: 5,
-          height: 5,
+          width: 6,
+          height: 6,
           marginTop: -3,
           marginLeft: -3,
           borderRadius: "50%",
-          backgroundColor: "rgba(192,87,117,0.9)",
+          backgroundColor: "rgba(192,87,117,1)",
+          boxShadow: "0 0 0 1.5px rgba(255,255,255,0.75), 0 0 6px rgba(0,0,0,0.45)",
         }}
       />
       <div
@@ -108,7 +109,8 @@ const CustomCursor: React.FC = () => {
           width: 22,
           height: 22,
           borderRadius: "50%",
-          border: "1.25px solid rgba(255,255,255,0.5)",
+          border: "1.5px solid rgba(255,255,255,0.55)",
+          boxShadow: "0 0 0 0.5px rgba(0,0,0,0.25)",
           transition: "opacity 200ms ease, border-color 220ms ease",
         }}
       />

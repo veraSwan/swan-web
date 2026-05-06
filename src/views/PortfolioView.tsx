@@ -114,6 +114,26 @@ interface GridProjectProps {
 
 const GridProject: React.FC<GridProjectProps> = ({ meta, description, viewProject }) => {
   const anim = useScrollAnimation({ threshold: 0.15 });
+  const cardRef = React.useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const el = cardRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const px = ((e.clientX - rect.left) / rect.width - 0.5) * 2; // -1 → 1
+    const py = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+    el.style.setProperty('--px', String(px));
+    el.style.setProperty('--py', String(py));
+    el.style.setProperty('--mx', `${e.clientX - rect.left}px`);
+    el.style.setProperty('--my', `${e.clientY - rect.top}px`);
+  };
+
+  const handleMouseLeave = () => {
+    const el = cardRef.current;
+    if (!el) return;
+    el.style.setProperty('--px', '0');
+    el.style.setProperty('--py', '0');
+  };
 
   return (
     <Link
@@ -121,15 +141,45 @@ const GridProject: React.FC<GridProjectProps> = ({ meta, description, viewProjec
       ref={anim.ref}
       className={`group relative block scroll-animate ${anim.isVisible ? 'is-visible' : ''}`}
     >
-      <div className="relative aspect-[4/5] overflow-hidden rounded-[1.25rem] bg-[#1A1C20] border border-white/[0.06] transition-all duration-700 ease-[0.22,1,0.36,1] group-hover:border-[#C05775]/25 group-hover:shadow-[0_30px_60px_-25px_rgba(0,0,0,0.6)]">
-        <motion.img
-          src={meta.image}
-          alt={meta.name}
-          loading="lazy"
-          className="absolute inset-0 w-full h-full object-cover object-top opacity-75 transition-all duration-[1.2s] ease-[0.22,1,0.36,1] group-hover:opacity-90 group-hover:scale-[1.04]"
+      <div
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{
+          ['--px' as string]: '0',
+          ['--py' as string]: '0',
+          ['--mx' as string]: '50%',
+          ['--my' as string]: '50%',
+        }}
+        className="relative aspect-[4/5] overflow-hidden rounded-[1.25rem] bg-[#1A1C20] border border-white/[0.06] transition-all duration-700 ease-[0.22,1,0.36,1] group-hover:border-[#C05775]/25 group-hover:shadow-[0_40px_80px_-25px_rgba(192,87,117,0.18),0_30px_60px_-25px_rgba(0,0,0,0.6)]"
+      >
+        {/* image reveal mask wrapper — clip-path expands on hover */}
+        <div className="absolute inset-0 transition-[clip-path] duration-[1100ms] ease-[0.22,1,0.36,1] [clip-path:inset(8%_round_0.85rem)] group-hover:[clip-path:inset(0%_round_1.25rem)]">
+          <img
+            src={meta.image}
+            alt={meta.name}
+            loading="lazy"
+            className="absolute inset-0 w-full h-full object-cover object-top opacity-75 transition-all duration-[1.4s] ease-[0.22,1,0.36,1] group-hover:opacity-95 group-hover:scale-[1.08] will-change-transform"
+            style={{
+              transform: 'translate3d(calc(var(--px) * 8px), calc(var(--py) * 8px), 0)',
+            }}
+          />
+        </div>
+
+        {/* gradient scrims */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/30 pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-black via-black/90 to-transparent pointer-events-none" />
+
+        {/* cursor-following spotlight */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          style={{
+            background:
+              'radial-gradient(360px circle at var(--mx) var(--my), rgba(192,87,117,0.16), transparent 50%)',
+          }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/30" />
-        <div className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-black via-black/90 to-transparent" />
+
         <div className="absolute top-5 right-5 w-9 h-9 rounded-full bg-white/10 backdrop-blur-md border border-white/15 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0 z-10">
           <ArrowUpRight className="w-4 h-4 text-white" />
         </div>

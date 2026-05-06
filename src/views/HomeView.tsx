@@ -13,6 +13,10 @@ import HeroCard from '@/components/HeroCard';
 import MouseSpotlight from '@/components/MouseSpotlight';
 import MorphingWord from '@/components/MorphingWord';
 import MarqueeBand from '@/components/MarqueeBand';
+import ParticleField from '@/components/ParticleField';
+import ServiceCard from '@/components/ServiceCard';
+import ProcessTimeline from '@/components/ProcessTimeline';
+import ClientStrip from '@/components/ClientStrip';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useTranslation } from '@/hooks/useTranslation';
 import { useTheme } from '@/contexts/ThemeContext';
@@ -26,7 +30,6 @@ const HomeView = () => {
 
   const { ref: heroRef, isVisible: heroVisible, variants: heroVariants } = useScrollAnimation({ threshold: 0.1 });
   const { ref: servicesRef, isVisible: servicesVisible, variants: servicesVariants } = useScrollAnimation({ threshold: 0.1 });
-  const { ref: processRef, isVisible: processVisible, variants: processVariants } = useScrollAnimation({ threshold: 0.1 });
   const { ref: ctaRef, isVisible: ctaVisible, variants: ctaVariants } = useScrollAnimation({ threshold: 0.2 });
 
   const serviceIcons = [
@@ -78,6 +81,7 @@ const HomeView = () => {
         {(!mounted || theme === 'dark') && (
           <div className="absolute bottom-0 inset-x-0 h-[35%] bg-gradient-to-t from-[#08090C] via-[#08090C]/80 to-transparent z-0 pointer-events-none" />
         )}
+        <ParticleField className="opacity-[0.55]" density={0.00007} linkDistance={140} />
         <MouseSpotlight size={620} color="rgba(192,87,117,0.14)" />
         <div className="bg-noise" />
 
@@ -194,22 +198,12 @@ const HomeView = () => {
             className="grid md:grid-cols-3 gap-6 md:gap-8 w-full max-w-6xl mx-auto"
           >
             {tr.homeServices.map((service, index) => (
-              <motion.div
-                key={index}
-                variants={servicesVariants.scaleIn}
-                className="group bg-white/[0.025] backdrop-blur-2xl rounded-[1.5rem] p-10 border border-white/[0.07] relative flex flex-col items-start transition-all duration-700 ease-[0.22,1,0.36,1] hover:-translate-y-1.5 hover:bg-white/[0.045] hover:border-[#C05775]/30 hover:shadow-[0_30px_60px_-20px_rgba(192,87,117,0.28),0_0_0_1px_rgba(192,87,117,0.08)_inset] animate-float-medium"
-              >
-                <div className="mb-8 bg-white/[0.04] group-hover:bg-[#C05775]/12 w-14 h-14 flex items-center justify-center rounded-xl border border-white/[0.06] group-hover:border-[#C05775]/40 group-hover:shadow-[0_0_25px_-5px_rgba(192,87,117,0.45)] transition-all duration-700 ease-[0.22,1,0.36,1]">
-                  {React.cloneElement(serviceIcons[index], { className: "text-white/60 group-hover:text-[#C05775] transition-all duration-700 ease-[0.22,1,0.36,1] stroke-[1.5] group-hover:rotate-[8deg] group-hover:scale-110" })}
-                </div>
-                <h3 className="text-2xl font-medium text-white mb-4 transition-colors duration-500 tracking-wide group-hover:text-white/90">
-                  {service.title}
-                </h3>
-                <div className="text-block">
-                  <p className="text-[#E5E7EB] opacity-60 group-hover:opacity-80 font-light text-base leading-[1.7] transition-opacity duration-500" style={{ fontFamily: 'Inter, sans-serif' }}>
-                    {service.description}
-                  </p>
-                </div>
+              <motion.div key={index} variants={servicesVariants.scaleIn}>
+                <ServiceCard
+                  icon={serviceIcons[index]}
+                  title={service.title}
+                  description={service.description}
+                />
               </motion.div>
             ))}
           </motion.div>
@@ -217,55 +211,12 @@ const HomeView = () => {
       </section>
 
       <AnimatedStatistics />
+      <ClientStrip />
       <AboutSection />
       <ChooseYourDirection />
       <FeaturedProjects />
 
-      <section ref={processRef} className="section-spacing relative bg-[#08090C] border-t border-white/[0.02]">
-        <div className="absolute inset-0 bg-[var(--ambient-gradient)] z-0 opacity-40 pointer-events-none" />
-        <div className="layout-container relative z-10 max-w-5xl mx-auto">
-          <motion.div
-            variants={processVariants.staggerContainer(0.2, 0.1)}
-            initial="hidden"
-            animate={processVisible ? "visible" : "hidden"}
-            className="text-center mb-20"
-          >
-            <motion.h2 variants={processVariants.fadeInUp} className="text-4xl md:text-5xl lg:text-[4rem] font-semibold text-white tracking-[-0.02em]">
-              {tr.process.heading}
-            </motion.h2>
-            <motion.p variants={processVariants.fadeInUp} className="mt-6 text-lg text-white/60 font-light max-w-2xl mx-auto">
-              {tr.process.subheading}
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            variants={processVariants.staggerContainer(0.2, 0.1)}
-            initial="hidden"
-            animate={processVisible ? "visible" : "hidden"}
-            className="grid md:grid-cols-2 gap-8"
-          >
-            {tr.process.steps.map((item, index) => (
-              <motion.div
-                key={index}
-                variants={processVariants.scaleIn}
-                className="flex gap-6 items-start p-10 rounded-[2rem] bg-[#111216]/80 border border-white/5 hover-lift group transition-all duration-500 relative overflow-hidden"
-              >
-                <div className="absolute top-7 right-8 text-[0.7rem] font-medium tracking-[0.4em] uppercase text-white/20 group-hover:text-[#C05775]/70 transition-colors duration-500 select-none">
-                  — 0{index + 1}
-                </div>
-                <div className="relative z-10">
-                  <h3 className="text-2xl font-medium text-white mb-3 tracking-wide group-hover:text-white/90 transition-colors duration-500">
-                    {item.title}
-                  </h3>
-                  <p className="text-[#E5E7EB] opacity-60 group-hover:opacity-80 font-light text-base leading-[1.7] transition-opacity duration-500" style={{ fontFamily: 'Inter, sans-serif' }}>
-                    {item.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+      <ProcessTimeline />
 
       <section className="section-spacing relative bg-[#08090C] border-t border-white/[0.02]">
         <div className="absolute inset-0 bg-[var(--page-glow)] z-0 opacity-40 pointer-events-none" />
@@ -282,9 +233,29 @@ const HomeView = () => {
           variants={ctaVariants.scaleIn}
           initial="hidden"
           animate={ctaVisible ? "visible" : "hidden"}
-          className="w-full bg-[#111216] rounded-[3rem] p-12 md:p-24 text-center border border-white/5 relative overflow-hidden group transition-all duration-700 ease-[0.22,1,0.36,1] shadow-2xl"
+          className="relative w-full bg-[#0E1016] rounded-[3rem] p-12 md:p-24 text-center border border-white/[0.07] overflow-hidden group transition-all duration-700 ease-[0.22,1,0.36,1] shadow-[0_60px_140px_-40px_rgba(0,0,0,0.7),0_0_0_1px_rgba(192,87,117,0.06)_inset]"
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-[#C05775]/5 via-transparent to-transparent pointer-events-none rounded-[3rem] opacity-50 group-hover:opacity-100 transition-opacity duration-1000" />
+          <ParticleField className="opacity-[0.45]" density={0.00005} linkDistance={120} interactive={false} />
+
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 rounded-[3rem] pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(ellipse 70% 60% at 50% 10%, rgba(192,87,117,0.16) 0%, transparent 60%)",
+            }}
+          />
+
+          <motion.div
+            aria-hidden="true"
+            animate={{ opacity: [0.4, 0.85, 0.4] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute inset-0 rounded-[3rem] pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(ellipse 60% 45% at 50% 100%, rgba(157,91,139,0.12) 0%, transparent 65%)",
+            }}
+          />
 
           <div className="relative z-10 text-block mx-auto max-w-3xl flex flex-col items-center">
             <h2 className="text-4xl md:text-5xl lg:text-[4rem] font-bold text-white mb-8 leading-[1.1] tracking-tight">
@@ -294,10 +265,16 @@ const HomeView = () => {
               {tr.cta.paragraph}
             </p>
 
-            <div className="flex flex-col items-center gap-6">
+            <div className="relative flex flex-col items-center gap-6">
+              <motion.div
+                aria-hidden="true"
+                animate={{ opacity: [0.35, 0.7, 0.35], scale: [1, 1.04, 1] }}
+                transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute inset-0 rounded-full bg-gradient-to-r from-[#C05775]/40 via-[#E889A1]/35 to-[#9D5B8B]/40 blur-[28px] -z-10 pointer-events-none"
+              />
               <Button
                 onClick={() => router.push('/contact')}
-                className="bg-white text-black hover:bg-[#E5E7EB] px-10 py-7 text-[0.8rem] tracking-[0.2em] uppercase font-bold rounded-full shadow-xl transition-all duration-500 ease-[0.22,1,0.36,1] hover:-translate-y-1"
+                className="relative bg-white text-black hover:bg-[#E5E7EB] px-10 py-7 text-[0.8rem] tracking-[0.2em] uppercase font-bold rounded-full shadow-[0_18px_60px_-12px_rgba(0,0,0,0.7),0_0_0_1px_rgba(192,87,117,0.18)_inset] transition-all duration-500 ease-[0.22,1,0.36,1] hover:-translate-y-1 hover:scale-[1.02]"
               >
                 {tr.cta.button}
               </Button>

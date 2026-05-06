@@ -3,7 +3,6 @@ import "./globals.css";
 import Header from "@/components/Header";
 import ScrollToTop from "@/components/ScrollToTop";
 import Providers from "@/components/Providers";
-import CustomCursor from "@/components/CustomCursor";
 import ScrollProgress from "@/components/ScrollProgress";
 import CookieBanner from "@/components/CookieBanner";
 
@@ -69,8 +68,11 @@ export const metadata: Metadata = {
     images: [OG_IMAGE],
   },
   icons: {
-    icon: "https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/ccb4ebf22fc923ffd0529cf619c7ac26.png",
-    shortcut: "https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/ccb4ebf22fc923ffd0529cf619c7ac26.png",
+    icon: [
+      { url: "/logo.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/logo.svg",
+    apple: "/logo.svg",
   },
   other: {
     google: "notranslate",
@@ -137,7 +139,6 @@ export default function RootLayout({
         <Providers>
           <ScrollToTop />
           <ScrollProgress />
-          <CustomCursor />
           <div className="min-h-screen bg-[#08090C] text-foreground selection:bg-accent/30 selection:text-foreground">
             <Header />
             {children}

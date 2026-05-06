@@ -4,8 +4,6 @@ import Link from "next/link";
 import { ArrowRight, Linkedin, Instagram } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
 
-const FORMSPREE_ENDPOINT = process.env.NEXT_PUBLIC_FORMSPREE_NEWSLETTER ?? process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
-
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const tr = useTranslation();
@@ -22,31 +20,19 @@ const Footer = () => {
       return;
     }
 
-    if (FORMSPREE_ENDPOINT) {
-      setStatus('sending');
-      try {
-        const res = await fetch(FORMSPREE_ENDPOINT, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify({
-            email,
-            _subject: 'Newsletter — nowy zapis',
-            source: 'footer-newsletter',
-          }),
-        });
-        if (!res.ok) throw new Error('failed');
-        setStatus('ok');
-        setEmail('');
-      } catch {
-        setStatus('error');
-      }
-      return;
+    setStatus('sending');
+    try {
+      const res = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      if (!res.ok) throw new Error('failed');
+      setStatus('ok');
+      setEmail('');
+    } catch {
+      setStatus('error');
     }
-
-    // Fallback: open mail client
-    window.location.href = `mailto:hello@swanweb.pl?subject=${encodeURIComponent('Newsletter — chcę się zapisać')}&body=${encodeURIComponent(`Email: ${email}`)}`;
-    setStatus('ok');
-    setEmail('');
   };
 
   return (

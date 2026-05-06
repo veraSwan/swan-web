@@ -95,7 +95,7 @@ const Footer = () => {
             <button
               type="submit"
               disabled={status === 'sending' || status === 'ok'}
-              className="group inline-flex items-center justify-center gap-2 bg-[#C05775] text-white hover:bg-[#CB6280] h-[50px] px-7 text-[0.65rem] tracking-[0.22em] uppercase font-semibold rounded-full transition-all duration-500 ease-[0.22,1,0.36,1] hover:shadow-[0_0_35px_-8px_rgba(192,87,117,0.65)] hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none whitespace-nowrap"
+              className="group inline-flex items-center justify-center gap-2 bg-[#C05775] text-white hover:bg-[#CB6280] h-[50px] px-7 text-[0.65rem] tracking-[0.22em] uppercase font-semibold rounded-full transition-all duration-500 ease-[0.22,1,0.36,1] hover:shadow-[0_0_35px_-8px_rgba(192,87,117,0.65)] hover:-translate-y-0.5 disabled:opacity-70 disabled:hover:translate-y-0 disabled:hover:shadow-none whitespace-nowrap"
             >
               {status === 'sending' ? 'Wysyłanie...' : status === 'ok' ? 'Zapisano!' : 'Zapisz mnie'}
               {status !== 'sending' && status !== 'ok' && (

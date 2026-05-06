@@ -277,7 +277,7 @@ const ContactView: React.FC = () => {
                       type="submit"
                       disabled={submitting}
                       aria-busy={submitting}
-                      className="group w-full flex items-center justify-center gap-2.5 bg-[#C05775] text-white hover:bg-[#CB6280] h-[58px] text-[0.7rem] tracking-[0.22em] uppercase font-semibold rounded-full transition-all duration-500 ease-[0.22,1,0.36,1] hover:shadow-[0_0_55px_-8px_rgba(192,87,117,0.7)] hover:-translate-y-0.5 hover:scale-[1.01] mt-2 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:scale-100 disabled:hover:shadow-none"
+                      className="group w-full flex items-center justify-center gap-2.5 bg-[#C05775] text-white hover:bg-[#CB6280] h-[58px] text-[0.7rem] tracking-[0.22em] uppercase font-semibold rounded-full transition-all duration-500 ease-[0.22,1,0.36,1] hover:shadow-[0_0_55px_-8px_rgba(192,87,117,0.7)] hover:-translate-y-0.5 hover:scale-[1.01] mt-2 disabled:opacity-70 disabled:hover:translate-y-0 disabled:hover:scale-100 disabled:hover:shadow-none"
                     >
                       {submitting ? (
                         <>

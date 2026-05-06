@@ -6,7 +6,7 @@ import { ChevronDown } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
 import FAQ from '@/components/FAQ';
 
-const FORMSPREE_ENDPOINT = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
+const FORMSPREE_ENDPOINT = process.env.NEXT_PUBLIC_FORMSPREE_CONTACT ?? process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
 
 const trustIcons = [Clock, ShieldCheck, MessageCircle];
 

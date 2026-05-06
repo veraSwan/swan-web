@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArrowRight, Linkedin, Instagram } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
 
-const FORMSPREE_ENDPOINT = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
+const FORMSPREE_ENDPOINT = process.env.NEXT_PUBLIC_FORMSPREE_NEWSLETTER ?? process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();

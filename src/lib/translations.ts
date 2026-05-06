@@ -166,6 +166,9 @@ const translations = {
       required: 'To pole jest wymagane',
       submit: 'Wyślij wiadomość',
       helper: 'Odpowiemy na Twojego maila w ciągu 24 godzin.',
+      consentLabel: 'Wyrażam zgodę na przetwarzanie moich danych osobowych w celu odpowiedzi na zapytanie zgodnie z',
+      consentLink: 'Polityką Prywatności',
+      consentRequired: 'Aby wysłać wiadomość, musisz wyrazić zgodę.',
       serviceOptions: [
         { value: '', label: 'Wybierz rodzaj projektu (opcjonalnie)' },
         { value: 'projektowanie-stron', label: 'Projektowanie stron' },
@@ -692,6 +695,9 @@ const translations = {
       required: 'This field is required',
       submit: 'Send message',
       helper: 'We will reply to your email within 24 hours.',
+      consentLabel: 'I consent to the processing of my personal data to respond to my inquiry, in accordance with the',
+      consentLink: 'Privacy Policy',
+      consentRequired: 'You must give consent to send a message.',
       serviceOptions: [
         { value: '', label: 'Choose project type (optional)' },
         { value: 'projektowanie-stron', label: 'Website design' },
@@ -1221,6 +1227,9 @@ const translations = {
       required: 'Dieses Feld ist erforderlich',
       submit: 'Nachricht senden',
       helper: 'Wir antworten innerhalb von 24 Stunden auf Ihre E-Mail.',
+      consentLabel: 'Ich willige in die Verarbeitung meiner personenbezogenen Daten zur Beantwortung meiner Anfrage gemäß der',
+      consentLink: 'Datenschutzerklärung',
+      consentRequired: 'Zum Senden der Nachricht ist Ihre Zustimmung erforderlich.',
       serviceOptions: [
         { value: '', label: 'Projekttyp wählen (optional)' },
         { value: 'projektowanie-stron', label: 'Website-Design' },

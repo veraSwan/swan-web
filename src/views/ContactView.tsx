@@ -25,10 +25,11 @@ const ContactView: React.FC = () => {
   const c = tr.contact;
 
   const [formData, setFormData] = useState({ name: '', email: '', service: '', message: '' });
+  const [consent, setConsent] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
-  const [errors, setErrors] = useState({ name: false, email: false, message: false });
+  const [errors, setErrors] = useState({ name: false, email: false, message: false, consent: false });
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -48,6 +49,7 @@ const ContactView: React.FC = () => {
       name: !formData.name.trim(),
       email: !formData.email.trim(),
       message: !formData.message.trim(),
+      consent: !consent,
     };
     setErrors(newErrors);
     if (Object.values(newErrors).some(Boolean)) return;
@@ -264,6 +266,34 @@ const ContactView: React.FC = () => {
                         style={{ fontFamily: 'Inter, sans-serif' }}
                       />
                       {errors.message && <p className="text-[0.72rem] text-red-400/80 font-light" style={{ fontFamily: 'Inter, sans-serif' }}>{c.required}</p>}
+                    </div>
+
+                    {/* RODO consent */}
+                    <div className="space-y-2">
+                      <label htmlFor="consent" className="flex items-start gap-3 cursor-pointer group">
+                        <input
+                          id="consent"
+                          type="checkbox"
+                          name="consent"
+                          checked={consent}
+                          onChange={(e) => {
+                            setConsent(e.target.checked);
+                            if (errors.consent && e.target.checked) setErrors((prev) => ({ ...prev, consent: false }));
+                          }}
+                          className={`mt-0.5 w-4 h-4 rounded border bg-white/[0.04] accent-[#C05775] cursor-pointer flex-shrink-0 ${errors.consent ? 'border-red-500/60' : 'border-white/[0.20]'}`}
+                        />
+                        <span className="text-[0.78rem] text-white/55 font-light leading-[1.55] group-hover:text-white/70 transition-colors" style={{ fontFamily: 'Inter, sans-serif' }}>
+                          {c.consentLabel}{' '}
+                          <a href="/polityka-prywatnosci" target="_blank" rel="noopener noreferrer" className="underline text-white/75 hover:text-[#C05775] transition-colors">
+                            {c.consentLink}
+                          </a>.
+                        </span>
+                      </label>
+                      {errors.consent && (
+                        <p className="text-[0.72rem] text-red-400/80 font-light pl-7" style={{ fontFamily: 'Inter, sans-serif' }}>
+                          {c.consentRequired}
+                        </p>
+                      )}
                     </div>
 
                     {submitError && (

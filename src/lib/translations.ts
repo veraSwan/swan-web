@@ -24,6 +24,11 @@ const translations = {
       { title: 'Przemyślany design', description: 'Każdy detal ma znaczenie i określoną funkcję.' },
       { title: 'Realne efekty', description: 'Estetyka ściśle przekładająca się na wyniki.' },
     ],
+    marqueeItems: ['Estetyka', 'Strategia', 'Rzemiosło', 'Detal', 'Charakter', 'Finezja', 'Tempo', 'Spokój'],
+    homeServicesSection: {
+      label: '— Nasze podejście',
+      heading: 'Trzy filary, na których stoi każda nasza strona.',
+    },
     homeServices: [
       { title: 'Design z intencją', description: 'Tworzymy tożsamość, która zapada w pamięć. Dbamy o każdy detal, kolor i przestrzeń, łącząc estetykę z celowością.' },
       { title: 'Solidne rzemiosło', description: 'Budujemy stabilne strony. Zero kompromisów w wydajności i architekturze kodu.' },
@@ -65,8 +70,8 @@ const translations = {
     },
     stats: [
       { label: 'Zrealizowanych projektów' },
-      { label: 'Zadowolonych klientów' },
-      { label: 'Lata doświadczenia' },
+      { label: 'Średni czas odpowiedzi' },
+      { label: 'Dni wsparcia w cenie' },
       { label: 'Autorskiego designu' },
     ],
     about: {
@@ -553,6 +558,11 @@ const translations = {
       { title: 'Thoughtful design', description: 'Every detail has a meaning and a defined function.' },
       { title: 'Real results', description: 'Aesthetics that directly translates into outcomes.' },
     ],
+    marqueeItems: ['Aesthetics', 'Strategy', 'Craft', 'Detail', 'Character', 'Finesse', 'Tempo', 'Calm'],
+    homeServicesSection: {
+      label: '— Our approach',
+      heading: 'Three pillars behind every site we build.',
+    },
     homeServices: [
       { title: 'Design with intent', description: 'We craft identities that stick. Every detail, colour and space serves a purpose.' },
       { title: 'Solid craft', description: 'We build stable websites. Zero compromise on performance and code architecture.' },
@@ -594,8 +604,8 @@ const translations = {
     },
     stats: [
       { label: 'Projects completed' },
-      { label: 'Satisfied clients' },
-      { label: 'Years of experience' },
+      { label: 'Average response time' },
+      { label: 'Days of support included' },
       { label: 'Original design' },
     ],
     about: {
@@ -1085,6 +1095,11 @@ const translations = {
       { title: 'Durchdachtes Design', description: 'Jedes Detail hat eine Bedeutung und eine definierte Funktion.' },
       { title: 'Echte Ergebnisse', description: 'Ästhetik, die sich direkt in Resultate übersetzt.' },
     ],
+    marqueeItems: ['Ästhetik', 'Strategie', 'Handwerk', 'Detail', 'Charakter', 'Finesse', 'Tempo', 'Ruhe'],
+    homeServicesSection: {
+      label: '— Unser Ansatz',
+      heading: 'Drei Säulen, auf denen jede unserer Websites steht.',
+    },
     homeServices: [
       { title: 'Design mit Intention', description: 'Wir schaffen Identitäten, die im Gedächtnis bleiben. Jedes Detail, jede Farbe und jeder Raum dient einem Zweck.' },
       { title: 'Solides Handwerk', description: 'Wir bauen stabile Websites. Kein Kompromiss bei Performance und Code-Architektur.' },
@@ -1126,8 +1141,8 @@ const translations = {
     },
     stats: [
       { label: 'Abgeschlossene Projekte' },
-      { label: 'Zufriedene Kunden' },
-      { label: 'Jahre Erfahrung' },
+      { label: 'Ø Antwortzeit' },
+      { label: 'Tage Support inklusive' },
       { label: 'Originales Design' },
     ],
     about: {

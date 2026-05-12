@@ -75,8 +75,9 @@ const TestimonialCarousel = () => {
   };
 
   return (
-    <div className="relative w-full max-w-5xl mx-auto px-4 py-8">
-      <div className="relative overflow-hidden min-h-[350px] flex items-center justify-center px-12 md:px-20">
+    <div className="relative w-full max-w-5xl mx-auto px-4 py-4">
+      <Quote className="w-20 h-20 md:w-28 md:h-28 text-[#C05775]/15 mx-auto mb-8 md:mb-10 stroke-[1]" aria-hidden="true" />
+      <div className="relative overflow-hidden min-h-[280px] md:min-h-[320px] flex items-center justify-center px-14 md:px-20">
         <AnimatePresence initial={false} custom={direction} mode="wait">
           <motion.div
             key={currentIndex}
@@ -89,33 +90,31 @@ const TestimonialCarousel = () => {
               x: { type: "spring", stiffness: 300, damping: 30 },
               opacity: { duration: 0.4 }
             }}
-            className="w-full absolute flex justify-center"
+            className="absolute inset-y-0 inset-x-12 md:inset-x-20 flex items-center justify-center"
           >
-            <div className="w-full max-w-3xl bg-[#1A1C20]/40 rounded-[2.5rem] p-10 md:p-16 shadow-2xl border border-white/5 relative backdrop-blur-md group hover-premium-card overflow-hidden">
-              {/* Decorative Quote Icon - Moved to corner, reduced opacity */}
-              <Quote className="w-32 h-32 text-white/[0.02] absolute -top-4 -right-4 md:-top-6 md:-right-6 rotate-12 pointer-events-none group-hover:text-[#C05775]/5 transition-colors duration-500" />
-              
-              <div className="relative z-10 max-w-xl mx-auto md:mx-0">
-                <div className="text-block mb-10">
-                  <p className="text-[#E5E7EB] opacity-90 text-lg md:text-2xl font-light italic leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
-                    "{testimonials[currentIndex].text}"
-                  </p>
-                </div>
-                <div className="flex items-center gap-5">
-                  <div className="relative w-14 h-14 shrink-0">
-                    <div className={`absolute -inset-[2px] rounded-full bg-gradient-to-br ${testimonials[currentIndex].accent} opacity-90 blur-[1px]`} />
-                    <div className={`relative w-full h-full rounded-full bg-gradient-to-br ${testimonials[currentIndex].accent} flex items-center justify-center text-white font-medium text-xl shadow-[0_8px_24px_-8px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.18)]`}
-                         style={{ fontFamily: 'DM Sans, sans-serif' }}>
-                      {testimonials[currentIndex].author.charAt(0)}
-                    </div>
+            <div className="w-full max-w-4xl text-center">
+              <p
+                className="text-[#E5E7EB] text-lg sm:text-xl md:text-3xl lg:text-[2.25rem] font-light leading-[1.5] md:leading-[1.45] tracking-[-0.005em] mb-10 md:mb-14"
+                style={{ fontFamily: 'Inter, sans-serif' }}
+              >
+                „{testimonials[currentIndex].text}"
+              </p>
+              <div className="flex items-center justify-center gap-5">
+                <div className="relative w-14 h-14 shrink-0">
+                  <div className={`absolute -inset-[2px] rounded-full bg-gradient-to-br ${testimonials[currentIndex].accent} opacity-90 blur-[1px]`} />
+                  <div
+                    className={`relative w-full h-full rounded-full bg-gradient-to-br ${testimonials[currentIndex].accent} flex items-center justify-center text-white font-medium text-xl shadow-[0_8px_24px_-8px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.18)]`}
+                    style={{ fontFamily: 'DM Sans, sans-serif' }}
+                  >
+                    {testimonials[currentIndex].author.charAt(0)}
                   </div>
-                  <div>
-                    <div className="text-white font-medium text-lg tracking-wide group-hover:text-[#C05775] transition-colors duration-300" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-                      {testimonials[currentIndex].author}
-                    </div>
-                    <div className="text-[#E5E7EB] opacity-50 text-sm font-light uppercase tracking-wider mt-0.5">
-                      {testimonials[currentIndex].industry}
-                    </div>
+                </div>
+                <div className="text-left">
+                  <div className="text-white font-medium text-base tracking-wide" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                    {testimonials[currentIndex].author}
+                  </div>
+                  <div className="text-[#E5E7EB] opacity-50 text-xs font-light uppercase tracking-[0.18em] mt-0.5">
+                    {testimonials[currentIndex].industry}
                   </div>
                 </div>
               </div>
@@ -127,17 +126,17 @@ const TestimonialCarousel = () => {
       {/* Navigation Buttons */}
       <button
         onClick={prevSlide}
-        className="absolute left-0 md:left-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-white/5 border border-transparent text-white/50 hover:text-white hover:bg-white/10 hover:border-[#C05775]/50 hover:glow-pink-purple transition-all duration-300 backdrop-blur-md z-10"
+        className="absolute left-0 md:left-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-white/5 border border-transparent text-white/50 hover:text-white hover:bg-white/10 hover:border-[#C05775]/50 hover:glow-pink-purple transition-all duration-300 backdrop-blur-md z-10"
         aria-label="Poprzednia opinia"
       >
-        <ChevronLeft className="w-6 h-6 stroke-[1.5]" />
+        <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 stroke-[1.5]" />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-0 md:right-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-white/5 border border-transparent text-white/50 hover:text-white hover:bg-white/10 hover:border-[#C05775]/50 hover:glow-pink-purple transition-all duration-300 backdrop-blur-md z-10"
+        className="absolute right-0 md:right-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-white/5 border border-transparent text-white/50 hover:text-white hover:bg-white/10 hover:border-[#C05775]/50 hover:glow-pink-purple transition-all duration-300 backdrop-blur-md z-10"
         aria-label="Następna opinia"
       >
-        <ChevronRight className="w-6 h-6 stroke-[1.5]" />
+        <ChevronRight className="w-5 h-5 md:w-6 md:h-6 stroke-[1.5]" />
       </button>
 
       {/* Dots Indicators */}

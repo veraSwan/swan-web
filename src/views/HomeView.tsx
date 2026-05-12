@@ -105,19 +105,20 @@ const HomeView = () => {
 
               <motion.h1
                 variants={heroVariants.fadeInUp}
-                className="text-white leading-[0.98] mb-10 tracking-[-0.035em]"
+                className="text-white leading-[0.98] mb-10 tracking-[-0.035em] w-full"
+                style={{ overflowWrap: 'break-word', wordBreak: 'normal' }}
               >
-                <span className="block text-[3.25rem] sm:text-[4rem] md:text-[5rem] lg:text-[6rem] font-light text-white/95">
+                <span className="block font-light text-white/95" style={{ fontSize: 'clamp(2.25rem, 8.5vw, 6rem)' }}>
                   {tr.hero.line1}
                 </span>
-                <span className="block text-[3.25rem] sm:text-[4rem] md:text-[5rem] lg:text-[6rem] font-light text-white/95">
+                <span className="block font-light text-white/95" style={{ fontSize: 'clamp(2.25rem, 8.5vw, 6rem)' }}>
                   <MorphingWord
                     words={tr.hero.morphWords}
                     intervalMs={3400}
                     accentColor="#E889A1"
                   />
                 </span>
-                <span className="block text-[3.25rem] sm:text-[4rem] md:text-[5rem] lg:text-[6rem] font-medium text-white mt-2">
+                <span className="block font-medium text-white mt-2" style={{ fontSize: 'clamp(2.25rem, 8.5vw, 6rem)' }}>
                   {tr.hero.line3}<span className="text-[#C05775]">.</span>
                 </span>
               </motion.h1>
@@ -184,13 +185,29 @@ const HomeView = () => {
       </section>
 
       <MarqueeBand
-        items={['Estetyka', 'Strategia', 'Rzemiosło', 'Detal', 'Charakter', 'Finezja', 'Tempo', 'Spokój']}
+        items={tr.marqueeItems}
         speedSec={42}
       />
 
       <section ref={servicesRef} className="scroll-mt-24 section-spacing relative overflow-hidden bg-[#08090C]">
         <div className="absolute inset-0 bg-[var(--page-glow)] z-0 opacity-50 pointer-events-none" />
         <div className="layout-container relative z-10">
+          <motion.div
+            variants={servicesVariants.staggerContainer(0.18, 0.05)}
+            initial="hidden"
+            animate={servicesVisible ? "visible" : "hidden"}
+            className="flex flex-col items-center text-center max-w-3xl mx-auto mb-16 md:mb-20"
+          >
+            <motion.span variants={servicesVariants.fadeInUp} className="text-[#A1A1AA] uppercase tracking-[0.3em] text-xs font-medium mb-6">
+              {tr.homeServicesSection.label}
+            </motion.span>
+            <motion.h2
+              variants={servicesVariants.fadeInUp}
+              className="text-3xl md:text-4xl lg:text-[3rem] font-bold text-white leading-[1.15] tracking-tight"
+            >
+              {tr.homeServicesSection.heading}
+            </motion.h2>
+          </motion.div>
           <motion.div
             variants={servicesVariants.staggerContainer(0.2, 0.1)}
             initial="hidden"

@@ -2,7 +2,7 @@
 import React from "react";
 
 type Props = {
-  items: string[];
+  items: readonly string[];
   speedSec?: number;
   reverse?: boolean;
   className?: string;

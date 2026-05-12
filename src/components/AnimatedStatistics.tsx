@@ -62,8 +62,8 @@ const StatItem = ({ value, suffix = '', label, delay = 0 }: { value: string; suf
 
 const statValues = [
   { value: "20", suffix: "+" },
-  { value: "15", suffix: "+" },
-  { value: "3",  suffix: "+" },
+  { value: "24", suffix: "h" },
+  { value: "30", suffix: "" },
   { value: "100", suffix: "%" },
 ];
 

@@ -43,9 +43,9 @@
     --layout-padding-x-md: 3rem;
     --layout-padding-x-xl: 4.5rem;
 
-    --section-spacing-y: 6rem;
-    --section-spacing-y-md: 9rem;
-    --section-spacing-y-xl: 11rem;
+    --section-spacing-y: 5rem;
+    --section-spacing-y-md: 7rem;
+    --section-spacing-y-xl: 8.5rem;
 
     --section-bg-primary: 225 12% 6%;
     --section-bg-secondary: 225 11% 8%;
@@ -269,10 +269,6 @@ p:last-child {
     z-index: 9998;
   }
 
-  @media (pointer: fine) {
-    html, body { cursor: none; }
-    a, button, [role="button"], input, textarea, select, label, [data-cursor-none] { cursor: none; }
-  }
 
   /* Premium Graphite Glass Navbar */
   .nav-glass {

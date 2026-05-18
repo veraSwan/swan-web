@@ -203,7 +203,7 @@ const HomeView = () => {
             </motion.span>
             <motion.h2
               variants={servicesVariants.fadeInUp}
-              className="text-3xl md:text-4xl lg:text-[3rem] font-bold text-white leading-[1.15] tracking-tight"
+              className="text-3xl md:text-4xl lg:text-[3rem] font-medium text-white leading-[1.05] tracking-[-0.02em]"
             >
               {tr.homeServicesSection.heading}
             </motion.h2>
@@ -238,7 +238,7 @@ const HomeView = () => {
       <section className="section-spacing relative bg-[#08090C] border-t border-white/[0.02]">
         <div className="absolute inset-0 bg-[var(--page-glow)] z-0 opacity-40 pointer-events-none" />
         <div className="layout-container relative z-10">
-          <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-16 tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-medium text-white text-center mb-16 tracking-[-0.02em]">
             {tr.testimonials.heading}
           </h2>
           <TestimonialCarousel />

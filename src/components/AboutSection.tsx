@@ -25,13 +25,13 @@ const AboutSection = () => {
           </motion.span>
           <motion.h2
             variants={variants.fadeInUp}
-            className="text-4xl md:text-5xl lg:text-[4rem] font-bold text-white leading-tight tracking-tight drop-shadow-sm max-w-3xl"
+            className="text-4xl md:text-5xl lg:text-[4rem] font-medium text-white leading-[1.05] tracking-[-0.02em] drop-shadow-sm max-w-3xl"
           >
             {a.heading}
           </motion.h2>
 
           <motion.div variants={variants.fadeInUp} className="text-block mx-auto max-w-2xl" style={{ fontFamily: 'Inter, sans-serif' }}>
-            <p className="text-lg md:text-xl text-[#E5E7EB] opacity-75 font-light leading-[1.8] tracking-wide mb-12">
+            <p className="text-lg md:text-xl text-white/60 font-light leading-[1.8] tracking-wide mb-12">
               {a.paragraph}
             </p>
           </motion.div>

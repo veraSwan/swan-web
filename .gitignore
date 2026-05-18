@@ -7,7 +7,7 @@ out
 next-env.d.ts
 
 # claude code
-.claude/settings.local.json
+.claude/
 .mcp.json
 
 # misc

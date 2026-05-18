@@ -34,7 +34,13 @@ const translations = {
       { title: 'Solidne rzemiosło', description: 'Budujemy stabilne strony. Zero kompromisów w wydajności i architekturze kodu.' },
       { title: 'Spójna marka', description: 'Budujemy zaufanie od pierwszych sekund kontaktu z Twoją cyfrową obecnością, projektując niezapomniane emocje.' },
     ],
+    clientStrip: {
+      label: 'Zaufali nam',
+      caption: 'Marki, dla których projektujemy obecność cyfrową — od butikowych e-commerce po kliniki i biura.',
+    },
     process: {
+      label: 'Proces',
+      stepLabel: 'Krok',
       heading: 'Jak pracujemy',
       subheading: 'Od pierwszej rozmowy do wdrożenia — przejrzyście, bez zaskoczeń, w czterech etapach.',
       steps: [
@@ -568,7 +574,13 @@ const translations = {
       { title: 'Solid craft', description: 'We build stable websites. Zero compromise on performance and code architecture.' },
       { title: 'Consistent brand', description: 'We build trust from the very first second of contact with your digital presence.' },
     ],
+    clientStrip: {
+      label: 'Trusted by',
+      caption: 'Brands for whom we design digital presence — from boutique e-commerce to clinics and agencies.',
+    },
     process: {
+      label: 'Process',
+      stepLabel: 'Step',
       heading: 'How we work',
       subheading: 'From first conversation to launch — transparent, no surprises, in four stages.',
       steps: [
@@ -1105,7 +1117,13 @@ const translations = {
       { title: 'Solides Handwerk', description: 'Wir bauen stabile Websites. Kein Kompromiss bei Performance und Code-Architektur.' },
       { title: 'Konsistente Marke', description: 'Wir schaffen Vertrauen ab der ersten Sekunde des Kontakts mit Ihrer digitalen Präsenz.' },
     ],
+    clientStrip: {
+      label: 'Unsere Kunden',
+      caption: 'Marken, für die wir digitale Präsenz gestalten — von Boutique-E-Commerce bis Kliniken und Büros.',
+    },
     process: {
+      label: 'Prozess',
+      stepLabel: 'Schritt',
       heading: 'Wie wir arbeiten',
       subheading: 'Vom ersten Gespräch bis zum Launch — transparent, ohne Überraschungen, in vier Schritten.',
       steps: [

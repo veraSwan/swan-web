@@ -2,6 +2,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useTranslation } from "@/hooks/useTranslation";
+import { useTheme } from "@/contexts/ThemeContext";
 
 const clients = [
   { name: "Noir Élan", weight: "font-light italic" },
@@ -18,6 +20,9 @@ const clients = [
 
 const ClientStrip: React.FC = () => {
   const { ref, isVisible, variants } = useScrollAnimation({ threshold: 0.15 });
+  const tr = useTranslation();
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
 
   // Two copies side-by-side so the loop is seamless: when first set scrolls
   // out (-50%), the second set has already taken its place.
@@ -26,11 +31,16 @@ const ClientStrip: React.FC = () => {
   return (
     <section
       ref={ref}
-      className="relative bg-[#08090C] border-y border-white/[0.04] py-20 md:py-24 overflow-hidden"
+      className="relative border-y py-20 md:py-24 overflow-hidden"
+      style={{
+        background: isDark ? "#08090C" : "#EDE8DC",
+        borderColor: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.07)",
+      }}
     >
       <div
         aria-hidden="true"
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[280px] bg-[#C05775]/[0.025] blur-[140px] rounded-full pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[280px] rounded-full pointer-events-none"
+        style={{ background: "rgba(192,87,117,0.025)", filter: "blur(140px)" }}
       />
 
       <div className="relative z-10">
@@ -44,7 +54,7 @@ const ClientStrip: React.FC = () => {
             variants={variants.fadeInUp}
             className="text-[#C05775] text-[0.7rem] font-medium tracking-[0.4em] uppercase mb-10 md:mb-12 block"
           >
-            — Zaufali nam
+            — {tr.clientStrip.label}
           </motion.span>
 
           <motion.div
@@ -56,24 +66,42 @@ const ClientStrip: React.FC = () => {
               {track.map((c, i) => (
                 <span
                   key={`${c.name}-${i}`}
-                  className={`inline-block text-[1.15rem] md:text-[1.4rem] text-white/40 select-none ${c.weight}`}
+                  className={`inline-block text-[1.15rem] md:text-[1.4rem] select-none ${c.weight}`}
+                  style={{ color: isDark ? "rgba(255,255,255,0.40)" : "rgba(17,17,17,0.35)" }}
                 >
                   {c.name}
                 </span>
               ))}
             </div>
 
-            {/* Edge fades — soft entry/exit so logos don't pop in/out at borders */}
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-24 md:w-40 bg-gradient-to-r from-[#08090C] to-transparent" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-24 md:w-40 bg-gradient-to-l from-[#08090C] to-transparent" />
+            {/* Edge fades — theme-aware */}
+            <div
+              className="pointer-events-none absolute inset-y-0 left-0 w-24 md:w-40"
+              style={{
+                background: isDark
+                  ? "linear-gradient(to right,#08090C,transparent)"
+                  : "linear-gradient(to right,#EDE8DC,transparent)",
+              }}
+            />
+            <div
+              className="pointer-events-none absolute inset-y-0 right-0 w-24 md:w-40"
+              style={{
+                background: isDark
+                  ? "linear-gradient(to left,#08090C,transparent)"
+                  : "linear-gradient(to left,#EDE8DC,transparent)",
+              }}
+            />
           </motion.div>
 
           <motion.p
             variants={variants.fadeInUp}
-            className="mt-12 md:mt-14 text-[0.85rem] text-white/35 font-light tracking-wide max-w-md text-center px-6"
-            style={{ fontFamily: "Inter, sans-serif" }}
+            className="mt-12 md:mt-14 text-[0.85rem] font-light tracking-wide max-w-md text-center px-6"
+            style={{
+              fontFamily: "Inter, sans-serif",
+              color: isDark ? "rgba(255,255,255,0.35)" : "rgba(17,17,17,0.45)",
+            }}
           >
-            Marki, dla których projektujemy obecność cyfrową — od butikowych e-commerce po kliniki i biura.
+            {tr.clientStrip.caption}
           </motion.p>
         </motion.div>
       </div>

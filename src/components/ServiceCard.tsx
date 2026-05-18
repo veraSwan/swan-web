@@ -43,7 +43,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description }) =
       style={{
         rotateX,
         rotateY,
-        transformStyle: "preserve-3d",
         perspective: 1100,
         ["--mx" as string]: "50%",
         ["--my" as string]: "50%",
@@ -80,7 +79,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description }) =
         }}
       />
 
-      <div className="relative z-10 w-full" style={{ transform: "translateZ(20px)" }}>
+      <div className="relative z-10 w-full">
         <div className="mb-8 bg-white/[0.04] group-hover:bg-[#C05775]/12 w-14 h-14 flex items-center justify-center rounded-xl border border-white/[0.06] group-hover:border-[#C05775]/40 group-hover:shadow-[0_0_25px_-5px_rgba(192,87,117,0.45)] transition-all duration-700 ease-[0.22,1,0.36,1]">
           {React.cloneElement(icon, {
             className:

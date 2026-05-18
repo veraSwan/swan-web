@@ -51,7 +51,7 @@ const ProcessTimeline: React.FC = () => {
             variants={headerAnim.variants.fadeInUp}
             className="text-[#C05775] text-[0.7rem] font-medium tracking-[0.4em] uppercase mb-6 block"
           >
-            — Proces
+            — {tr.process.label}
           </motion.span>
           <motion.h2
             variants={headerAnim.variants.fadeInUp}
@@ -97,6 +97,7 @@ const ProcessTimeline: React.FC = () => {
                 step={step}
                 progress={progress}
                 total={steps.length}
+                stepLabel={tr.process.stepLabel}
               />
             ))}
           </div>
@@ -110,10 +111,11 @@ interface StepProps {
   step: Step;
   index: number;
   total: number;
+  stepLabel: string;
   progress: ReturnType<typeof useSpring>;
 }
 
-const ProcessStep: React.FC<StepProps> = ({ step, index, total, progress }) => {
+const ProcessStep: React.FC<StepProps> = ({ step, index, total, stepLabel, progress }) => {
   const threshold = (index + 0.4) / total;
 
   // 0 → 1 just for this step's "reached" pulse
@@ -171,7 +173,7 @@ const ProcessStep: React.FC<StepProps> = ({ step, index, total, progress }) => {
         className="flex-1 lg:px-3 text-left lg:text-center"
       >
         <span className="block text-[0.62rem] tracking-[0.32em] uppercase text-[#C05775]/80 font-semibold mb-3">
-          Krok {index + 1}
+          {stepLabel} {index + 1}
         </span>
         <h3 className="text-[1.25rem] md:text-[1.4rem] font-medium text-white mb-3 tracking-tight">
           {step.title}

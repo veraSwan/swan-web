@@ -67,13 +67,6 @@ export const metadata: Metadata = {
       "Projektujemy strony premium — design z intencją, solidne rzemiosło i szczera komunikacja.",
     images: [OG_IMAGE],
   },
-  icons: {
-    icon: [
-      { url: "/logo.svg", type: "image/svg+xml" },
-    ],
-    shortcut: "/logo.svg",
-    apple: "/logo.svg",
-  },
   other: {
     google: "notranslate",
   },

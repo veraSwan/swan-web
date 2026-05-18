@@ -3,13 +3,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { useRouter } from "next/navigation";
-import { Palette, Code, Sparkles, MessageCircle, Wand2, Target } from 'lucide-react';
+import { Palette, Code, Sparkles } from 'lucide-react';
 import AboutSection from '@/components/AboutSection';
 import TestimonialCarousel from '@/components/TestimonialCarousel';
 import ChooseYourDirection from '@/components/ChooseYourDirection';
 import AnimatedStatistics from '@/components/AnimatedStatistics';
 import FeaturedProjects from '@/components/FeaturedProjects';
-import HeroCard from '@/components/HeroCard';
+import HeroProjectStack from '@/components/HeroProjectStack';
 import MouseSpotlight from '@/components/MouseSpotlight';
 import MorphingWord from '@/components/MorphingWord';
 import MarqueeBand from '@/components/MarqueeBand';
@@ -156,29 +156,8 @@ const HomeView = () => {
               </motion.div>
             </div>
 
-            <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6">
-              <HeroCard
-                className="sm:col-span-2"
-                icon={MessageCircle}
-                title={tr.heroCards[0].title}
-                description={tr.heroCards[0].description}
-                entranceDelay={0.45}
-                floatDelay={0}
-              />
-              <HeroCard
-                icon={Wand2}
-                title={tr.heroCards[1].title}
-                description={tr.heroCards[1].description}
-                entranceDelay={0.6}
-                floatDelay={0.8}
-              />
-              <HeroCard
-                icon={Target}
-                title={tr.heroCards[2].title}
-                description={tr.heroCards[2].description}
-                entranceDelay={0.75}
-                floatDelay={1.6}
-              />
+            <div className="lg:col-span-5">
+              <HeroProjectStack />
             </div>
           </motion.div>
         </div>
@@ -250,13 +229,13 @@ const HomeView = () => {
           variants={ctaVariants.scaleIn}
           initial="hidden"
           animate={ctaVisible ? "visible" : "hidden"}
-          className="relative w-full bg-[#0E1016] rounded-[3rem] p-12 md:p-24 text-center border border-white/[0.07] overflow-hidden group transition-all duration-700 ease-[0.22,1,0.36,1] shadow-[0_60px_140px_-40px_rgba(0,0,0,0.7),0_0_0_1px_rgba(192,87,117,0.06)_inset]"
+          className="relative w-full bg-[#0E1016] rounded-[2rem] md:rounded-[3rem] p-10 md:p-24 text-center border border-white/[0.07] overflow-hidden group transition-all duration-700 ease-[0.22,1,0.36,1] shadow-[0_60px_140px_-40px_rgba(0,0,0,0.7),0_0_0_1px_rgba(192,87,117,0.06)_inset]"
         >
           <ParticleField className="opacity-[0.45]" density={0.00005} linkDistance={120} interactive={false} />
 
           <div
             aria-hidden="true"
-            className="absolute inset-0 rounded-[3rem] pointer-events-none"
+            className="absolute inset-0 rounded-[2rem] md:rounded-[3rem] pointer-events-none"
             style={{
               background:
                 "radial-gradient(ellipse 70% 60% at 50% 10%, rgba(192,87,117,0.16) 0%, transparent 60%)",
@@ -267,7 +246,7 @@ const HomeView = () => {
             aria-hidden="true"
             animate={{ opacity: [0.4, 0.85, 0.4] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute inset-0 rounded-[3rem] pointer-events-none"
+            className="absolute inset-0 rounded-[2rem] md:rounded-[3rem] pointer-events-none"
             style={{
               background:
                 "radial-gradient(ellipse 60% 45% at 50% 100%, rgba(157,91,139,0.12) 0%, transparent 65%)",

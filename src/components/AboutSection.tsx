@@ -25,7 +25,7 @@ const AboutSection = () => {
           </motion.span>
           <motion.h2
             variants={variants.fadeInUp}
-            className="text-4xl md:text-5xl lg:text-[4rem] font-medium text-white leading-[1.05] tracking-[-0.02em] drop-shadow-sm max-w-3xl"
+            className="text-4xl md:text-5xl lg:text-[4rem] font-medium text-white leading-[1.2] tracking-[-0.02em] drop-shadow-sm max-w-3xl"
           >
             {a.heading}
           </motion.h2>

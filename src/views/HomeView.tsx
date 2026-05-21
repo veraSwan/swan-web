@@ -3,13 +3,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { useRouter } from "next/navigation";
-import { Palette, Code, Sparkles } from 'lucide-react';
+import { Palette, Code, Sparkles, MessageCircle, Wand2, Target } from 'lucide-react';
 import AboutSection from '@/components/AboutSection';
 import TestimonialCarousel from '@/components/TestimonialCarousel';
 import ChooseYourDirection from '@/components/ChooseYourDirection';
 import AnimatedStatistics from '@/components/AnimatedStatistics';
 import FeaturedProjects from '@/components/FeaturedProjects';
-import HeroProjectStack from '@/components/HeroProjectStack';
+import HeroCard from '@/components/HeroCard';
 import MouseSpotlight from '@/components/MouseSpotlight';
 import MorphingWord from '@/components/MorphingWord';
 import MarqueeBand from '@/components/MarqueeBand';
@@ -156,8 +156,29 @@ const HomeView = () => {
               </motion.div>
             </div>
 
-            <div className="lg:col-span-5">
-              <HeroProjectStack />
+            <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6">
+              <HeroCard
+                className="sm:col-span-2"
+                icon={MessageCircle}
+                title={tr.heroCards[0].title}
+                description={tr.heroCards[0].description}
+                entranceDelay={0.45}
+                floatDelay={0}
+              />
+              <HeroCard
+                icon={Wand2}
+                title={tr.heroCards[1].title}
+                description={tr.heroCards[1].description}
+                entranceDelay={0.6}
+                floatDelay={0.8}
+              />
+              <HeroCard
+                icon={Target}
+                title={tr.heroCards[2].title}
+                description={tr.heroCards[2].description}
+                entranceDelay={0.75}
+                floatDelay={1.6}
+              />
             </div>
           </motion.div>
         </div>

@@ -39,7 +39,7 @@ const Footer = () => {
             {/* Social icons */}
             <div className="flex items-center gap-3 mt-1">
               <a
-                href="https://www.linkedin.com/in/weronika-labedz"
+                href="https://www.linkedin.com/in/weronika-labedz-961092210/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"

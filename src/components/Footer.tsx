@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import Link from "next/link";
-import { Linkedin, Instagram } from 'lucide-react';
+import { Linkedin } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
 
 const Footer = () => {
@@ -39,31 +39,13 @@ const Footer = () => {
             {/* Social icons */}
             <div className="flex items-center gap-3 mt-1">
               <a
-                href="https://www.linkedin.com/"
+                href="https://www.linkedin.com/in/weronika-labedz"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
                 className="group w-10 h-10 flex items-center justify-center rounded-full bg-white/[0.03] border border-white/[0.08] text-white/55 hover:text-white hover:bg-[#C05775]/10 hover:border-[#C05775]/40 hover:shadow-[0_0_18px_-4px_rgba(192,87,117,0.5)] transition-all duration-300"
               >
                 <Linkedin className="w-4 h-4 stroke-[1.5]" />
-              </a>
-              <a
-                href="https://www.instagram.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="group w-10 h-10 flex items-center justify-center rounded-full bg-white/[0.03] border border-white/[0.08] text-white/55 hover:text-white hover:bg-[#C05775]/10 hover:border-[#C05775]/40 hover:shadow-[0_0_18px_-4px_rgba(192,87,117,0.5)] transition-all duration-300"
-              >
-                <Instagram className="w-4 h-4 stroke-[1.5]" />
-              </a>
-              <a
-                href="https://www.behance.net/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Behance"
-                className="group w-10 h-10 flex items-center justify-center rounded-full bg-white/[0.03] border border-white/[0.08] text-white/55 hover:text-white hover:bg-[#C05775]/10 hover:border-[#C05775]/40 hover:shadow-[0_0_18px_-4px_rgba(192,87,117,0.5)] transition-all duration-300"
-              >
-                <span className="text-[0.65rem] font-bold tracking-wide" style={{ fontFamily: 'DM Sans, sans-serif' }}>Bē</span>
               </a>
             </div>
           </div>

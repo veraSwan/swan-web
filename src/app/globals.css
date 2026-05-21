@@ -111,6 +111,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   line-height: var(--paragraph-line-height);
   overflow-x: hidden;
+  cursor: default;
+}
+
+a[href], button, [role="button"], summary, label[for], select {
+  cursor: pointer;
 }
 
 h1, h2, h3, h4, h5, h6 {

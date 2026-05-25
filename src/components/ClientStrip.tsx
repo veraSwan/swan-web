@@ -15,7 +15,7 @@ const clients = [
   { name: "Calma Studio", weight: "font-light italic" },
   { name: "Tessera", weight: "font-medium tracking-[0.25em] uppercase text-[0.85em]" },
   { name: "Smile Studio", weight: "font-light" },
-  { name: "Stal Mar", weight: "font-medium tracking-tight" },
+  { name: "Ogrodzenia Piła", weight: "font-medium tracking-tight" },
 ];
 
 const ClientStrip: React.FC = () => {

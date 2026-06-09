@@ -149,9 +149,14 @@ const StalMarView: React.FC = () => (
       label="Podgląd projektu"
       heading="Jak wygląda strona Ogrodzenia Piła."
       url="ogrodzeniapila.com.pl"
-      innerBg="bg-[#111214]"
+      innerBg="bg-white"
     >
-      <OgrodzeniaGallery />
+      <img
+        src="https://api.microlink.io/?url=https%3A%2F%2Fwww.ogrodzeniapila.com.pl&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=1600"
+        alt="Ogrodzenia Piła — podgląd strony"
+        className="w-full h-auto block"
+        loading="lazy"
+      />
     </CaseStudyMiniMockup>
 
     <CaseStudyProcess

@@ -15,9 +15,9 @@ interface ProjectData {
 }
 
 const featuredProjects: ProjectData[] = [
-  { name: 'Noir Élan',      image: 'https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/47b5652ee02da20ef7e0a2e8a2b19e94.png', category: 'E-commerce / Luksus',  link: '/noir-elan',             phoneImage: 'https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/47b5652ee02da20ef7e0a2e8a2b19e94.png' },
-  { name: 'Maison Atelier', image: 'https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/0071c8caf9b1e0c7eef64c7629390188.png', category: 'E-commerce / Fashion',  link: '/maison-atelier' },
-  { name: 'AURA Clinic',    image: 'https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/62a1292f8cade28ede176ba9c66f5607.png', category: 'Medycyna estetyczna',   link: '/portfolio/aura-clinic', phoneImage: 'https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/62a1292f8cade28ede176ba9c66f5607.png' },
+  { name: 'Noir Élan',      image: 'https://images.unsplash.com/photo-1541643600914-78b084683702?auto=format&fit=crop&w=1200&q=80', category: 'E-commerce / Luksus',  link: '/noir-elan' },
+  { name: 'Maison Atelier', image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1200&q=80', category: 'E-commerce / Fashion', link: '/maison-atelier' },
+  { name: 'AURA Clinic',    image: 'https://images.unsplash.com/photo-1519415943484-9fa1873496d4?auto=format&fit=crop&w=1200&q=80', category: 'Medycyna estetyczna',  link: '/portfolio/aura-clinic' },
 ];
 
 const gridProjects: ProjectData[] = [

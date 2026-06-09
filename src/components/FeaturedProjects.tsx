@@ -9,12 +9,12 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { useTheme } from "@/contexts/ThemeContext";
 
 const featuredMeta = [
-  { name: "Aureline District", category: "Nieruchomości",        image: "https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/e7f12d1666d12ef5043f14e68faa15d5.png", link: "/aureline-district",            descIndex: 6 },
-  { name: "AURA Clinic",       category: "Medycyna estetyczna",  image: "https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/62a1292f8cade28ede176ba9c66f5607.png", link: "/portfolio/aura-clinic",        descIndex: 2 },
-  { name: "Noir Élan",         category: "E-commerce / Luksus",  image: "https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/47b5652ee02da20ef7e0a2e8a2b19e94.png", link: "/noir-elan",                    descIndex: 0 },
-  { name: "Maison Atelier",    category: "E-commerce / Fashion", image: "https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/0071c8caf9b1e0c7eef64c7629390188.png", link: "/maison-atelier",               descIndex: 1 },
-  { name: "LINIA Studio",      category: "Projektowanie wnętrz", image: "https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/c76ba9fd61e35ebe713826728483816e.png", link: "/portfolio/linia-studio-wnetrz", descIndex: 4 },
-  { name: "Calma Studio",      category: "Wellness & SPA",       image: "https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/729b57238098fd92f310dc04dcb1867f.png", link: "/calma-studio",                 descIndex: 5 },
+  { name: "Ogrodzenia Piła",   category: "Ogrodzenia / Metaloplastyka", image: "https://api.microlink.io/?url=https%3A%2F%2Fwww.ogrodzeniapila.com.pl&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1200&viewport.height=900", link: "/portfolio/stal-mar", descIndex: 9 },
+  { name: "Aureline District", category: "Nieruchomości",               image: "https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/e7f12d1666d12ef5043f14e68faa15d5.png", link: "/aureline-district",             descIndex: 6 },
+  { name: "AURA Clinic",       category: "Medycyna estetyczna",         image: "https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/62a1292f8cade28ede176ba9c66f5607.png", link: "/portfolio/aura-clinic",         descIndex: 2 },
+  { name: "Noir Élan",         category: "E-commerce / Luksus",         image: "https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/47b5652ee02da20ef7e0a2e8a2b19e94.png", link: "/noir-elan",                     descIndex: 0 },
+  { name: "Maison Atelier",    category: "E-commerce / Fashion",        image: "https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/0071c8caf9b1e0c7eef64c7629390188.png", link: "/maison-atelier",                descIndex: 1 },
+  { name: "LINIA Studio",      category: "Projektowanie wnętrz",        image: "https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/c76ba9fd61e35ebe713826728483816e.png", link: "/portfolio/linia-studio-wnetrz", descIndex: 4 },
 ];
 
 const AUTOPLAY_INTERVAL = 5500;

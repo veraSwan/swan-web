@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { useTheme } from '@/contexts/ThemeContext';
 
 const testimonials = [
   {
@@ -56,6 +57,8 @@ const variants = {
 const TestimonialCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(1);
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -94,8 +97,8 @@ const TestimonialCarousel = () => {
           >
             <div className="w-full max-w-4xl text-center">
               <p
-                className="text-[#E5E7EB] text-lg sm:text-xl md:text-3xl lg:text-[2.25rem] font-light leading-[1.5] md:leading-[1.45] tracking-[-0.005em] mb-10 md:mb-14"
-                style={{ fontFamily: 'Inter, sans-serif' }}
+                className="text-lg sm:text-xl md:text-3xl lg:text-[2.25rem] font-light leading-[1.5] md:leading-[1.45] tracking-[-0.005em] mb-10 md:mb-14"
+                style={{ fontFamily: 'Inter, sans-serif', color: isDark ? 'rgba(229,231,235,0.9)' : 'rgba(17,17,17,0.82)' }}
               >
                 „{testimonials[currentIndex].text}"
               </p>
@@ -110,10 +113,10 @@ const TestimonialCarousel = () => {
                   </div>
                 </div>
                 <div className="text-left">
-                  <div className="text-white font-medium text-base tracking-wide" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                  <div className="font-medium text-base tracking-wide" style={{ fontFamily: 'DM Sans, sans-serif', color: isDark ? '#ffffff' : '#111111' }}>
                     {testimonials[currentIndex].author}
                   </div>
-                  <div className="text-[#E5E7EB] opacity-50 text-xs font-light uppercase tracking-[0.18em] mt-0.5">
+                  <div className="text-xs font-light uppercase tracking-[0.18em] mt-0.5 opacity-50" style={{ color: isDark ? '#E5E7EB' : '#111111' }}>
                     {testimonials[currentIndex].industry}
                   </div>
                 </div>
@@ -126,14 +129,24 @@ const TestimonialCarousel = () => {
       {/* Navigation Buttons */}
       <button
         onClick={prevSlide}
-        className="absolute left-0 md:left-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-white/5 border border-transparent text-white/50 hover:text-white hover:bg-white/10 hover:border-[#C05775]/50 hover:glow-pink-purple transition-all duration-300 backdrop-blur-md z-10"
+        className="absolute left-0 md:left-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full transition-all duration-300 backdrop-blur-md z-10"
+        style={{
+          background: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.04)',
+          border: isDark ? '1px solid transparent' : '1px solid rgba(0,0,0,0.08)',
+          color: isDark ? 'rgba(255,255,255,0.5)' : 'rgba(17,17,17,0.5)',
+        }}
         aria-label="Poprzednia opinia"
       >
         <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 stroke-[1.5]" />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-0 md:right-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-white/5 border border-transparent text-white/50 hover:text-white hover:bg-white/10 hover:border-[#C05775]/50 hover:glow-pink-purple transition-all duration-300 backdrop-blur-md z-10"
+        className="absolute right-0 md:right-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full transition-all duration-300 backdrop-blur-md z-10"
+        style={{
+          background: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.04)',
+          border: isDark ? '1px solid transparent' : '1px solid rgba(0,0,0,0.08)',
+          color: isDark ? 'rgba(255,255,255,0.5)' : 'rgba(17,17,17,0.5)',
+        }}
         aria-label="Następna opinia"
       >
         <ChevronRight className="w-5 h-5 md:w-6 md:h-6 stroke-[1.5]" />

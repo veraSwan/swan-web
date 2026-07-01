@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useTranslation } from '@/hooks/useTranslation';
+import { useTheme } from '@/contexts/ThemeContext';
+import BrowserMockup from '@/components/mockups/BrowserMockup';
 
 interface ProjectData {
   name: string;
@@ -12,22 +14,41 @@ interface ProjectData {
   category: string;
   link: string;
   phoneImage?: string;
+  urlDisplay?: string;
 }
 
 const featuredProjects: ProjectData[] = [
-  { name: 'Noir Élan',      image: 'https://images.unsplash.com/photo-1541643600914-78b084683702?auto=format&fit=crop&w=1200&q=80', category: 'E-commerce / Luksus',  link: '/noir-elan' },
-  { name: 'Maison Atelier', image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1200&q=80', category: 'E-commerce / Fashion', link: '/maison-atelier' },
-  { name: 'AURA Clinic',    image: 'https://images.unsplash.com/photo-1519415943484-9fa1873496d4?auto=format&fit=crop&w=1200&q=80', category: 'Medycyna estetyczna',  link: '/portfolio/aura-clinic' },
+  {
+    name: 'Noir Élan',
+    image: '/images/portfolio/noir-elan/noir-elan.jpg',
+    category: 'E-commerce / Luksus',
+    link: '/noir-elan',
+    urlDisplay: 'noirelan.pl',
+  },
+  {
+    name: 'Maison Atelier',
+    image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1200&q=80',
+    category: 'E-commerce / Fashion',
+    link: '/maison-atelier',
+    urlDisplay: 'maisonatelier.pl',
+  },
+  {
+    name: 'AURA Clinic',
+    image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1200&q=80',
+    category: 'Medycyna estetyczna',
+    link: '/portfolio/aura-clinic',
+    urlDisplay: 'auraclinic.pl',
+  },
 ];
 
 const gridProjects: ProjectData[] = [
-  { name: 'Ogrodzenia Piła',   image: 'https://api.microlink.io/?url=https%3A%2F%2Fwww.ogrodzeniapila.com.pl&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1200&viewport.height=900', category: 'Ogrodzenia / Metaloplastyka', link: '/portfolio/stal-mar' },
-  { name: 'Daniel Kanzlei',    image: 'https://api.microlink.io/?url=https%3A%2F%2Fdaniel-kanzlei.de%2Fen&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1200&viewport.height=900',    category: 'Biuro rachunkowe',            link: '/portfolio/daniel-kanzlei' },
-  { name: 'LINIA Studio',      image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80',                category: 'Projektowanie wnętrz',        link: '/portfolio/linia-studio-wnetrz' },
-  { name: 'Calma Studio',      image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80',                category: 'Wellness & SPA',              link: '/calma-studio' },
-  { name: 'Aureline District', image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=1200&q=80',                category: 'Nieruchomości premium',       link: '/aureline-district' },
-  { name: 'Smile Studio',      image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80',                category: 'Stomatologia premium',        link: '/portfolio/smile-studio' },
-  { name: 'Tessera',           image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80',                category: 'Fine dining',                 link: '/portfolio/tessera' },
+  { name: 'Ogrodzenia Piła',   image: '/images/portfolio/ogrodzenia-pila/ogrodzenia-pila.png',                                                          category: 'Ogrodzenia / Metaloplastyka', link: '/portfolio/stal-mar' },
+  { name: 'Daniel Kanzlei',    image: 'https://api.microlink.io/?url=https%3A%2F%2Fdaniel-kanzlei.de%2Fen&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1200&viewport.height=900', category: 'Biuro rachunkowe',            link: '/portfolio/daniel-kanzlei' },
+  { name: 'LINIA Studio',      image: '/images/portfolio/linia-studio/collov-home-design-H-1j_s0dhCw-unsplash.jpg',                                     category: 'Projektowanie wnętrz',        link: '/portfolio/linia-studio-wnetrz' },
+  { name: 'Calma Studio',      image: '/images/portfolio/calma-studio/auroom-wellness-FrQ6kiZcBl4-unsplash.jpg',                                         category: 'Wellness & SPA',              link: '/calma-studio' },
+  { name: 'Aureline District', image: '/images/portfolio/aureline-district/joel-filipe-RFDP7_80v5A-unsplash.jpg',                                       category: 'Nieruchomości premium',       link: '/aureline-district' },
+  { name: 'Smile Studio',      image: '/images/portfolio/smile-studio/katarzyna-zygnerska-YNvApgvL7UQ-unsplash.jpg',                                    category: 'Stomatologia premium',        link: '/portfolio/smile-studio' },
+  { name: 'Tessera',           image: '/images/portfolio/tessera/klara-kulikova-yjQDnOhGE34-unsplash.jpg',                                              category: 'Fine dining',                 link: '/portfolio/tessera' },
 ];
 
 interface FeaturedProjectProps {
@@ -39,6 +60,8 @@ interface FeaturedProjectProps {
 
 const FeaturedProject: React.FC<FeaturedProjectProps> = ({ meta, description, viewProject, index }) => {
   const anim = useScrollAnimation({ threshold: 0.1 });
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
   const isEven = index % 2 === 0;
 
   return (
@@ -50,10 +73,10 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({ meta, description, vi
         <motion.div
           animate={{ y: [0, -7, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-          className="relative"
+          className="relative transition-all duration-700 ease-[0.22,1,0.36,1] group-hover:drop-shadow-[0_40px_60px_rgba(192,87,117,0.18)]"
         >
-          <div className="relative w-full bg-[#1A1C20] rounded-t-[1.5rem] p-2 sm:p-3 pb-0 shadow-2xl border border-white/5 border-b-0 transition-all duration-700 ease-[0.22,1,0.36,1] group-hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.7),0_0_0_1px_rgba(192,87,117,0.12)]">
-            <div className="aspect-[16/10] bg-black rounded-t-xl overflow-hidden relative">
+          <BrowserMockup url={meta.urlDisplay ?? 'swanweb.pl'} rounded="xl">
+            <div className="aspect-[16/10] bg-black overflow-hidden relative">
               <motion.img
                 src={meta.image}
                 alt={meta.name}
@@ -65,8 +88,35 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({ meta, description, vi
               />
               <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-1000" />
             </div>
-            <div className="w-[110%] -ml-[5%] h-3 sm:h-4 bg-[#2A2B30] rounded-b-2xl mt-0 border-t border-white/5 shadow-xl relative z-10" />
+          </BrowserMockup>
+
+          {/* Laptop base */}
+          <div
+            className="w-[108%] -ml-[4%] h-6 rounded-b-[0.65rem] relative"
+            style={{
+              background: isDark
+                ? 'linear-gradient(180deg, #26282D 0%, #1E2024 100%)'
+                : 'linear-gradient(180deg, #C0C3CA 0%, #B2B5BD 100%)',
+              boxShadow: isDark
+                ? '0 8px 28px -4px rgba(0,0,0,0.85)'
+                : '0 6px 20px -4px rgba(0,0,0,0.22)',
+            }}
+          >
+            <div
+              className="absolute bottom-[5px] left-1/2 -translate-x-1/2 w-14 h-[7px] rounded-sm"
+              style={{
+                background: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.07)',
+                border: isDark ? '1px solid rgba(255,255,255,0.06)' : '1px solid rgba(0,0,0,0.09)',
+              }}
+            />
           </div>
+          <div
+            className="w-[114%] -ml-[7%] h-[5px] rounded-b-[0.4rem]"
+            style={{
+              background: isDark ? '#111316' : '#9EA2A9',
+              boxShadow: isDark ? '0 12px 30px -4px rgba(0,0,0,0.95)' : '0 8px 24px -4px rgba(0,0,0,0.28)',
+            }}
+          />
 
           {meta.phoneImage && (
             <div className="absolute -bottom-6 -right-4 sm:-right-8 w-[72px] sm:w-[88px] z-20 drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)]">
@@ -83,20 +133,38 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({ meta, description, vi
       </Link>
 
       <div className="w-full lg:w-[35%] flex flex-col items-start text-left">
-        <span className="text-[#A1A1AA] uppercase tracking-[0.2em] text-xs mb-6 font-medium">
+        <span
+          className="uppercase tracking-[0.2em] text-xs mb-6 font-medium"
+          style={{ color: isDark ? '#A1A1AA' : 'rgba(17,17,17,0.48)' }}
+        >
           {meta.category}
         </span>
-        <h2 className="text-4xl md:text-5xl font-light text-white mb-6 tracking-tight">
-          <Link href={meta.link} className="hover:text-[#C05775] transition-colors duration-500">
+        <h2
+          className="text-4xl md:text-5xl font-light mb-6 tracking-tight"
+          style={{ color: isDark ? '#ffffff' : '#111111' }}
+        >
+          <Link
+            href={meta.link}
+            className="transition-colors duration-500"
+            style={{ color: 'inherit' }}
+          >
             {meta.name}
           </Link>
         </h2>
-        <p className="text-base text-[#D4D4D8] font-light leading-[1.8] tracking-wide mb-10 max-w-sm" style={{ fontFamily: 'Inter, sans-serif' }}>
+        <p
+          className="text-base font-light leading-[1.8] tracking-wide mb-10 max-w-sm"
+          style={{ fontFamily: 'Inter, sans-serif', color: isDark ? '#D4D4D8' : 'rgba(17,17,17,0.68)' }}
+        >
           {description}
         </p>
         <Link
           href={meta.link}
-          className="group flex items-center gap-3 text-xs tracking-[0.2em] uppercase text-white font-medium hover:text-[#C05775] transition-colors duration-500 bg-white/5 hover:bg-white/10 px-6 py-3 rounded-full border border-white/10 hover:border-[#C05775]/30"
+          className="group flex items-center gap-3 text-xs tracking-[0.2em] uppercase font-medium px-6 py-3 rounded-full transition-all duration-500"
+          style={{
+            color: isDark ? '#ffffff' : '#111111',
+            background: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.04)',
+            border: isDark ? '1px solid rgba(255,255,255,0.10)' : '1px solid rgba(0,0,0,0.10)',
+          }}
         >
           {viewProject}
           <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -120,7 +188,7 @@ const GridProject: React.FC<GridProjectProps> = ({ meta, description, viewProjec
     const el = cardRef.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
-    const px = ((e.clientX - rect.left) / rect.width - 0.5) * 2; // -1 → 1
+    const px = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
     const py = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
     el.style.setProperty('--px', String(px));
     el.style.setProperty('--py', String(py));
@@ -150,27 +218,25 @@ const GridProject: React.FC<GridProjectProps> = ({ meta, description, viewProjec
           ['--py' as string]: '0',
           ['--mx' as string]: '50%',
           ['--my' as string]: '50%',
+          background: '#1A1C20',
         }}
-        className="relative aspect-[4/5] overflow-hidden rounded-[1.25rem] bg-[#1A1C20] border border-white/[0.06] transition-all duration-700 ease-[0.22,1,0.36,1] group-hover:border-[#C05775]/25 group-hover:shadow-[0_40px_80px_-25px_rgba(192,87,117,0.18),0_30px_60px_-25px_rgba(0,0,0,0.6)]"
+        className="relative aspect-[4/5] overflow-hidden rounded-[1.25rem] border border-white/[0.06] transition-all duration-700 ease-[0.22,1,0.36,1] group-hover:border-[#C05775]/25 group-hover:shadow-[0_40px_80px_-25px_rgba(192,87,117,0.18),0_30px_60px_-25px_rgba(0,0,0,0.6)]"
       >
-        {/* image reveal mask wrapper — clip-path expands on hover */}
         <div className="absolute inset-0 transition-[clip-path] duration-[1100ms] ease-[0.22,1,0.36,1] [clip-path:inset(8%_round_0.85rem)] group-hover:[clip-path:inset(0%_round_1.25rem)]">
           <img
             src={meta.image}
             alt={meta.name}
             loading="lazy"
-            className="absolute inset-0 w-full h-full object-cover object-top opacity-75 transition-all duration-[1.4s] ease-[0.22,1,0.36,1] group-hover:opacity-95 group-hover:scale-[1.08] will-change-transform"
+            className="absolute inset-0 w-full h-full object-cover object-top opacity-60 transition-all duration-[1.4s] ease-[0.22,1,0.36,1] group-hover:opacity-[82%] group-hover:scale-[1.08] will-change-transform"
             style={{
               transform: 'translate3d(calc(var(--px) * 8px), calc(var(--py) * 8px), 0)',
             }}
           />
         </div>
 
-        {/* gradient scrims */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/30 pointer-events-none" />
-        <div className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-black via-black/90 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/65 to-black/55 pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-black via-black/95 to-transparent pointer-events-none" />
 
-        {/* cursor-following spotlight */}
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -189,13 +255,13 @@ const GridProject: React.FC<GridProjectProps> = ({ meta, description, viewProjec
           </span>
           <h3
             className="text-2xl md:text-3xl font-light text-white mb-3 tracking-tight transition-colors duration-500 group-hover:text-[#E889A1]"
-            style={{ fontFamily: 'DM Sans, sans-serif' }}
+            style={{ fontFamily: 'DM Sans, sans-serif', textShadow: '0 2px 12px rgba(0,0,0,0.9)' }}
           >
             {meta.name}
           </h3>
           <p
             className="text-sm text-[#D4D4D8]/90 font-light leading-[1.7] line-clamp-2 max-w-md"
-            style={{ fontFamily: 'Inter, sans-serif' }}
+            style={{ fontFamily: 'Inter, sans-serif', textShadow: '0 1px 6px rgba(0,0,0,0.85)' }}
           >
             {description}
           </p>
@@ -216,6 +282,8 @@ const PortfolioView: React.FC = () => {
   const titleAnim = useScrollAnimation();
   const moreAnim = useScrollAnimation({ threshold: 0.2 });
   const tr = useTranslation();
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
   const p = tr.portfolio;
 
   const featuredDescriptions = p.projects.slice(0, 3);
@@ -229,13 +297,22 @@ const PortfolioView: React.FC = () => {
       >
         <div className="absolute inset-0 bg-[var(--page-glow)] z-0 opacity-80 pointer-events-none" />
         <div className="w-full text-center relative z-10 flex flex-col items-center max-w-4xl mx-auto">
-          <span className="text-[#A1A1AA] uppercase tracking-[0.3em] text-sm mb-8 font-medium">
+          <span
+            className="uppercase tracking-[0.3em] text-sm mb-8 font-medium"
+            style={{ color: isDark ? '#A1A1AA' : 'rgba(17,17,17,0.48)' }}
+          >
             {p.label}
           </span>
-          <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-light text-white mb-10 tracking-tight leading-[1.1]">
+          <h1
+            className="text-5xl md:text-7xl lg:text-[6rem] font-light mb-10 tracking-tight leading-[1.1]"
+            style={{ color: isDark ? '#ffffff' : '#111111' }}
+          >
             {p.heading}
           </h1>
-          <p className="text-lg md:text-xl text-[#E5E7EB] opacity-70 font-light max-w-2xl leading-[1.8] tracking-wide" style={{ fontFamily: 'Inter, sans-serif' }}>
+          <p
+            className="text-lg md:text-xl font-light max-w-2xl leading-[1.8] tracking-wide"
+            style={{ fontFamily: 'Inter, sans-serif', color: isDark ? 'rgba(229,231,235,0.70)' : 'rgba(17,17,17,0.60)' }}
+          >
             {p.subheading}
           </p>
         </div>
@@ -261,10 +338,16 @@ const PortfolioView: React.FC = () => {
       >
         <div className="w-full max-w-6xl mx-auto">
           <div className="flex flex-col items-center text-center mb-16 md:mb-20">
-            <span className="text-[#A1A1AA] uppercase tracking-[0.3em] text-xs mb-6 font-medium">
+            <span
+              className="uppercase tracking-[0.3em] text-xs mb-6 font-medium"
+              style={{ color: isDark ? '#A1A1AA' : 'rgba(17,17,17,0.48)' }}
+            >
               {p.moreLabel ?? '— Pozostałe realizacje'}
             </span>
-            <h2 className="text-3xl md:text-5xl font-light text-white tracking-tight leading-[1.15] max-w-2xl">
+            <h2
+              className="text-3xl md:text-5xl font-light tracking-tight leading-[1.15] max-w-2xl"
+              style={{ color: isDark ? '#ffffff' : '#111111' }}
+            >
               {p.moreHeading ?? 'Mniejsze formaty, ten sam standard.'}
             </h2>
           </div>

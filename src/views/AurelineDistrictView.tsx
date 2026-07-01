@@ -6,7 +6,7 @@ import CaseStudyDeliverables from "@/components/case-study/CaseStudyDeliverables
 import CaseStudyGoal from "@/components/case-study/CaseStudyGoal";
 import CaseStudyProcess from "@/components/case-study/CaseStudyProcess";
 import CaseStudyResult from "@/components/case-study/CaseStudyResult";
-import CaseStudyMiniMockup from "@/components/case-study/CaseStudyMiniMockup";
+import CaseStudyPhotoGrid from "@/components/case-study/CaseStudyPhotoGrid";
 import CaseStudyTopBack from "@/components/case-study/CaseStudyTopBack";
 import CaseStudyBackNav from "@/components/case-study/CaseStudyBackNav";
 
@@ -218,15 +218,16 @@ const AurelineDistrictView: React.FC = () => {
         body="Strona, która buduje pozycję przed pierwszym kontaktem. Klient dzwoni już zdecydowany — pyta o termin spotkania, nie o zniżki."
       />
 
-      <CaseStudyMiniMockup
-        label="Sekcje strony"
-        heading="Tak prowadzimy klienta od bryły do prezentacji."
-        caption="Architektura przed cennikiem. Plany piętra w skali, lista dostępnych mieszkań, wszystko utrzymane w tonie magazynu architektonicznego."
-        url="aureline-district.pl"
-        innerBg="bg-[#13141A]"
-      >
-        <AurelineMockSite />
-      </CaseStudyMiniMockup>
+      <CaseStudyPhotoGrid
+        label="Klimat projektu"
+        heading="Architektura przed cennikiem."
+        caption="Plany piętra w skali, majestatyczna typografia, atmosfera magazynu architektonicznego — bez ceny w hero."
+        images={[
+          "/images/portfolio/aureline-district/etienne-beauregard-riverin-B0aCvAVSX8E-unsplash.jpg",
+          "/images/portfolio/aureline-district/scott-graham-5fNmWej4tAA-unsplash.jpg",
+          "/images/portfolio/aureline-district/vangel-dimo-qFbauOaA9UY-unsplash.jpg",
+        ]}
+      />
 
       <CaseStudyBackNav backLabel="Powrót do portfolio" />
     </main>

@@ -6,12 +6,12 @@ import CaseStudyDeliverables from "@/components/case-study/CaseStudyDeliverables
 import CaseStudyGoal from "@/components/case-study/CaseStudyGoal";
 import CaseStudyProcess from "@/components/case-study/CaseStudyProcess";
 import CaseStudyResult from "@/components/case-study/CaseStudyResult";
-import CaseStudyMiniMockup from "@/components/case-study/CaseStudyMiniMockup";
+import CaseStudyPhotoGrid from "@/components/case-study/CaseStudyPhotoGrid";
 import CaseStudyTopBack from "@/components/case-study/CaseStudyTopBack";
 import CaseStudyBackNav from "@/components/case-study/CaseStudyBackNav";
 
 const heroImage =
-  "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1600&q=80";
+  "/images/portfolio/smile-studio/katarzyna-zygnerska-YNvApgvL7UQ-unsplash.jpg";
 
 const HeroBrowserFrame: React.FC<{ src: string; alt: string }> = ({ src, alt }) => (
   <div className="relative w-full bg-[#1A1C20] rounded-t-[1.5rem] p-2 sm:p-3 pb-0 shadow-2xl border border-white/5 border-b-0">
@@ -225,15 +225,16 @@ const SmileStudioView: React.FC = () => {
         body="Strona, która rozbraja niepokój zanim pacjent zadzwoni. Pierwszy kontakt to rozmowa o leczeniu — nie o promocji."
       />
 
-      <CaseStudyMiniMockup
-        label="Sekcje strony"
-        heading="Tak prowadzimy pacjenta od pierwszego ekranu do rezerwacji."
-        caption="Spokojna nawigacja, transparentny cennik, kalendarz bez wibracji ofert ostatniej szansy. Każda sekcja ma jeden cel — ułatwić decyzję."
-        url="smilestudio.pl"
-        innerBg="bg-[#FAF7F4]"
-      >
-        <SmileMockSite />
-      </CaseStudyMiniMockup>
+      <CaseStudyPhotoGrid
+        label="Klimat projektu"
+        heading="Każda sekcja ma jeden cel — ułatwić decyzję."
+        caption="Spokojna nawigacja, transparentny cennik, zero strachu i zero ofert weekendowych. Pacjent przychodzi gotowy."
+        images={[
+          "/images/portfolio/smile-studio/katarzyna-zygnerska-44jaETSVX2I-unsplash.jpg",
+          "/images/portfolio/smile-studio/sam-moghadam-I-kDEBUMAaQ-unsplash.jpg",
+          "/images/portfolio/smile-studio/ozkan-guner-rRgjO2Y1g1E-unsplash.jpg",
+        ]}
+      />
 
       <CaseStudyBackNav backLabel="Powrót do portfolio" />
     </main>

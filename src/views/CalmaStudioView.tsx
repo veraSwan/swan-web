@@ -6,7 +6,7 @@ import CaseStudyDeliverables from "@/components/case-study/CaseStudyDeliverables
 import CaseStudyGoal from "@/components/case-study/CaseStudyGoal";
 import CaseStudyProcess from "@/components/case-study/CaseStudyProcess";
 import CaseStudyResult from "@/components/case-study/CaseStudyResult";
-import CaseStudyMiniMockup from "@/components/case-study/CaseStudyMiniMockup";
+import CaseStudyPhotoGrid from "@/components/case-study/CaseStudyPhotoGrid";
 import CaseStudyTopBack from "@/components/case-study/CaseStudyTopBack";
 import CaseStudyBackNav from "@/components/case-study/CaseStudyBackNav";
 
@@ -227,15 +227,16 @@ const CalmaStudioView: React.FC = () => {
         body="Strona, która oddycha jak salon — i w której klient zaczyna swoją wizytę zanim wybierze termin."
       />
 
-      <CaseStudyMiniMockup
-        label="Sekcje strony"
-        heading="Tak prowadzimy klienta od pierwszego scrolla do rezerwacji."
-        caption="Spokojna nawigacja, harmonogram bez wibracji ofert ostatniej szansy, opisy zabiegów czytane jak menu degustacyjne."
-        url="calmastudio.pl"
-        innerBg="bg-[#F1EEE7]"
-      >
-        <CalmaMockSite />
-      </CaseStudyMiniMockup>
+      <CaseStudyPhotoGrid
+        label="Klimat projektu"
+        heading="Spokojna nawigacja, opisy zabiegów jak menu degustacyjne."
+        caption="Design, który zwalnia tempo przed wejściem przez próg — bez pop-upów, bez ofert ostatniej szansy."
+        images={[
+          "/images/portfolio/calma-studio/huum-NHLS5hOSH0c-unsplash.jpg",
+          "/images/portfolio/calma-studio/usen-parmanov-JJi82Ayk_kQ-unsplash.jpg",
+          "/images/portfolio/calma-studio/alan-caishan-cU53ZFBr3lk-unsplash.jpg",
+        ]}
+      />
 
       <CaseStudyBackNav backLabel="Powrót do portfolio" />
     </main>

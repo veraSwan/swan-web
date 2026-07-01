@@ -6,7 +6,7 @@ import CaseStudyDeliverables from "@/components/case-study/CaseStudyDeliverables
 import CaseStudyGoal from "@/components/case-study/CaseStudyGoal";
 import CaseStudyProcess from "@/components/case-study/CaseStudyProcess";
 import CaseStudyResult from "@/components/case-study/CaseStudyResult";
-import CaseStudyMiniMockup from "@/components/case-study/CaseStudyMiniMockup";
+import CaseStudyPhotoGrid from "@/components/case-study/CaseStudyPhotoGrid";
 import CaseStudyTopBack from "@/components/case-study/CaseStudyTopBack";
 import CaseStudyBackNav from "@/components/case-study/CaseStudyBackNav";
 
@@ -210,15 +210,16 @@ const LINIAStudioView: React.FC = () => {
         body="Studio, które ogląda się jak monografię. Klient kontaktuje się gotowy na rozmowę — nie szuka wyceny, szuka autora."
       />
 
-      <CaseStudyMiniMockup
-        label="Sekcje strony"
-        heading="Tak prowadzimy klienta przez portfolio."
-        caption="Editorial layout, fotografia w pełnej skali, projekty bez filtrów i kategorii. Klient ogląda monografię, nie sklep."
-        url="liniastudio.pl"
-        innerBg="bg-[#F4F1EC]"
-      >
-        <LINIAMockSite />
-      </CaseStudyMiniMockup>
+      <CaseStudyPhotoGrid
+        label="Klimat projektu"
+        heading="Editorial layout, fotografia w pełnej skali."
+        caption="Projekty bez filtrów i kategorii. Klient ogląda monografię, nie sklep."
+        images={[
+          "/images/portfolio/linia-studio/julia-aX1TTOuq83M-unsplash.jpg",
+          "/images/portfolio/linia-studio/kam-idris-hYb7kbu4x7E-unsplash.jpg",
+          "/images/portfolio/linia-studio/bilal-mansuri-UUnxaJyzqb4-unsplash.jpg",
+        ]}
+      />
 
       <CaseStudyBackNav backLabel="Powrót do portfolio" />
     </main>

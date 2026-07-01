@@ -6,12 +6,12 @@ import CaseStudyDeliverables from "@/components/case-study/CaseStudyDeliverables
 import CaseStudyGoal from "@/components/case-study/CaseStudyGoal";
 import CaseStudyProcess from "@/components/case-study/CaseStudyProcess";
 import CaseStudyResult from "@/components/case-study/CaseStudyResult";
-import CaseStudyMiniMockup from "@/components/case-study/CaseStudyMiniMockup";
+import CaseStudyPhotoGrid from "@/components/case-study/CaseStudyPhotoGrid";
 import CaseStudyTopBack from "@/components/case-study/CaseStudyTopBack";
 import CaseStudyBackNav from "@/components/case-study/CaseStudyBackNav";
 
 const heroImage =
-  "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1600&q=80";
+  "/images/portfolio/tessera/klara-kulikova-yjQDnOhGE34-unsplash.jpg";
 
 const HeroBrowserFrame: React.FC<{ src: string; alt: string }> = ({ src, alt }) => (
   <div className="relative w-full bg-[#1A1C20] rounded-t-[1.5rem] p-2 sm:p-3 pb-0 shadow-2xl border border-white/5 border-b-0">
@@ -273,15 +273,16 @@ const TesseraView: React.FC = () => {
         body="Strona, która zaczyna kolację jeszcze przed rezerwacją. Gość przychodzi z oczekiwaniem precyzyjnym jak menu degustacyjne."
       />
 
-      <CaseStudyMiniMockup
-        label="Sekcje strony"
-        heading="Tak prowadzimy gościa od menu do rezerwacji."
-        caption="Sezonowe menu degustacyjne, krótkie noty kucharza, rezerwacja z wyborem profilu wieczoru. Każda sekcja ma jeden cel — oddać tempo restauracji."
-        url="tessera.pl"
-        innerBg="bg-[#FAF5EE]"
-      >
-        <TesseraMockSite />
-      </CaseStudyMiniMockup>
+      <CaseStudyPhotoGrid
+        label="Klimat projektu"
+        heading="Menu degustacyjne zaczyna się od scrolla."
+        caption="Sezonowe noty kucharza, rezerwacja z wyborem profilu wieczoru. Każda sekcja oddaje tempo restauracji."
+        images={[
+          "/images/portfolio/tessera/anima-visual-pn7dIk2kiYw-unsplash.jpg",
+          "/images/portfolio/tessera/jay-wennington-N_Y88TWmGwA-unsplash.jpg",
+          "/images/portfolio/tessera/glenov-brankovic-e4B5AvA7Jqo-unsplash.jpg",
+        ]}
+      />
 
       <CaseStudyBackNav backLabel="Powrót do portfolio" />
     </main>

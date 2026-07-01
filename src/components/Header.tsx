@@ -8,7 +8,7 @@ import { useTheme } from '@/contexts/ThemeContext';
 import { useLang, type Lang } from '@/contexts/LanguageContext';
 import { useTranslation } from '@/hooks/useTranslation';
 
-const LANGS: Lang[] = ['pl', 'en', 'de'];
+const LANGS: Lang[] = ['pl', 'en'];
 
 const Header = () => {
   const pathname = usePathname();

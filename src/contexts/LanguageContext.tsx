@@ -1,7 +1,7 @@
 "use client";
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-export type Lang = 'pl' | 'en' | 'de';
+export type Lang = 'pl' | 'en';
 
 interface LanguageContextValue {
   lang: Lang;
@@ -18,7 +18,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   useEffect(() => {
     const stored = localStorage.getItem('swan-lang') as Lang | null;
-    if (stored && ['pl', 'en', 'de'].includes(stored)) setLangState(stored);
+    if (stored && ['pl', 'en'].includes(stored)) setLangState(stored);
   }, []);
 
   const setLang = (l: Lang) => {

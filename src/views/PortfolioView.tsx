@@ -15,6 +15,7 @@ interface ProjectData {
   link: string;
   phoneImage?: string;
   urlDisplay?: string;
+  conceptual?: boolean;
 }
 
 const featuredProjects: ProjectData[] = [
@@ -24,6 +25,7 @@ const featuredProjects: ProjectData[] = [
     category: 'E-commerce / Luksus',
     link: '/noir-elan',
     urlDisplay: 'noirelan.pl',
+    conceptual: true,
   },
   {
     name: 'Maison Atelier',
@@ -31,6 +33,7 @@ const featuredProjects: ProjectData[] = [
     category: 'E-commerce / Fashion',
     link: '/maison-atelier',
     urlDisplay: 'maisonatelier.pl',
+    conceptual: true,
   },
   {
     name: 'AURA Clinic',
@@ -38,17 +41,18 @@ const featuredProjects: ProjectData[] = [
     category: 'Medycyna estetyczna',
     link: '/portfolio/aura-clinic',
     urlDisplay: 'auraclinic.pl',
+    conceptual: true,
   },
 ];
 
 const gridProjects: ProjectData[] = [
   { name: 'Ogrodzenia Piła',   image: '/images/portfolio/ogrodzenia-pila/ogrodzenia-pila.png',                                                          category: 'Ogrodzenia / Metaloplastyka', link: '/portfolio/stal-mar' },
   { name: 'Daniel Kanzlei',    image: 'https://api.microlink.io/?url=https%3A%2F%2Fdaniel-kanzlei.de%2Fen&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1200&viewport.height=900', category: 'Biuro rachunkowe',            link: '/portfolio/daniel-kanzlei' },
-  { name: 'LINIA Studio',      image: '/images/portfolio/linia-studio/collov-home-design-H-1j_s0dhCw-unsplash.jpg',                                     category: 'Projektowanie wnętrz',        link: '/portfolio/linia-studio-wnetrz' },
-  { name: 'Calma Studio',      image: '/images/portfolio/calma-studio/auroom-wellness-FrQ6kiZcBl4-unsplash.jpg',                                         category: 'Wellness & SPA',              link: '/calma-studio' },
-  { name: 'Aureline District', image: '/images/portfolio/aureline-district/joel-filipe-RFDP7_80v5A-unsplash.jpg',                                       category: 'Nieruchomości premium',       link: '/aureline-district' },
-  { name: 'Smile Studio',      image: '/images/portfolio/smile-studio/katarzyna-zygnerska-YNvApgvL7UQ-unsplash.jpg',                                    category: 'Stomatologia premium',        link: '/portfolio/smile-studio' },
-  { name: 'Tessera',           image: '/images/portfolio/tessera/klara-kulikova-yjQDnOhGE34-unsplash.jpg',                                              category: 'Fine dining',                 link: '/portfolio/tessera' },
+  { name: 'LINIA Studio',      image: '/images/portfolio/linia-studio/collov-home-design-H-1j_s0dhCw-unsplash.jpg',                                     category: 'Projektowanie wnętrz',        link: '/portfolio/linia-studio-wnetrz', conceptual: true },
+  { name: 'Calma Studio',      image: '/images/portfolio/calma-studio/auroom-wellness-FrQ6kiZcBl4-unsplash.jpg',                                         category: 'Wellness & SPA',              link: '/calma-studio',                  conceptual: true },
+  { name: 'Aureline District', image: '/images/portfolio/aureline-district/joel-filipe-RFDP7_80v5A-unsplash.jpg',                                       category: 'Nieruchomości premium',       link: '/aureline-district',             conceptual: true },
+  { name: 'Smile Studio',      image: '/images/portfolio/smile-studio/katarzyna-zygnerska-YNvApgvL7UQ-unsplash.jpg',                                    category: 'Stomatologia premium',        link: '/portfolio/smile-studio',        conceptual: true },
+  { name: 'Tessera',           image: '/images/portfolio/tessera/klara-kulikova-yjQDnOhGE34-unsplash.jpg',                                              category: 'Fine dining',                 link: '/portfolio/tessera',             conceptual: true },
 ];
 
 interface FeaturedProjectProps {
@@ -133,6 +137,11 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({ meta, description, vi
       </Link>
 
       <div className="w-full lg:w-[35%] flex flex-col items-start text-left">
+        {meta.conceptual && (
+          <span className="inline-flex items-center mb-4 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.10] text-white/40 text-[0.58rem] tracking-[0.18em] uppercase font-medium">
+            Projekt koncepcyjny
+          </span>
+        )}
         <span
           className="uppercase tracking-[0.2em] text-xs mb-6 font-medium"
           style={{ color: isDark ? '#A1A1AA' : 'rgba(17,17,17,0.48)' }}
@@ -246,6 +255,11 @@ const GridProject: React.FC<GridProjectProps> = ({ meta, description, viewProjec
           }}
         />
 
+        {meta.conceptual && (
+          <div className="absolute top-4 left-4 z-10 px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-white/45 text-[0.58rem] tracking-[0.16em] uppercase font-medium">
+            Concept
+          </div>
+        )}
         <div className="absolute top-5 right-5 w-9 h-9 rounded-full bg-white/10 backdrop-blur-md border border-white/15 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0 z-10">
           <ArrowUpRight className="w-4 h-4 text-white" />
         </div>

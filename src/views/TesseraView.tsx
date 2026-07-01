@@ -196,6 +196,7 @@ const TesseraView: React.FC = () => {
         title="Tessera"
         subtitle="Restauracja autorska, której strona przedstawia menu degustacyjne tak samo starannie, jak szef układa talerz."
         visual={<HeroBrowserFrame src={heroImage} alt="Tessera — strona główna" />}
+        conceptual
       />
 
       <CaseStudyConcept

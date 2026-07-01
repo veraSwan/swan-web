@@ -259,6 +259,7 @@ const NoirElanView: React.FC = () => {
         title={p.title}
         subtitle={p.subtitle}
         visual={FullPageMock}
+        conceptual
       />
 
       <CaseStudyConcept label={s.conceptLabel} heading={p.concept.heading} body={p.concept.body} />

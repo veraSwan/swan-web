@@ -345,6 +345,18 @@ const DanielKanzleiView: React.FC = () => {
         <DanielKanzleiMockSite />
       </CaseStudyMiniMockup>
 
+      <div className="layout-container-wide max-w-4xl mx-auto pb-20 text-center">
+        <a
+          href="https://daniel-kanzlei.de/pl"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white/[0.05] border border-white/10 text-white/80 hover:text-white hover:border-[#C05775]/40 hover:bg-[#C05775]/10 transition-all duration-300 text-sm tracking-[0.15em] uppercase font-medium"
+        >
+          <span>Odwiedź stronę live</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+        </a>
+      </div>
+
       <CaseStudyBackNav backLabel="Powrót do portfolio" />
     </main>
   );

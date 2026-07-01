@@ -11,7 +11,7 @@ import CaseStudyTopBack from "@/components/case-study/CaseStudyTopBack";
 import CaseStudyBackNav from "@/components/case-study/CaseStudyBackNav";
 
 const heroImage =
-  "https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/729b57238098fd92f310dc04dcb1867f.png";
+  "/images/portfolio/calma-studio/auroom-wellness-FrQ6kiZcBl4-unsplash.jpg";
 
 const HeroBrowserFrame: React.FC<{ src: string; alt: string }> = ({ src, alt }) => (
   <div className="relative w-full bg-[#1A1C20] rounded-t-[1.5rem] p-2 sm:p-3 pb-0 shadow-2xl border border-white/5 border-b-0">
@@ -150,6 +150,7 @@ const CalmaStudioView: React.FC = () => {
         title="Calma Studio"
         subtitle="Strona spa, na której tempo zwalnia wcześniej niż wejdziesz przez próg."
         visual={<HeroBrowserFrame src={heroImage} alt="Calma Studio — strona główna" />}
+        conceptual
       />
 
       <CaseStudyConcept

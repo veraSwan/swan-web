@@ -10,11 +10,10 @@ import CaseStudyMiniMockup from "@/components/case-study/CaseStudyMiniMockup";
 import CaseStudyTopBack from "@/components/case-study/CaseStudyTopBack";
 import CaseStudyBackNav from "@/components/case-study/CaseStudyBackNav";
 
-const heroImage =
-  "https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/c76ba9fd61e35ebe713826728483816e.png";
+const heroImage = "/images/portfolio/linia-studio/collov-home-design-H-1j_s0dhCw-unsplash.jpg";
 const projectImages = [
-  "https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/299dd1e4832812b867fd30099c8dbf7a.png",
-  "https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/dd0438c17472af90e9f7c1c165d8c436.png",
+  "/images/portfolio/linia-studio/julia-aX1TTOuq83M-unsplash.jpg",
+  "/images/portfolio/linia-studio/kam-idris-AUOuawx5B0M-unsplash.jpg",
 ];
 
 const HeroBrowserFrame: React.FC<{ src: string; alt: string }> = ({ src, alt }) => (
@@ -134,6 +133,7 @@ const LINIAStudioView: React.FC = () => {
         title="LINIA Studio"
         subtitle="Cyfrowe portfolio architekta wnętrz, w którym pustka jest tak samo zaprojektowana jak materiał."
         visual={<HeroBrowserFrame src={heroImage} alt="LINIA Studio — strona główna" />}
+        conceptual
       />
 
       <CaseStudyConcept

@@ -12,9 +12,10 @@ type CaseStudyHeroProps = {
    *  minimal-typography only — useful when the full landing is shown later in
    *  the Visuals section and you want to avoid repeating it. */
   visual?: React.ReactNode;
+  conceptual?: boolean;
 };
 
-const CaseStudyHero: React.FC<CaseStudyHeroProps> = ({ category, title, subtitle, visual }) => {
+const CaseStudyHero: React.FC<CaseStudyHeroProps> = ({ category, title, subtitle, visual, conceptual }) => {
   const { variants } = useScrollAnimation();
 
   return (
@@ -27,6 +28,13 @@ const CaseStudyHero: React.FC<CaseStudyHeroProps> = ({ category, title, subtitle
           animate="visible"
           className="text-center max-w-4xl mx-auto mb-14 md:mb-20"
         >
+          {conceptual && (
+            <motion.div variants={variants.fadeInUp} className="mb-5">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.12] text-white/45 text-[0.6rem] tracking-[0.22em] uppercase font-medium">
+                Projekt koncepcyjny
+              </span>
+            </motion.div>
+          )}
           <motion.div variants={variants.fadeInUp}>
             <SectionLabel>— {category}</SectionLabel>
           </motion.div>

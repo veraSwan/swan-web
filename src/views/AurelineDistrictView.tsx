@@ -11,7 +11,7 @@ import CaseStudyTopBack from "@/components/case-study/CaseStudyTopBack";
 import CaseStudyBackNav from "@/components/case-study/CaseStudyBackNav";
 
 const heroImage =
-  "https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/e7f12d1666d12ef5043f14e68faa15d5.png";
+  "/images/portfolio/aureline-district/joel-filipe-RFDP7_80v5A-unsplash.jpg";
 
 const HeroBrowserFrame: React.FC<{ src: string; alt: string }> = ({ src, alt }) => (
   <div className="relative w-full bg-[#1A1C20] rounded-t-[1.5rem] p-2 sm:p-3 pb-0 shadow-2xl border border-white/5 border-b-0">
@@ -141,6 +141,7 @@ const AurelineDistrictView: React.FC = () => {
         title="Aureline District"
         subtitle="Inwestycja klasy premium, której strona przemawia majestatyczną typografią — nie wykrzyknikami w cenniku."
         visual={<HeroBrowserFrame src={heroImage} alt="Aureline District — strona główna" />}
+        conceptual
       />
 
       <CaseStudyConcept

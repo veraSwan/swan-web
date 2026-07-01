@@ -38,10 +38,6 @@ const translations = {
       { title: 'Solidne rzemiosło', description: 'Budujemy stabilne strony. Zero kompromisów w wydajności i architekturze kodu.' },
       { title: 'Spójna marka', description: 'Budujemy zaufanie od pierwszych sekund kontaktu z Twoją cyfrową obecnością, projektując niezapomniane emocje.' },
     ],
-    clientStrip: {
-      label: 'Zaufali nam',
-      caption: 'Marki, dla których projektujemy obecność cyfrową — od butikowych e-commerce po kliniki i biura.',
-    },
     process: {
       label: 'Proces',
       stepLabel: 'Krok',
@@ -583,10 +579,6 @@ const translations = {
       { title: 'Solid craft', description: 'We build stable websites. Zero compromise on performance and code architecture.' },
       { title: 'Consistent brand', description: 'We build trust from the very first second of contact with your digital presence.' },
     ],
-    clientStrip: {
-      label: 'Trusted by',
-      caption: 'Brands for whom we design digital presence — from boutique e-commerce to clinics and agencies.',
-    },
     process: {
       label: 'Process',
       stepLabel: 'Step',

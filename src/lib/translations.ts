@@ -25,6 +25,10 @@ const translations = {
       { title: 'Realne efekty', description: 'Estetyka ściśle przekładająca się na wyniki.' },
     ],
     marqueeItems: ['Estetyka', 'Strategia', 'Rzemiosło', 'Detal', 'Charakter', 'Finezja', 'Tempo', 'Spokój'],
+    clientStrip: {
+      label: 'Zaufali nam',
+      caption: 'Marki, dla których projektujemy obecność cyfrową — od butikowych e-commerce po kliniki i biura.',
+    },
     homeServicesSection: {
       label: '— Nasze podejście',
       heading: 'Trzy filary, na których stoi każda nasza strona.',
@@ -559,6 +563,10 @@ const translations = {
       { title: 'Real results', description: 'Aesthetics that directly translates into outcomes.' },
     ],
     marqueeItems: ['Aesthetics', 'Strategy', 'Craft', 'Detail', 'Character', 'Finesse', 'Tempo', 'Calm'],
+    clientStrip: {
+      label: 'Trusted by',
+      caption: 'Brands for whom we design digital presence — from boutique e-commerce to clinics and agencies.',
+    },
     homeServicesSection: {
       label: '— Our approach',
       heading: 'Three pillars behind every site we build.',
@@ -1096,6 +1104,10 @@ const translations = {
       { title: 'Echte Ergebnisse', description: 'Ästhetik, die sich direkt in Resultate übersetzt.' },
     ],
     marqueeItems: ['Ästhetik', 'Strategie', 'Handwerk', 'Detail', 'Charakter', 'Finesse', 'Tempo', 'Ruhe'],
+    clientStrip: {
+      label: 'Vertraut von',
+      caption: 'Marken, für die wir digitale Präsenz gestalten — von Boutique-E-Commerce bis zu Kliniken und Agenturen.',
+    },
     homeServicesSection: {
       label: '— Unser Ansatz',
       heading: 'Drei Säulen, auf denen jede unserer Websites steht.',

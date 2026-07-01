@@ -3,11 +3,14 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
+import { useTheme } from "@/contexts/ThemeContext";
 
 const STORAGE_KEY = "swan-cookie-consent";
 
 const CookieBanner: React.FC = () => {
   const [open, setOpen] = useState(false);
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -43,26 +46,32 @@ const CookieBanner: React.FC = () => {
           transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
           role="dialog"
           aria-label="Informacja o cookies"
-          className="fixed bottom-4 left-4 right-4 md:right-auto md:max-w-[440px] z-[70] rounded-2xl bg-[#0E1016]/95 backdrop-blur-xl border border-white/[0.10] shadow-[0_30px_70px_-20px_rgba(0,0,0,0.8)] p-5 md:p-6"
+          className="fixed bottom-4 left-4 right-4 md:right-auto md:max-w-[440px] z-[70] rounded-2xl backdrop-blur-xl p-5 md:p-6"
+          style={{
+            background: isDark ? "rgba(14,16,22,0.95)" : "rgba(248,245,239,0.97)",
+            border: isDark ? "1px solid rgba(255,255,255,0.10)" : "1px solid rgba(0,0,0,0.08)",
+            boxShadow: isDark ? "0 30px 70px -20px rgba(0,0,0,0.8)" : "0 16px 48px -16px rgba(0,0,0,0.14)",
+          }}
         >
           <button
             type="button"
             onClick={() => persist("declined")}
             aria-label="Zamknij"
-            className="absolute top-3 right-3 w-7 h-7 flex items-center justify-center rounded-full text-white/40 hover:text-white/80 hover:bg-white/[0.06] transition-all duration-300"
+            className="absolute top-3 right-3 w-7 h-7 flex items-center justify-center rounded-full transition-all duration-300"
+            style={{ color: isDark ? "rgba(255,255,255,0.4)" : "rgba(17,17,17,0.4)" }}
           >
             <X className="w-3.5 h-3.5" />
           </button>
 
           <h3
-            className="text-[0.95rem] font-medium text-white mb-2 pr-6 tracking-tight"
-            style={{ fontFamily: "DM Sans, sans-serif" }}
+            className="text-[0.95rem] font-medium mb-2 pr-6 tracking-tight"
+            style={{ fontFamily: "DM Sans, sans-serif", color: isDark ? "#ffffff" : "#111111" }}
           >
             Pliki cookies
           </h3>
           <p
-            className="text-[0.82rem] text-white/55 font-light leading-[1.6] mb-4"
-            style={{ fontFamily: "Inter, sans-serif" }}
+            className="text-[0.82rem] font-light leading-[1.6] mb-4"
+            style={{ fontFamily: "Inter, sans-serif", color: isDark ? "rgba(255,255,255,0.55)" : "rgba(17,17,17,0.60)" }}
           >
             Używamy niezbędnych plików cookies, by strona działała poprawnie. Opcjonalnie analityka pomaga nam ją ulepszać.{" "}
             <Link
@@ -85,7 +94,11 @@ const CookieBanner: React.FC = () => {
             <button
               type="button"
               onClick={() => persist("declined")}
-              className="flex-1 bg-transparent text-white/75 border border-white/15 hover:bg-white/[0.04] hover:border-white/25 h-[42px] text-[0.68rem] tracking-[0.18em] uppercase font-medium rounded-full transition-all duration-300"
+              className="flex-1 bg-transparent h-[42px] text-[0.68rem] tracking-[0.18em] uppercase font-medium rounded-full transition-all duration-300"
+              style={{
+                color: isDark ? "rgba(255,255,255,0.75)" : "rgba(17,17,17,0.65)",
+                border: isDark ? "1px solid rgba(255,255,255,0.15)" : "1px solid rgba(0,0,0,0.12)",
+              }}
             >
               Tylko niezbędne
             </button>

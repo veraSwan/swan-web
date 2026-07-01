@@ -15,19 +15,19 @@ interface ProjectData {
 }
 
 const featuredProjects: ProjectData[] = [
-  { name: 'Noir Élan',      image: 'https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/47b5652ee02da20ef7e0a2e8a2b19e94.png', category: 'E-commerce / Luksus',  link: '/noir-elan',             phoneImage: 'https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/47b5652ee02da20ef7e0a2e8a2b19e94.png' },
-  { name: 'Maison Atelier', image: 'https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/0071c8caf9b1e0c7eef64c7629390188.png', category: 'E-commerce / Fashion',  link: '/maison-atelier' },
-  { name: 'AURA Clinic',    image: 'https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/62a1292f8cade28ede176ba9c66f5607.png', category: 'Medycyna estetyczna',   link: '/portfolio/aura-clinic', phoneImage: 'https://horizons-cdn.hostinger.com/cfa5146f-52ac-42eb-a177-ef9cb7c13f59/62a1292f8cade28ede176ba9c66f5607.png' },
+  { name: 'Noir Élan',      image: 'https://images.unsplash.com/photo-1541643600914-78b084683702?auto=format&fit=crop&w=1200&q=80', category: 'E-commerce / Luksus',  link: '/noir-elan' },
+  { name: 'Maison Atelier', image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1200&q=80', category: 'E-commerce / Fashion', link: '/maison-atelier' },
+  { name: 'AURA Clinic',    image: 'https://images.unsplash.com/photo-1519415943484-9fa1873496d4?auto=format&fit=crop&w=1200&q=80', category: 'Medycyna estetyczna',  link: '/portfolio/aura-clinic' },
 ];
 
 const gridProjects: ProjectData[] = [
-  { name: 'Daniel Kanzlei',    image: 'https://api.microlink.io/?url=https%3A%2F%2Fdaniel-kanzlei.de%2Fen&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1200&viewport.height=900', category: 'Biuro rachunkowe',     link: '/portfolio/daniel-kanzlei' },
-  { name: 'LINIA Studio',      image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80',                category: 'Projektowanie wnętrz',  link: '/portfolio/linia-studio-wnetrz' },
-  { name: 'Calma Studio',      image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80',                category: 'Wellness & SPA',        link: '/calma-studio' },
-  { name: 'Aureline District', image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=1200&q=80',                category: 'Nieruchomości premium', link: '/aureline-district' },
-  { name: 'Smile Studio',      image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80',                category: 'Stomatologia premium',  link: '/portfolio/smile-studio' },
-  { name: 'Tessera',           image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80',                category: 'Fine dining',           link: '/portfolio/tessera' },
-  { name: 'Stal Mar',          image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1200&q=80',                  category: 'Ogrodzenia / Metaloplastyka', link: '/portfolio/stal-mar' },
+  { name: 'Ogrodzenia Piła',   image: 'https://api.microlink.io/?url=https%3A%2F%2Fwww.ogrodzeniapila.com.pl&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1200&viewport.height=900', category: 'Ogrodzenia / Metaloplastyka', link: '/portfolio/stal-mar' },
+  { name: 'Daniel Kanzlei',    image: 'https://api.microlink.io/?url=https%3A%2F%2Fdaniel-kanzlei.de%2Fen&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1200&viewport.height=900',    category: 'Biuro rachunkowe',            link: '/portfolio/daniel-kanzlei' },
+  { name: 'LINIA Studio',      image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80',                category: 'Projektowanie wnętrz',        link: '/portfolio/linia-studio-wnetrz' },
+  { name: 'Calma Studio',      image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80',                category: 'Wellness & SPA',              link: '/calma-studio' },
+  { name: 'Aureline District', image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=1200&q=80',                category: 'Nieruchomości premium',       link: '/aureline-district' },
+  { name: 'Smile Studio',      image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80',                category: 'Stomatologia premium',        link: '/portfolio/smile-studio' },
+  { name: 'Tessera',           image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80',                category: 'Fine dining',                 link: '/portfolio/tessera' },
 ];
 
 interface FeaturedProjectProps {

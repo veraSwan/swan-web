@@ -9,12 +9,12 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { useTheme } from "@/contexts/ThemeContext";
 
 const featuredMeta = [
-  { name: "Ogrodzenia Piła",   category: "Ogrodzenia / Metaloplastyka", image: "https://api.microlink.io/?url=https%3A%2F%2Fwww.ogrodzeniapila.com.pl&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1200&viewport.height=900", link: "/portfolio/stal-mar",            descIndex: 9 },
-  { name: "Noir Élan",         category: "E-commerce / Luksus",         image: "https://images.unsplash.com/photo-1541643600914-78b084683702?auto=format&fit=crop&w=1200&q=80",                                                                    link: "/noir-elan",                     descIndex: 0 },
+  { name: "Ogrodzenia Piła",   category: "Ogrodzenia / Metaloplastyka", image: "/images/portfolio/ogrodzenia-pila/ogrodzenia-pila.png",                                                                                                            link: "/portfolio/stal-mar",            descIndex: 3 },
+  { name: "Noir Élan",         category: "E-commerce / Luksus",         image: "/images/portfolio/noir-elan/noir-elan.jpg",                                                                                                                        link: "/noir-elan",                     descIndex: 0 },
   { name: "Maison Atelier",    category: "E-commerce / Fashion",        image: "https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1200&q=80",                                                                    link: "/maison-atelier",                descIndex: 1 },
   { name: "AURA Clinic",       category: "Medycyna estetyczna",         image: "https://images.unsplash.com/photo-1519415943484-9fa1873496d4?auto=format&fit=crop&w=1200&q=80",                                                                    link: "/portfolio/aura-clinic",         descIndex: 2 },
-  { name: "LINIA Studio",      category: "Projektowanie wnętrz",        image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80",                                                                    link: "/portfolio/linia-studio-wnetrz", descIndex: 4 },
-  { name: "Aureline District", category: "Nieruchomości",               image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80",                                                                    link: "/aureline-district",             descIndex: 6 },
+  { name: "LINIA Studio",      category: "Projektowanie wnętrz",        image: "/images/portfolio/linia-studio/collov-home-design-H-1j_s0dhCw-unsplash.jpg",                                                                                       link: "/portfolio/linia-studio-wnetrz", descIndex: 5 },
+  { name: "Aureline District", category: "Nieruchomości premium",       image: "/images/portfolio/aureline-district/joel-filipe-RFDP7_80v5A-unsplash.jpg",                                                                                        link: "/aureline-district",             descIndex: 7 },
 ];
 
 const AUTOPLAY_INTERVAL = 5500;

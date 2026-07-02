@@ -144,10 +144,10 @@ const SmileStudioView: React.FC = () => {
       <CaseStudyTopBack label="Powrót do portfolio" />
 
       <CaseStudyHero
-        category=”Stomatologia premium”
-        title=”Smile Studio”
-        subtitle=”Klinika dentystyczna, która komunikuje pewność siebie ciszą — bez krzyczących promocji i bez „pakietów weekendowych”.”
-        visual={<HeroBrowserFrame src={heroImage} alt=”Smile Studio — strona główna” />}
+        category="Stomatologia premium"
+        title="Smile Studio"
+        subtitle="Klinika dentystyczna, która komunikuje pewność siebie ciszą — bez krzyczących promocji i bez „pakietów weekendowych”."
+        visual={<HeroBrowserFrame src={heroImage} alt="Smile Studio — strona główna" />}
         conceptual
       />
 

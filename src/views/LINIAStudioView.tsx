@@ -16,15 +16,10 @@ const projectImages = [
   "/images/portfolio/linia-studio/kam-idris-AUOuawx5B0M-unsplash.jpg",
 ];
 
-const HeroBrowserFrame: React.FC<{ src: string; alt: string }> = ({ src, alt }) => (
+const HeroBrowserMockup: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <div className="relative w-full bg-[#1A1C20] rounded-t-[1.5rem] p-2 sm:p-3 pb-0 shadow-2xl border border-white/5 border-b-0">
-    <div className="aspect-[16/10] bg-black rounded-t-xl overflow-hidden relative">
-      <img
-        src={src}
-        alt={alt}
-        loading="lazy"
-        className="w-full h-full object-cover object-top opacity-95 transition-transform duration-[2s] ease-[0.22,1,0.36,1] hover:scale-[1.02]"
-      />
+    <div className="aspect-[16/10] rounded-t-xl overflow-hidden relative">
+      {children}
     </div>
     <div className="w-[110%] -ml-[5%] h-3 sm:h-4 bg-[#2A2B30] rounded-b-2xl mt-0 border-t border-white/5 shadow-xl relative z-10" />
   </div>
@@ -132,7 +127,7 @@ const LINIAStudioView: React.FC = () => {
         category="Projektowanie wnętrz"
         title="LINIA Studio"
         subtitle="Cyfrowe portfolio architekta wnętrz, w którym pustka jest tak samo zaprojektowana jak materiał."
-        visual={<HeroBrowserFrame src={heroImage} alt="LINIA Studio — strona główna" />}
+        visual={<HeroBrowserMockup><LINIAMockSite /></HeroBrowserMockup>}
         conceptual
       />
 
